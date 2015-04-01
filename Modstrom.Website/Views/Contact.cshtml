@@ -1,0 +1,57 @@
+﻿@using Modstrom.Library.Models;
+@using Umbraco.Web
+
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContactModel>
+@{
+    Layout = "TextPageBase.cshtml";
+
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+
+@section extraContent
+{
+ @*  based on https://github.com/warrenbuckley/CWS-Start/tree/master/CWSStart.Web/CWSStart.Web
+     see info about MVC form validation here : http://forums.asp.net/post/5471074.aspx
+     To use dictionary items on validation message, use Umbraco.GetDictionaryValue as parameter for Html.LabelFor, Html.TextBoxFor AND Html.ValidationMessageFor
+     then do not use "ErrorMessage" in the Model.*@
+ 
+     @if (Convert.ToBoolean(TempData["IsSuccessful"]))
+     {
+         <div class="alert alert-success">
+             <h4>Yay!</h4>
+             <p>Thanks for sending your message, we will get back to you shortly.</p>
+         </div>
+     }
+     else
+     {
+         using (Html.BeginUmbracoForm("SendContact", "Contact"))
+          {
+              @Html.AntiForgeryToken()
+              @Html.ValidationSummary(false)
+
+              <div>
+                  @Html.LabelFor(model => model.Name, new {@class = "control-label"})
+                  @Html.TextBoxFor(model => model.Name, new {@class = "form-control", placeholder = "Your Name"})
+                  @Html.ValidationMessageFor(model => model.Name, string.Empty, new {@class = "help-block"})
+              </div>
+
+              <div>
+                  @Html.LabelFor(model => model.Email, new {@class = "control-label"})
+                  @Html.TextBoxFor(model => model.Email, new {type="email",@class = "form-control", placeholder = "Email Address"})
+                  @Html.ValidationMessageFor(model => model.Email, string.Empty, new {@class = "help-block"})
+              </div>
+
+              <div>
+                  @Html.LabelFor(model => model.Message, new {@class = "control-label"})
+                  @Html.TextAreaFor(model => model.Message, new {@class = "form-control", placeholder = "Your Message"})
+                  @Html.ValidationMessageFor(model => model.Message, string.Empty, new {@class = "help-block"})
+              </div>
+
+              <div class="row submit">
+                  <button type="submit">Send</button>
+              </div>
+          }
+     }
+    
+}

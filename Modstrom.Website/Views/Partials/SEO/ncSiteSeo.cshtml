@@ -1,0 +1,73 @@
+@using Modstrom.Library.Helpers
+@using SEOChecker.MVC
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var current = Model.Content;
+    var siteNode = current.GetSiteNode();
+
+    MetaData metaData = Model.Content.GetPropertyValue<MetaData>("seoChecker");
+    
+    string seoCanonical = current.GetPropertyValue<string>("seoCanonical");
+
+    bool seoNoODP = siteNode.GetPropertyValue<bool>("seoNoODP");
+    bool seoNoYDIR = siteNode.GetPropertyValue<bool>("seoNoYDIR");
+    string seoWebMasterToolAccount = siteNode.GetPropertyValue<string>("seoWebmasterToolAccount");
+
+    if (string.IsNullOrEmpty(seoCanonical))
+    {
+        seoCanonical = metaData.CanonicalUrl;
+    }
+
+    string robots = metaData.Robots;
+    
+    if (!seoNoODP)
+    {
+        if (!string.IsNullOrEmpty(robots))
+        {
+            robots += ", NOODP";
+        }
+        else
+        {
+            robots = "NOODP";
+        }
+    }
+    if (!seoNoYDIR)
+    {
+        if (!string.IsNullOrEmpty(robots))
+        {
+            robots += ", NOYDIR";
+        }
+        else
+        {
+            robots = "NOYDIR";
+        }
+    }
+
+    var urlRequest = Request.Url;
+    // do not index the site if the host is ditnyewebsite.dk
+    if (urlRequest != null && urlRequest.Host.Contains("ditnyewebsite.dk"))
+    {
+        robots = "NOINDEX, NOFOLLOW, NOODP, NOYDIR";
+    }
+        
+	
+}
+
+@if (!string.IsNullOrWhiteSpace(seoWebMasterToolAccount))
+{
+  <meta name="google-site-verification" content="@seoWebMasterToolAccount" />
+}
+
+@if (!string.IsNullOrEmpty(robots))
+{
+  <meta name="robots" content="@robots" />
+}
+
+<title>@metaData.Title</title>
+<meta name="description" content="@metaData.Description" />
+
+
+@if (!string.IsNullOrWhiteSpace(seoCanonical))
+{
+  <link ref="canonical" href="@seoCanonical" />
+}

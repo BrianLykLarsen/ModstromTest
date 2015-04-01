@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+@section mainContent
+{
+    <div id="textpage" class="row-fluid">
+        <nav id="nav-sub" class="span3" role="navigation">
+            @Html.Partial("Helpers/ncNavSub")
+        </nav>
+        <section class="span9" role="main">
+            @(Model.Content.GetPropertyValue<HtmlString>("content"))
+        </section>
+    </div>
+    
+    @RenderSection("extraContent")
+}
+    

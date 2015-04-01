@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modstrom.Website", "Modstrom.Website\Modstrom.Website.csproj", "{42229FBD-C125-4B8E-9597-C6D54B0911C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modstrom.Library", "Modstrom.Library\Modstrom.Library.csproj", "{13716B43-3D13-4C65-9472-41142B55C228}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42229FBD-C125-4B8E-9597-C6D54B0911C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42229FBD-C125-4B8E-9597-C6D54B0911C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42229FBD-C125-4B8E-9597-C6D54B0911C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42229FBD-C125-4B8E-9597-C6D54B0911C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13716B43-3D13-4C65-9472-41142B55C228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13716B43-3D13-4C65-9472-41142B55C228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13716B43-3D13-4C65-9472-41142B55C228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13716B43-3D13-4C65-9472-41142B55C228}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

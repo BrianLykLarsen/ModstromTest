@@ -1,0 +1,20 @@
+@using Modstrom.Library.Helpers
+
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    var listMyParents = Model.Content.AncestorsOrSelf(3); //we take all parents starting at level 3
+    var level2Node = Model.Content.AncestorOrSelf(2);     
+    
+}
+
+
+<ul class="nav nav-sub">
+    @* List all of the subnodes of the node at the first level that have a template *@
+    
+    @foreach (var node in level2Node.Children.Where(n => n.IsVisible()))
+    {
+        string childClass = listMyParents.Any(n => n.Id == node.Id) ? " class=\"active\"" : string.Empty;
+        <li@(Html.Raw(childClass))><a href="@node.Url">@node.Name</a></li>
+    }
+</ul>

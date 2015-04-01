@@ -1,0 +1,10 @@
+﻿@using Umbraco.Web
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+
+@section mainContent
+{
+    @(Model.Content.GetPropertyValue<HtmlString>("content"))
+}

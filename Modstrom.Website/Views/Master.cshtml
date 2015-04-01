@@ -1,0 +1,83 @@
+﻿@using Modstrom.Library.Helpers
+@using SquishIt.Framework
+@using SquishIt.Mvc
+@using Umbraco.Web
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+    var siteNode = Model.Content.GetSiteNode();
+    
+}<!doctype html>
+ <html lang="@Html.Partial("SEO/ncSiteLanguage")"> 
+    <head>
+        <meta charset="utf-8">
+        @Html.Partial("SEO/ncSiteSeo")
+        
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteHeader"))
+        @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageHeader"))
+        @(Bundle.JavaScript()
+            .Add("~/scripts/libs/modernizr.custom.js")
+            .MvcRender("~/scripts/compiled/modernizr.custom.min.js")
+        )
+        <link type="text/plain" rel="author" href="/humans.txt" />
+        @(Bundle.Css()
+            .Add("~/less/master.less")
+            //.ForceRelease() // enable if you want to squish it in debug=true
+            .MvcRender("~/css/compiled/comb.min_#.css")
+        )
+        <!--[if lt IE 9]>
+            <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+     <body>
+         @Html.Partial("SEO/ncSiteGoogleAnalytics")
+         @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteBodyTop"))
+         @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyTop"))
+	    
+         <div id="site" class="container">
+             <header id="header">
+                 <div class="row-fluid">
+                     <figure id="logo" class="span6">
+                         <a href="/">
+                             <h1>Novicell default package</h1>
+                         </a> 
+                     </figure>
+                     <nav id="nav-main" class="span6" role="navigation">
+                         @Html.Partial("Helpers/ncNavHeader")
+                     </nav>
+                 </div>
+             </header>
+             <div id="page">
+                 @RenderSection("mainContent")
+             </div>
+
+             <footer id="footer">
+                 <div class="row-fluid">
+                     <div class="span12">
+                         @Html.Raw(Model.Content.GetPropertyValue<string>("footer",true,string.Empty))
+                     </div>
+                 </div>
+             </footer>
+         </div>
+        
+         @(Bundle.JavaScript()
+                 .Add("~/scripts/jquery-1.11.0.js")
+               //.Add("~/scripts/jquery.validate.js")  // Add this if you need some form validation => you need at add it with nuget package
+               //.Add("~/scripts/jquery.validate.unobtrusive.js") // Add this if you need some form validation => you need at add it with nuget package
+                 .Add("~/scripts/libs/novicell.js")
+                 .Add("~/scripts/libs/novicell.responsive.js")
+                 .Add("~/scripts/libs/novicell.lazyload.js")
+                 .Add("~/scripts/libs/novicell.imageadjust.js")
+                 .Add("~/scripts/libs/novicell.overlay.js")
+                 .Add("~/scripts/master.js")
+               //.ForceRelease() // enable if you want to squish it in debug=true
+                 .MvcRender("~/scripts/compiled/comb.min_#.js")
+               )
+        
+         @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteBodyBottom"))
+         @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyBottom"))
+       
+     </body>
+
+</html>
