@@ -4,11 +4,11 @@
 }
 @section mainContent
 {
-    <div id="textpage" class="row-fluid">
-        <nav id="nav-sub" class="span3" role="navigation">
+    <div id="textpage">
+        <nav id="nav-sub">
             @Html.Partial("Helpers/ncNavSub")
         </nav>
-        <section class="span9" role="main">
+        <section>
             @(Model.Content.GetPropertyValue<HtmlString>("content"))
         </section>
     </div>
