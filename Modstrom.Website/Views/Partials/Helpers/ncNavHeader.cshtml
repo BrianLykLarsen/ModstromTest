@@ -7,7 +7,7 @@
     var level2Node = Model.Content.AncestorOrSelf(2);
 }
 
-<ul class="nav nav-header">
+<ul id="nav-header">
     @{
         // Get umbraco pages where 'show in top navigation' is true
         foreach (var page in siteNode.Children.Where(n => n.IsVisible()))

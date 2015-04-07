@@ -6,5 +6,83 @@
 
 @section mainContent
 {
+    <div id="page" class="frontpage">
+        <section id="slider" class="flexslider">
+            <ul class="slides">
+                <li>
+                    <figure class="responsiveimg responsiveimg-slideshow" data-imgsrc="/images/slider-placeholder-01.jpg">
+                        <noscript>
+                            <img src="/images/slider-placeholder-01.jpg" alt="This is the alt text">
+                        </noscript>
+                    </figure>
+                        
+                    <div class="container">
+                        <div class="row">
+                            <div class="slide-content col-md-8">
+                                <h2>Den billigste kilo-watt time er den du ikke bruger...</h2>
+                                <div class="slide-utilities">
+                                    <a href="/" class="btn btn-dark">Gå mod strømmen</a>
+                                    <a href="/" class="btn btn-teal">Bliv kunde</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="image-link-list">
+            <div class="container">
+                <ul class="row">
+                    <li class="image-link col-md-4">
+                        <header>
+                            <h3>Beregn din EL-besparelse</h3>
+                            <i></i>
+                        </header>
+                        <figure class="responsiveimg" data-imgsrc="/images/link-list-placeholder.jpg" data-imgalt="This is the alt-text">
+                            <noscript>
+                                <img src="/images/link-list-placeholder.jpg" alt="This is the alt text">
+                            </noscript>
+                        </figure>
+                        <div class="text">
+                            Over halvdelen af alle husejere kan spare penge på strøm ved at gennemføre energiforbedringer.
+                        </div>
+                        <a href="/">Beregn din besparelse</a>
+                    </li>
+                    <li class="image-link col-md-4">
+                        <header>
+                            <h3>Beregn din EL-besparelse</h3>
+                            <i></i>
+                        </header>
+                        <figure class="responsiveimg" data-imgsrc="/images/link-list-placeholder.jpg" data-imgalt="This is the alt-text">
+                            <noscript>
+                                <img src="/images/link-list-placeholder.jpg" alt="This is the alt text">
+                            </noscript>
+                        </figure>
+                        <div class="text">
+                            Over halvdelen af alle husejere kan spare penge på strøm ved at gennemføre energiforbedringer.
+                        </div>
+                        <a href="/">Beregn din besparelse</a>
+                    </li>
+                    <li class="image-link col-md-4">
+                        <header>
+                            <h3>Beregn din EL-besparelse</h3>
+                            <i></i>
+                        </header>
+                        <figure class="responsiveimg" data-imgsrc="/images/link-list-placeholder.jpg" data-imgalt="This is the alt-text">
+                            <noscript>
+                                <img src="/images/link-list-placeholder.jpg" alt="This is the alt text">
+                            </noscript>
+                        </figure>
+                        <div class="text">
+                            Over halvdelen af alle husejere kan spare penge på strøm ved at gennemføre energiforbedringer.
+                        </div>
+                        <a href="/">Beregn din besparelse</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
     @(Model.Content.GetPropertyValue<HtmlString>("content"))
 }

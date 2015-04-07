@@ -1,4 +1,4 @@
-//[assembly: WebActivator.PreApplicationStartMethod(typeof(Modstrom.Website.App_Start.SquishItLess), "Start")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(Modstrom.Website.App_Start.SquishItLess), "Start")]
 
 namespace Modstrom.Website.App_Start
 {

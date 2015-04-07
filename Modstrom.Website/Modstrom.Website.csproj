@@ -316,8 +316,11 @@
     <Content Include="Config\grid.editors.config.js" />
     <Content Include="css\compiled\keepme.txt" />
     <Content Include="default.aspx" />
+    <Content Include="fonts\Sini\2DD7EE_0_0.svg" />
+    <Content Include="fonts\Sini\2DD7EE_1_0.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\1x1.gif" />
+    <Content Include="images\logo.png" />
     <Content Include="less\libs\keepme.txt" />
     <Content Include="less\master.less" />
     <Content Include="less\libs\novicell.master.bootstrap.less" />
@@ -363,6 +366,19 @@
     <Content Include="less\libs\bootstrap\alerts.less" />
     <Content Include="App_Browsers\Form.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
+    <Content Include="less\header.less" />
+    <Content Include="less\typography.less" />
+    <Content Include="less\utilities.less" />
+    <Content Include="fonts\Sini\2DD7EE_0_0.eot" />
+    <Content Include="fonts\Sini\2DD7EE_0_0.ttf" />
+    <Content Include="fonts\Sini\2DD7EE_0_0.woff" />
+    <Content Include="fonts\Sini\2DD7EE_0_0.woff2" />
+    <Content Include="fonts\Sini\2DD7EE_1_0.eot" />
+    <Content Include="fonts\Sini\2DD7EE_1_0.ttf" />
+    <Content Include="fonts\Sini\2DD7EE_1_0.woff" />
+    <Content Include="fonts\Sini\2DD7EE_1_0.woff2" />
+    <Content Include="less\reset.less" />
+    <Content Include="less\slider.less" />
     <None Include="Scripts\jquery-1.11.0.intellisense.js" />
     <Content Include="Scripts\compiled\keepme.txt" />
     <Content Include="Scripts\jquery-1.11.0.js" />
@@ -379,6 +395,9 @@
     <Content Include="Scripts\libs\bootstrap\tab.js" />
     <Content Include="Scripts\libs\bootstrap\tooltip.js" />
     <Content Include="Scripts\libs\bootstrap\transition.js" />
+    <Content Include="Scripts\libs\flexslider\flexslider.css" />
+    <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.svg" />
+    <Content Include="Scripts\libs\flexslider\jquery.flexslider.js" />
     <Content Include="Scripts\libs\modernizr.custom.js" />
     <Content Include="Scripts\libs\novicell.cookieinfo.js" />
     <Content Include="Scripts\libs\novicell.examples.js" />
@@ -407,11 +426,13 @@
     <Content Include="Views\Partials\SEO\ncSiteGoogleAnalytics.cshtml" />
     <Content Include="Views\Partials\SEO\ncSiteLanguage.cshtml" />
     <Content Include="Views\Partials\SEO\ncSiteSeo.cshtml" />
+    <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.eot" />
+    <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.ttf" />
+    <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.woff" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="Controllers\" />
-    <Folder Include="fonts\" />
     <Folder Include="Models\" />
     <Folder Include="Views\MacroPartials\" />
   </ItemGroup>

@@ -1,49 +1,54 @@
 
-// document ready
 $(function () {
-    // optional: set custom breakpoints
+    modstrom.master.flexslider('.flexslider');
+    modstrom.master.responsiveImage();
+   
+});
 
-    novicell.responsive.breakpoints({
-        0: 'phone phone-portrait mobile',
-        480: 'phone phone-landscape tablet-portrait mobile',
-        768: 'tablet tablet-landscape mobile',
-        980: 'desktop desktop-small',
-        1185: 'desktop desktop-large'
-    });
+var modstrom = modstrom || {};
 
-    novicell.responsive.init(projectName.master.resetUI());
-    novicell.adjustFigureImage.init();
-    novicell.lazyload.content(projectName.master.resetUI());
-    novicell.lazyload.image();
-
-    projectName.master.magic($('.all-the-things'));
-
-}); // document ready end
-
-
-// CUSTOM SECTION - PLACE YOUR NICE PROJECT CODE HERE. :)
-// REPLACE THE projectName OBJECT TO SOMETHING RELEVANT
-
-var projectName = projectName || {};
-projectName.master = projectName.master || function () {
-    // responsive ready callback
-    function resetUI() {
-
-        // run this stuff when "resizing" the DOM/after a resize and so on
-    }
-
-    //Sample function
-    function niceCodeForMyCustomer(selectors) {
-        $(selectors).each(function () {
-            // do your magic
+modstrom.master = modstrom.master || function () { 
+    function flexslider(selector) {
+        $(selector).flexslider({
+            controlNav: false,
+            directionNav: false
         });
     }
+     
+    //Responsive Images
+    function responsiveImage() {
+        [].forEach.call(document.querySelectorAll('.responsiveimg'), function (el) { 
+            var w = el.offsetWidth;
+
+            var element = el.getAttribute('data-imgsrc');
+            var src = element.split('?')[0];
+            var alt = el.getAttribute('data-imgalt');
+
+            //Focal Point
+            var focalPoint = element.substr(element.indexOf("center"))
+            var testFocal = focalPoint.indexOf("&") 
+            if (testFocal != -1) {
+                focalPoint = focalPoint.substr(0, testFocal)
+            }
+
+            var wRnd = Math.round(w / 20) * 20;
+            var hRnd = '0';
+
+            if ($(el).hasClass('responsiveimg-slideshow')) {
+                $(el).attr('style', 'background-image:url(' + src + '?' + focalPoint + '&width=' + wRnd + '&height=' + hRnd + '&mode=crop&quality=70&format=jpg);');
+            } else {
+                el.insertAdjacentHTML('afterbegin', '<img src="' + src + '?' + focalPoint + '&width=' + wRnd + '&height=' + hRnd + '&mode=crop&quality=70&format=jpg" width="' + w + '" alt="' + alt + '">');
+            }
+        });
+
+    }
+
 
     return {
-        resetUI: resetUI,
-        magic: niceCodeForMyCustomer
+        flexslider: flexslider,
+        responsiveImage: responsiveImage
     }
-}(); // customerName
+}();
 
 
 
