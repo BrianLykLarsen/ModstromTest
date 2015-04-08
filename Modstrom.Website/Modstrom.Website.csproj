@@ -320,7 +320,12 @@
     <Content Include="fonts\Sini\2DD7EE_1_0.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\1x1.gif" />
+    <Content Include="images\link-list-placeholder.jpg" />
     <Content Include="images\logo.png" />
+    <Content Include="images\shadow-left.png" />
+    <Content Include="images\shadow-right.png" />
+    <Content Include="images\slider-placeholder-01.jpg" />
+    <Content Include="images\slider-placeholder-02.jpg" />
     <Content Include="less\libs\keepme.txt" />
     <Content Include="less\master.less" />
     <Content Include="less\libs\novicell.master.bootstrap.less" />
@@ -379,6 +384,7 @@
     <Content Include="fonts\Sini\2DD7EE_1_0.woff2" />
     <Content Include="less\reset.less" />
     <Content Include="less\slider.less" />
+    <Content Include="less\image-link-list.less" />
     <None Include="Scripts\jquery-1.11.0.intellisense.js" />
     <Content Include="Scripts\compiled\keepme.txt" />
     <Content Include="Scripts\jquery-1.11.0.js" />
