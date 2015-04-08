@@ -412,6 +412,8 @@
     <Content Include="Scripts\libs\novicell.lazyload.js" />
     <Content Include="Scripts\libs\novicell.overlay.js" />
     <Content Include="Scripts\libs\novicell.responsive.js" />
+    <Content Include="Scripts\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Scripts\libs\perfect-scrollbar\jquery.perfect-scrollbar.js" />
     <Content Include="Scripts\master.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -427,14 +429,16 @@
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\TextPageBase.cshtml" />
     <Content Include="Views\TextPageContent.cshtml" />
-    <Content Include="Views\Partials\Helpers\ncNavHeader.cshtml" />
-    <Content Include="Views\Partials\Helpers\ncNavSub.cshtml" />
+    <Content Include="Views\Partials\Sections\NavHeader.cshtml" />
+    <Content Include="Views\Partials\Sections\NavSub.cshtml" />
     <Content Include="Views\Partials\SEO\ncSiteGoogleAnalytics.cshtml" />
     <Content Include="Views\Partials\SEO\ncSiteLanguage.cshtml" />
     <Content Include="Views\Partials\SEO\ncSiteSeo.cshtml" />
     <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.eot" />
     <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.ttf" />
     <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.woff" />
+    <Content Include="Views\Partials\Sections\Slider.cshtml" />
+    <Content Include="Views\Partials\Sections\ImageLinkList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
