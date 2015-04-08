@@ -23,6 +23,7 @@
 
         @(Bundle.Css()
             .Add("~/scripts/libs/flexslider/flexslider.css") 
+            .Add("~/scripts/libs/perfect-scrollbar/perfect-scrollbar.css")
             .Add("~/less/master.less")
             //.ForceRelease() // enable if you want to squish it in debug=true
             .MvcRender("~/css/compiled/comb.min_#.css")
@@ -43,12 +44,12 @@
                         <img src="/images/logo.png" />
                     </a>
                 </figure>
-
-                @Html.Partial("Helpers/ncNavHeader")
-
+                <nav id="nav-container">
+                    @Html.Partial("Helpers/ncNavHeader")
+                </nav>
                 <div id="header-utilities"> 
-                    <a id="header-basket" href="/">0,00<i class="icon icon-basket"></i></a>
-                    <a id="header-login" href="/">Min side<i class="icon icon-login"></i></a>
+                    <a id="header-basket" href="/"><span>0,00</span><i class="icon icon-basket"></i></a>
+                    <a id="header-login" href="/"><span>Min side</span><i class="icon icon-login"></i></a>
                 </div>
             </header>
 
@@ -64,6 +65,7 @@
          @(Bundle.JavaScript()
             .Add("~/scripts/jquery-1.11.0.js")               
             .Add("~/scripts/libs/flexslider/jquery.flexslider.js")
+            .Add("~/scripts/libs/perfect-scrollbar/jquery.perfect-scrollbar.js")
             .MvcRender("~/scripts/compiled/comb.min_#.js")
         )
         
