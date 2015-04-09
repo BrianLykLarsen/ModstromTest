@@ -63,7 +63,12 @@
          </div>
         
          @(Bundle.JavaScript()
-            .Add("~/scripts/jquery-1.11.0.js")               
+            .Add("~/scripts/jquery-1.11.0.js")
+            .Add("~/scripts/libs/modernizr.custom.js")
+            .Add("~/scripts/libs/novicell.js")
+            .Add("~/scripts/libs/novicell.responsive.js")
+            
+                           
             .Add("~/scripts/libs/flexslider/jquery.flexslider.js")
             .Add("~/scripts/libs/perfect-scrollbar/jquery.perfect-scrollbar.js")
             .MvcRender("~/scripts/compiled/comb.min_#.js")
