@@ -12,6 +12,8 @@ $(function () {
     novicell.responsive.init(modstrom.master.resetUI());
     modstrom.master.flexslider('.flexslider');  
     modstrom.master.mainNavigation();
+    modstrom.master.adjustTrigger();
+    modstrom.master.questionTrigger();
 
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
@@ -19,6 +21,8 @@ $(function () {
 });
 
 $(window).resize(function () {
+    modstrom.master.adjustTrigger();
+
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
     modstrom.master.responsiveImage('desktop');
@@ -87,12 +91,35 @@ modstrom.master = modstrom.master || function () {
         }
     }
 
+    // Question list
+    function adjustTrigger() {
+        $('.questions li').each(function () {
+            var el = this;
+            var trigger = $('.trigger', el);
+            var height = $('.question', el).outerHeight();
+            $(trigger).height(height);
+        });
+    }
+
+    function questionTrigger() {
+        $('.questions li').each(function () {
+            var el = this;
+            var trigger = $('.trigger', el);           
+            $(trigger).click(function () {
+                $(el).toggleClass('active');
+                $('.answer-container', el).slideToggle();
+            });
+        });
+    }
+    
 
     return {
         resetUI: resetUI,
         mainNavigation: mainNavigation,
         flexslider: flexslider,
-        responsiveImage: responsiveImage
+        responsiveImage: responsiveImage,
+        adjustTrigger: adjustTrigger,
+        questionTrigger: questionTrigger
     }
 }();
 
