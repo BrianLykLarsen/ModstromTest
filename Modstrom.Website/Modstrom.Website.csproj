@@ -320,12 +320,14 @@
     <Content Include="fonts\Sini\2DD7EE_1_0.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\1x1.gif" />
+    <Content Include="images\hero-split-placeholder-desktop.jpg" />
+    <Content Include="images\hero-split-placeholder-mobile.jpg" />
+    <Content Include="images\kundo.png" />
     <Content Include="images\link-list-placeholder.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\shadow-left.png" />
     <Content Include="images\shadow-right.png" />
-    <Content Include="images\slider-placeholder-01.jpg" />
-    <Content Include="images\slider-placeholder-02.jpg" />
+    <Content Include="images\slider-placeholder-desktop.jpg" />
     <Content Include="less\libs\keepme.txt" />
     <Content Include="less\master.less" />
     <Content Include="less\libs\novicell.master.bootstrap.less" />
@@ -385,6 +387,8 @@
     <Content Include="less\reset.less" />
     <Content Include="less\slider.less" />
     <Content Include="less\image-link-list.less" />
+    <Content Include="less\hero-video.less" />
+    <Content Include="less\hero-split.less" />
     <None Include="Scripts\jquery-1.11.0.intellisense.js" />
     <Content Include="Scripts\compiled\keepme.txt" />
     <Content Include="Scripts\jquery-1.11.0.js" />
@@ -439,6 +443,8 @@
     <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.woff" />
     <Content Include="Views\Partials\Sections\Slider.cshtml" />
     <Content Include="Views\Partials\Sections\ImageLinkList.cshtml" />
+    <Content Include="Views\Partials\Sections\HeroVideo.cshtml" />
+    <Content Include="Views\Partials\Sections\HeroSplit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
