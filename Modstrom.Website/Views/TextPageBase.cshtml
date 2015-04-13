@@ -4,15 +4,12 @@
 }
 @section mainContent
 {
-    <div id="textpage">
-        <nav id="nav-sub">
-            @Html.Partial("Helpers/ncNavSub")
-        </nav>
-        <section>
-            @(Model.Content.GetPropertyValue<HtmlString>("content"))
-        </section>
+    <div id="page" class="textpage">
+        @Html.Partial("Sections/SectionImage")
+        @Html.Partial("Sections/SectionContent")
     </div>
-    
+
+    @* @(Model.Content.GetPropertyValue<HtmlString>("content")) *@
     @RenderSection("extraContent")
 }
     
