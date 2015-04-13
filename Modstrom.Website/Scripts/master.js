@@ -10,7 +10,8 @@ $(function () {
     });
 
     novicell.responsive.init(modstrom.master.resetUI());
-    modstrom.master.flexslider('.flexslider');  
+    modstrom.master.flexslider('.flexslider');
+    modstrom.master.productSlider('.flexslider');
     modstrom.master.mainNavigation();
     modstrom.master.adjustTrigger();
     modstrom.master.questionTrigger();
@@ -111,7 +112,19 @@ modstrom.master = modstrom.master || function () {
             });
         });
     }
-    
+
+    function productSlider() {
+        $('.products-container').flexslider({
+            slideshow: false,
+            animation: "slide",
+            animationLoop: false,
+            itemWidth: 263,
+            itemMargin: 30,
+            directionNav: false,
+            move: 1
+        });
+
+    }
 
     return {
         resetUI: resetUI,
@@ -119,7 +132,8 @@ modstrom.master = modstrom.master || function () {
         flexslider: flexslider,
         responsiveImage: responsiveImage,
         adjustTrigger: adjustTrigger,
-        questionTrigger: questionTrigger
+        questionTrigger: questionTrigger,
+        productSlider: productSlider
     }
 }();
 

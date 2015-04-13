@@ -1,0 +1,36 @@
+<footer id="footer">
+    <figure>
+        <div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/footer-background-desktop.jpg"  data-imgalt-desktop="This is the alt text">
+            <noscript>
+                <img src="/images/footer-background-desktop.jpg" alt="This is the alt text">
+            </noscript>
+        </div>
+        <div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/footer-background-mobile.jpg"  data-imgalt-mobile="This is the mobile alt text">
+            <noscript>
+                <img src="/images/footer-background-mobile.jpg" alt="This is the alt tsext">
+            </noscript>
+        </div>
+    </figure>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="text-area">
+                    <h3>Kontaktadresse</h3>
+                    <p>Modstrøm Danmark A/S | Jagtvej 169 B, 2. sal | 2100 København Ø</p>
+                    <br />
+                    <p>
+                        Email: <a class="unstyled" href="mailto:kundeservice@modstroem.dk">kundeservice@modstroem.dk</a><br />
+                        Tlf: <a class="unstyled" href="tel:82100200">82 100 200</a> | CVR-nr: 33 88 47 88
+                    </p>
+                    @*@Html.Raw(Model.Content.GetPropertyValue<string>("footer",true,string.Empty))*@
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="footer-social">
+                    <a class="footer-tripadvisor" href="/"><img src="/images/tripadvisor-placeholder.png" /></a>
+                    <a class="footer-facebook" href="/"><img src="/images/icon-facebook.png" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
