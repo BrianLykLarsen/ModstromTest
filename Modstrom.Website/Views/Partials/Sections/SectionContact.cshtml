@@ -1,0 +1,33 @@
+<section class="section-contact">
+    <div class="container">
+        <div class="row">
+            <h2 class="col-xs-12">Spørgsmål? Skriv til os...</h2>
+            <form id="form-contact">
+                <div class="col-md-6 form-configuration">
+                    <input type="text" id="contact-name" placeholder="Navn" />
+                    <input type="email" id="contact-email" placeholder="Email" />
+                    <input type="tel" id="contact-phone" placeholder="Telefon (valgfri)" />
+                    <div class="group-half">
+                        <div class="half">
+                            <div class="select">
+                                <select id="contact-recipient">
+                                    <option data-opening="Træffes bedst (09-16)" value="Kundeservice">Kundeservice</option>
+                                    <option data-opening="Træffes bedst (08-17)" value="Support">Support</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="half">
+                            <input type="text" id="contact-opening" readonly="readonly" value="Træffes bedst (09-16)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 form-message">
+                    <textarea id="contact-message" placeholder="Besked"></textarea>
+                </div>
+                <div class="button-holder">
+                    <button type="submit" class="btn btn-orange">Send besked</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

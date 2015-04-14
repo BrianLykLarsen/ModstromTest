@@ -320,6 +320,7 @@
     <Content Include="fonts\Sini\2DD7EE_1_0.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\1x1.gif" />
+    <Content Include="images\comments-placeholder.jpg" />
     <Content Include="images\content-box-logo-enkel.jpg" />
     <Content Include="images\content-box-logo-ideel.jpg" />
     <Content Include="images\box-placeholder-desktop-01.jpg" />
@@ -344,6 +345,7 @@
     <Content Include="images\hero-list-placeholder.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\product-placeholder.jpg" />
+    <Content Include="images\relevant-page-placeholder.jpg" />
     <Content Include="images\shadow-left.png" />
     <Content Include="images\shadow-right.png" />
     <Content Include="images\slider-placeholder-desktop.jpg" />
@@ -416,6 +418,9 @@
     <Content Include="less\footer.less" />
     <Content Include="less\section-image.less" />
     <Content Include="less\section-content.less" />
+    <Content Include="less\section-comments.less" />
+    <Content Include="less\section-relevant-pages.less" />
+    <Content Include="less\section-contact.less" />
     <None Include="Scripts\jquery-1.11.0.intellisense.js" />
     <Content Include="Scripts\compiled\keepme.txt" />
     <Content Include="Scripts\jquery-1.11.0.js" />
@@ -479,6 +484,9 @@
     <Content Include="Views\Partials\Sections\Header.cshtml" />
     <Content Include="Views\Partials\Sections\SectionImage.cshtml" />
     <Content Include="Views\Partials\Sections\SectionContent.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionComments.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionRelevantPages.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
