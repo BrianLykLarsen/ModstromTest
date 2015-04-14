@@ -12,6 +12,7 @@ $(function () {
     novicell.responsive.init(modstrom.master.resetUI());
     modstrom.master.flexslider('.flexslider');
     modstrom.master.productSlider('.flexslider');
+    modstrom.master.commentsSlider('.flexslider');
     modstrom.master.mainNavigation();
     modstrom.master.adjustTrigger();
     modstrom.master.questionTrigger();
@@ -123,7 +124,14 @@ modstrom.master = modstrom.master || function () {
             directionNav: false,
             move: 1
         });
+    }
 
+    function commentsSlider() {
+        $('.comments-container').flexslider({
+            slideshow: false,
+            animation: "slide",
+            animationLoop: false           
+        });
     }
 
     return {
@@ -133,7 +141,8 @@ modstrom.master = modstrom.master || function () {
         responsiveImage: responsiveImage,
         adjustTrigger: adjustTrigger,
         questionTrigger: questionTrigger,
-        productSlider: productSlider
+        productSlider: productSlider,
+        commentsSlider: commentsSlider
     }
 }();
 
