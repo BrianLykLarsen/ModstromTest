@@ -16,6 +16,7 @@ $(function () {
     modstrom.master.mainNavigation();
     modstrom.master.adjustTrigger();
     modstrom.master.questionTrigger();
+    modstrom.master.formContact();
 
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
@@ -54,13 +55,32 @@ modstrom.master = modstrom.master || function () {
         });
     }
 
+    // Sliders
     function flexslider(selector) {
         $(selector).flexslider({
             controlNav: false,
             directionNav: false
         });
+    }   
+    function productSlider() {
+        $('.products-container').flexslider({
+            slideshow: false,
+            animation: "slide",
+            animationLoop: false,
+            itemWidth: 263,
+            itemMargin: 30,
+            directionNav: false,
+            move: 1
+        });
     }
-     
+    function commentsSlider() {
+        $('.comments-container').flexslider({
+            slideshow: false,
+            animation: "slide",
+            animationLoop: false           
+        });
+    }
+
     //Responsive Images
     function responsiveImage(breakpoint) {
         if($('body').hasClass(breakpoint)) {
@@ -102,7 +122,6 @@ modstrom.master = modstrom.master || function () {
             $(trigger).height(height);
         });
     }
-
     function questionTrigger() {
         $('.questions li').each(function () {
             var el = this;
@@ -114,23 +133,16 @@ modstrom.master = modstrom.master || function () {
         });
     }
 
-    function productSlider() {
-        $('.products-container').flexslider({
-            slideshow: false,
-            animation: "slide",
-            animationLoop: false,
-            itemWidth: 263,
-            itemMargin: 30,
-            directionNav: false,
-            move: 1
-        });
-    }
+    function formContact() {
+        var select = '#contact-recipient';
+        var output = '#contact-opening';
+        var result = $(select).find(':selected').data('opening');
 
-    function commentsSlider() {
-        $('.comments-container').flexslider({
-            slideshow: false,
-            animation: "slide",
-            animationLoop: false           
+        $(output).val(result);
+
+        $(select).change(function () {
+            result = $(select).find(':selected').data('opening');
+            $(output).val(result);
         });
     }
 
@@ -142,7 +154,8 @@ modstrom.master = modstrom.master || function () {
         adjustTrigger: adjustTrigger,
         questionTrigger: questionTrigger,
         productSlider: productSlider,
-        commentsSlider: commentsSlider
+        commentsSlider: commentsSlider,
+        formContact: formContact
     }
 }();
 
