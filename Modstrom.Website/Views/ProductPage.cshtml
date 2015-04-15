@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+@section mainContent
+{
+    <div id="page" class="product-page">
+        @Html.Partial("Sections/SectionImage")
+        @Html.Partial("Sections/SectionContent")
+        @Html.Partial("Sections/SectionComments")
+        @Html.Partial("Sections/SectionContact")
+    </div>
+}
+    
