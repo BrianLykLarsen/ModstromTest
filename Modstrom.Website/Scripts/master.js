@@ -134,16 +134,39 @@ modstrom.master = modstrom.master || function () {
     }
 
     function formContact() {
+
+        // Update opening hours
         var select = '#contact-recipient';
         var output = '#contact-opening';
         var result = $(select).find(':selected').data('opening');
 
         $(output).val(result);
-
         $(select).change(function () {
             result = $(select).find(':selected').data('opening');
             $(output).val(result);
         });
+
+        // toggle lables
+        $('.input-container').each(function () {
+            var container = this;
+            var label = $('label', container);
+
+            $(container).on('focusin', function () {              
+                $(label).addClass('active');
+            });
+            $(container).on('focusout', function () {
+                if ($('input', container).length) {
+                    if ($('input', container).val() == '') {
+                        $(label).removeClass('active');
+                    }
+                }
+                if ($('textarea', container).length) {
+                    if ($('textarea', container).val() == '') {
+                        $(label).removeClass('active');
+                    }
+                }
+            });
+        });       
     }
 
     return {

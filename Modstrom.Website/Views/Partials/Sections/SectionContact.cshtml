@@ -4,12 +4,21 @@
             <h2 class="col-xs-12">Spørgsmål? Skriv til os...</h2>
             <form id="form-contact" data-parsley-validate>
                 <div class="col-md-6 form-configuration">
-                    <input type="text" id="contact-name" placeholder="Navn" data-parsley-required />
-                    <input type="email" id="contact-email" placeholder="Email" data-parsley-required />
-                    <input type="tel" id="contact-phone" placeholder="Telefon (valgfri)" />
+                    <div class="input-container">
+                        <label>Navn</label>
+                        <input type="text" id="contact-name" placeholder="Navn" data-parsley-required />
+                    </div>
+                    <div class="input-container">
+                        <label>Email</label>
+                        <input type="email" id="contact-email" placeholder="Email" data-parsley-required />
+                    </div>
+                    <div class="input-container">
+                        <label>Telefon</label>
+                        <input type="tel" id="contact-phone" placeholder="Telefon (valgfri)" />
+                    </div>
                     <div class="group-half">
                         <div class="half">
-                            <div class="select">
+                            <div class="select input-container">
                                 <select id="contact-recipient" data-parsley-required>
                                     <option data-opening="Træffes bedst (09-16)" value="Kundeservice">Kundeservice</option>
                                     <option data-opening="Træffes bedst (08-17)" value="Support">Support</option>
@@ -17,12 +26,17 @@
                             </div>
                         </div>
                         <div class="half">
-                            <input type="text" id="contact-opening" readonly="readonly" value="" />
+                            <div class="input-container">
+                                <input type="text" id="contact-opening" readonly="readonly" value="" />
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 form-message">
-                    <textarea id="contact-message" placeholder="Besked..." data-parsley-required></textarea>
+                    <div class="input-container">
+                        <label>Besked</label>
+                        <textarea id="contact-message" placeholder="Besked..." data-parsley-required></textarea>
+                    </div>
                 </div>
                 <div class="button-holder">
                     <button type="submit" class="btn btn-orange">Send besked</button>
