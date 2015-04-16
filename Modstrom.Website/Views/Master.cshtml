@@ -38,9 +38,9 @@
          @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyTop"))
 	    
          <div id="site">
-            @Html.Partial("Sections/Header")
+            @Html.Partial("Sections/SectionHeader")
             @RenderSection("mainContent") 
-            @Html.Partial("Sections/Footer")
+            @Html.Partial("Sections/SectionFooter")
          </div>
         
          @(Bundle.JavaScript()
