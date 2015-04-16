@@ -7,53 +7,56 @@
                 
                 <div class="content-container">
                     <div class="top-element"></div>
-                    <div class="text-area">
-                        <h1>Energiaftaler - god energi</h1>
-                        <p class="teaser">Hos Modstrøm har vi en enkel organisation, hvor vi holder vores omkostninger helt i bund og udsender regninger elektronisk. Det sikrer, at du får lave priser.</p>
-                        <h2>Gratis strøm om natten eller afregn ud fra forbrugsmønster</h2>
-                        <p>Som privatkunde hos os har vi to forskellige produkter, du kan vælge mellem. Lorem ipsum dolor sit amet ad hic nunc et nutam vit et nunctatur.</p>
-                    </div>
-
-                    @if (CurrentPage.DocumentTypeAlias == "TextPage") 
-                    { 
-                        <div class="content-boxes">
-                            <div class="box ide-el">
-                                <h3>ideEl - God energi, især om natten</h3>
-                                <figure class="img-default responsiveimg-default" data-imgsrc-default="/images/content-box-placeholder.jpg"  data-imgalt-default="This is the alt text">
-                                    <noscript>
-                                        <img src="/images/content-box-placeholder.jpg" alt="This is the alt text">
-                                    </noscript>
-                                </figure>
-                                <div class="box-text">
-                                    <i></i>
-                                    <p>Fra midnat til klokken seks om morgenen, når vindmøllerne alligevel snurrer, er der <b>klimavenlig</b> strøm til rådighed.</p>
-                                    <p>Den er <b>billig</b>, og vi har besluttet os for at <b>forære</b> den til dig - til gavn for din el-regning og miljøet.</p>
-                                    <a href="/" class="btn btn-dark">Få gratis strøm om natten</a>
-                                </div>
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <div class="text-area">
+                                <h1>Energiaftaler - god energi</h1>
+                                <p class="teaser">Hos Modstrøm har vi en enkel organisation, hvor vi holder vores omkostninger helt i bund og udsender regninger elektronisk. Det sikrer, at du får lave priser.</p>
+                                <h2>Gratis strøm om natten eller afregn ud fra forbrugsmønster</h2>
+                                <p>Som privatkunde hos os har vi to forskellige produkter, du kan vælge mellem. Lorem ipsum dolor sit amet ad hic nunc et nutam vit et nunctatur.</p>
                             </div>
-                            <div class="box enk-el">
-                                <h3>ideEl - God energi, især om natten</h3>
-                                <figure class="img-default responsiveimg-default" data-imgsrc-default="/images/content-box-placeholder.jpg"  data-imgalt-default="This is the alt text">
-                                    <noscript>
-                                        <img src="/images/content-box-placeholder.jpg" alt="This is the alt text">
-                                    </noscript>
-                                </figure>
-                                <div class="box-text">
-                                    <i></i>
-                                    <p>Fra midnat til klokken seks om morgenen, når vindmøllerne alligevel snurrer, er der <b>klimavenlig</b> strøm til rådighed.</p>
-                                    <p>Den er <b>billig</b>, og vi har besluttet os for at <b>forære</b> den til dig - til gavn for din el-regning og miljøet.</p>
-                                    <a href="/" class="btn btn-dark">Få gratis strøm om natten</a>
-                                </div>
-                            </div>
-                        </div>
-                    }
 
-                    @if (CurrentPage.DocumentTypeAlias == "ProductPage") 
-                    { 
-                        <div class="video-container">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/hhPHwIoR0DA" frameborder="0" allowfullscreen></iframe>
+                            @if (CurrentPage.DocumentTypeAlias == "TextPage") 
+                            { 
+                                <div class="content-boxes">
+                                    <div class="box ide-el">
+                                        <h3>ideEl - God energi, især om natten</h3>
+                                        <figure class="img-default responsiveimg-default" data-imgsrc-default="/images/content-box-placeholder.jpg"  data-imgalt-default="This is the alt text">
+                                            <noscript>
+                                                <img src="/images/content-box-placeholder.jpg" alt="This is the alt text">
+                                            </noscript>
+                                        </figure>
+                                        <div class="box-text">
+                                            <i></i>
+                                            <p>Fra midnat til klokken seks om morgenen, når vindmøllerne alligevel snurrer, er der <b>klimavenlig</b> strøm til rådighed.</p>
+                                            <p>Den er <b>billig</b>, og vi har besluttet os for at <b>forære</b> den til dig - til gavn for din el-regning og miljøet.</p>
+                                            <a href="/" class="btn btn-dark">Få gratis strøm om natten</a>
+                                        </div>
+                                    </div>
+                                    <div class="box enk-el">
+                                        <h3>ideEl - God energi, især om natten</h3>
+                                        <figure class="img-default responsiveimg-default" data-imgsrc-default="/images/content-box-placeholder.jpg"  data-imgalt-default="This is the alt text">
+                                            <noscript>
+                                                <img src="/images/content-box-placeholder.jpg" alt="This is the alt text">
+                                            </noscript>
+                                        </figure>
+                                        <div class="box-text">
+                                            <i></i>
+                                            <p>Fra midnat til klokken seks om morgenen, når vindmøllerne alligevel snurrer, er der <b>klimavenlig</b> strøm til rådighed.</p>
+                                            <p>Den er <b>billig</b>, og vi har besluttet os for at <b>forære</b> den til dig - til gavn for din el-regning og miljøet.</p>
+                                            <a href="/" class="btn btn-dark">Få gratis strøm om natten</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            @if (CurrentPage.DocumentTypeAlias == "ProductPage") 
+                            { 
+                                <div class="video-container">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/hhPHwIoR0DA" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            }
                         </div>
-                    }
                 </div>
             </div>
         </div>

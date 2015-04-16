@@ -336,13 +336,13 @@
     <Content Include="images\content-box-placeholder.jpg" />
     <Content Include="images\footer-background-desktop.jpg" />
     <Content Include="images\footer-background-mobile.jpg" />
-    <Content Include="images\hero-split-placeholder-desktop.jpg" />
-    <Content Include="images\hero-split-placeholder-mobile.jpg" />
+    <Content Include="images\section-split-placeholder-desktop.jpg" />
+    <Content Include="images\section-split-placeholder-mobile.jpg" />
     <Content Include="images\icon-facebook.png" />
     <Content Include="images\image-placeholder-desktop.jpg" />
     <Content Include="images\image-placeholder-mobile.jpg" />
     <Content Include="images\kundo.png" />
-    <Content Include="images\hero-list-placeholder.jpg" />
+    <Content Include="images\section-list-placeholder.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\product-placeholder.jpg" />
     <Content Include="images\relevant-page-placeholder.jpg" />
@@ -350,6 +350,7 @@
     <Content Include="images\shadow-right.png" />
     <Content Include="images\slider-placeholder-desktop.jpg" />
     <Content Include="images\slider-placeholder-mobile.jpg" />
+    <Content Include="images\text-placeholder.jpg" />
     <Content Include="images\tripadvisor-placeholder.png" />
     <Content Include="less\libs\keepme.txt" />
     <Content Include="less\master.less" />
@@ -421,6 +422,8 @@
     <Content Include="less\section-comments.less" />
     <Content Include="less\section-relevant-pages.less" />
     <Content Include="less\section-contact.less" />
+    <Content Include="less\section-text.less" />
+    <Content Include="less\section-text-split.less" />
     <None Include="Scripts\jquery-1.11.0.intellisense.js" />
     <Content Include="Scripts\compiled\keepme.txt" />
     <Content Include="Scripts\jquery-1.11.0.js" />
@@ -448,6 +451,7 @@
     <Content Include="Scripts\libs\novicell.lazyload.js" />
     <Content Include="Scripts\libs\novicell.overlay.js" />
     <Content Include="Scripts\libs\novicell.responsive.js" />
+    <Content Include="Scripts\libs\parsley\jquery.parsley.js" />
     <Content Include="Scripts\libs\perfect-scrollbar\perfect-scrollbar.css" />
     <Content Include="Scripts\libs\perfect-scrollbar\jquery.perfect-scrollbar.js" />
     <Content Include="Scripts\master.js" />
@@ -460,11 +464,9 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.11.0.min.map" />
-    <Content Include="Views\Contact.cshtml" />
     <Content Include="Views\FrontPage.cshtml" />
     <Content Include="Views\Master.cshtml" />
-    <Content Include="Views\TextPageBase.cshtml" />
-    <Content Include="Views\TextPageContent.cshtml" />
+    <Content Include="Views\TextPage.cshtml" />
     <Content Include="Views\Partials\Sections\NavHeader.cshtml" />
     <Content Include="Views\Partials\Sections\NavSub.cshtml" />
     <Content Include="Views\Partials\SEO\ncSiteGoogleAnalytics.cshtml" />
@@ -487,6 +489,9 @@
     <Content Include="Views\Partials\Sections\SectionComments.cshtml" />
     <Content Include="Views\Partials\Sections\SectionRelevantPages.cshtml" />
     <Content Include="Views\Partials\Sections\SectionContact.cshtml" />
+    <Content Include="Views\ProductPage.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionText.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionTextSplit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
