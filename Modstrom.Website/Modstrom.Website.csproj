@@ -43,6 +43,9 @@
     <Reference Include="AjaxMin">
       <HintPath>..\packages\AjaxMin.4.48.4489.28432\lib\net20\AjaxMin.dll</HintPath>
     </Reference>
+    <Reference Include="Archetype">
+      <HintPath>..\packages\Archtype\Archetype.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
@@ -499,6 +502,9 @@
     <Content Include="Views\Partials\Sections\Elements\Articles.cshtml" />
     <Content Include="Views\Partials\Sections\Elements\RelevantPages.cshtml" />
     <Content Include="Views\Partials\Sections\SectionSplit-6x6.cshtml" />
+    <Content Include="Views\SectionPage.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

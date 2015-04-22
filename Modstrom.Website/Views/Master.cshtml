@@ -18,9 +18,6 @@
         @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageHeader"))
 
         <link type="text/plain" rel="author" href="/humans.txt" />
-
-       
-
         @(Bundle.Css()
             .Add("~/scripts/libs/flexslider/flexslider.css") 
             .Add("~/scripts/libs/perfect-scrollbar/perfect-scrollbar.css")
@@ -61,5 +58,4 @@
         @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyBottom"))
        
      </body>
-
 </html>

@@ -6,7 +6,7 @@
     var siteNode = current.GetSiteNode();
 
     MetaData metaData = Model.Content.GetPropertyValue<MetaData>("seoChecker");
-    
+
     string seoCanonical = current.GetPropertyValue<string>("seoCanonical");
 
     bool seoNoODP = siteNode.GetPropertyValue<bool>("seoNoODP");
@@ -19,7 +19,7 @@
     }
 
     string robots = metaData.Robots;
-    
+
     if (!seoNoODP)
     {
         if (!string.IsNullOrEmpty(robots))
@@ -44,23 +44,22 @@
     }
 
     var urlRequest = Request.Url;
-    // do not index the site if the host is ditnyewebsite.dk
-    if (urlRequest != null && urlRequest.Host.Contains("ditnyewebsite.dk"))
+    // do not index the site if the host is ditnyewebsite.dk or novicell.dk
+	if ((urlRequest != null && urlRequest.Host.Contains("ditnyewebsite.dk")) || (urlRequest != null && urlRequest.Host.Contains("novicell.dk")))
     {
         robots = "NOINDEX, NOFOLLOW, NOODP, NOYDIR";
     }
-        
-	
-}
 
+
+}
 @if (!string.IsNullOrWhiteSpace(seoWebMasterToolAccount))
 {
-  <meta name="google-site-verification" content="@seoWebMasterToolAccount" />
+    <meta name="google-site-verification" content="@seoWebMasterToolAccount" />
 }
 
 @if (!string.IsNullOrEmpty(robots))
 {
-  <meta name="robots" content="@robots" />
+    <meta name="robots" content="@robots" />
 }
 
 <title>@metaData.Title</title>
@@ -69,5 +68,5 @@
 
 @if (!string.IsNullOrWhiteSpace(seoCanonical))
 {
-  <link ref="canonical" href="@seoCanonical" />
+    <link ref="canonical" href="@seoCanonical" />
 }

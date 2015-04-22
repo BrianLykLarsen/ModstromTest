@@ -1,0 +1,91 @@
+﻿@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "Master.cshtml";
+
+	if (Model.Content.GetPropertyValue<ArchetypeModel>
+	("sections") == null)
+	{
+		return;
+	}
+
+	string DocumentType = CurrentPage.DocumentTypeAlias;
+	string PageClassName = "textpage";
+
+	if (DocumentType == "FrontPage")
+	{
+		PageClassName = "frontpage";
+	}
+
+	if (DocumentType == "ProductPage")
+	{
+		PageClassName = "product-page";
+	}
+
+}
+
+@section mainContent
+	{
+	<div id="page">
+
+		@foreach (ArchetypeFieldsetModel fieldset in Model.Content.GetPropertyValue<ArchetypeModel>("sections"))
+		{
+			switch (fieldset.Alias)
+			{
+				case "slider":
+					@Html.Partial("Sections/SectionSlider", fieldset)
+					break;
+
+				case "list":
+					@Html.Partial("Sections/SectionList", fieldset)
+					break;
+
+				case "video":
+					@Html.Partial("Sections/SectionVideo", fieldset)
+					break;
+			}
+		}
+
+
+		@if (DocumentType == "FrontPage")
+		{
+			@Html.Partial("Sections/SectionSlider")
+			@Html.Partial("Sections/SectionList")
+			@Html.Partial("Sections/SectionVideo")
+			@Html.Partial("Sections/SectionHero")
+			@Html.Partial("Sections/SectionBoxes")
+			@Html.Partial("Sections/SectionSplit-7x5")
+			@Html.Partial("Sections/SectionProducts")
+		}
+
+		@if (DocumentType == "ProductPage" || DocumentType == "TextPage")
+		{
+			@Html.Partial("Sections/SectionImage")
+			@Html.Partial("Sections/SectionContent")
+			@Html.Partial("Sections/SectionComments")
+			@Html.Partial("Sections/SectionRelevantPages")
+			@Html.Partial("Sections/SectionContact")
+			@Html.Partial("Sections/SectionVideo")
+		}
+
+		@if (DocumentType == "TextPage")
+		{
+			@Html.Partial("Sections/SectionComments")
+			@Html.Partial("Sections/SectionRelevantPages")
+			@Html.Partial("Sections/SectionContact")
+			@Html.Partial("Sections/SectionVideo")
+		}
+
+		@if (DocumentType == "ProductPage")
+		{
+			@Html.Partial("Sections/SectionTextSplit")
+			@Html.Partial("Sections/SectionText")
+			@Html.Partial("Sections/SectionComments")
+			@Html.Partial("Sections/SectionSplit-6x6")
+			@Html.Partial("Sections/SectionContact")
+		}
+	</div>
+}
+
