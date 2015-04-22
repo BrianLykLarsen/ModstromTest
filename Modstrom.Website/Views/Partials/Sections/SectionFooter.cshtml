@@ -1,3 +1,9 @@
+@using Modstrom.Library.Helpers
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+		string footerHeadline = Model.Content.GetPropertyValue<string>("FooterHeadline", true, string.Empty);
+		string footerContent = Model.Content.GetPropertyValue<string>("FooterContent", true, string.Empty);
+}
 <footer id="footer">
     <figure>
         <div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/footer-background-desktop.jpg"  data-imgalt-desktop="This is the alt text">
@@ -15,20 +21,14 @@
         <div class="row">
             <div class="col-sm-8">
                 <div class="text-area">
-                    <h3>Kontaktadresse</h3>
-                    <p>Modstrøm Danmark A/S | Jagtvej 169 B, 2. sal | 2100 København Ø</p>
-                    <br />
-                    <p>
-                        Email: <a class="unstyled" href="mailto:kundeservice@modstroem.dk">kundeservice@modstroem.dk</a><br />
-                        Tlf: <a class="unstyled" href="tel:82100200">82 100 200</a> | CVR-nr: 33 88 47 88
-                    </p>
-                    @*@Html.Raw(Model.Content.GetPropertyValue<string>("footer",true,string.Empty))*@
+                    <h3>@Html.Raw(footerHeadline)</h3>
+					@Html.Raw(footerContent)
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="footer-social">
-                    <a class="footer-tripadvisor" href="/"><img src="/images/tripadvisor-placeholder.png" /></a>
-                    <a class="footer-facebook" href="/"><img src="/images/icon-facebook.png" /></a>
+					<a class="footer-tripadvisor" href="/"><img src="/images/tripadvisor-placeholder.png" /></a>
+					<a class="footer-facebook" href="https://www.facebook.com/Modstroem?fref=ts" target="_blank"><img src="/images/icon-facebook.png" /></a>
                 </div>
             </div>
         </div>
