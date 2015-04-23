@@ -23,7 +23,6 @@
 	{
 		PageClassName = "product-page";
 	}
-
 }
 
 @section mainContent
@@ -38,6 +37,10 @@
 					@Html.Partial("Sections/SectionSlider", fieldset)
 					break;
 
+				case "headerImage":
+					@Html.Partial("Sections/SectionImage", fieldset)
+					break;
+					
 				case "list":
 					@Html.Partial("Sections/SectionList", fieldset)
 					break;
@@ -55,31 +58,21 @@
 					break;
 
 				case "elementBuldier":
-					@Html.Partial("Sections/SectionElementBuilder", fieldset)
+					@Html.Partial("Sections/SectionElementBuilder", fieldset, new ViewDataDictionary(ViewData) { { "contentElements", Model.Content } })
+					break;
+					
+				case "productSlider":
+					@Html.Partial("Sections/SectionProducts", fieldset)
+					break;
+
+				case "content":
+					@Html.Partial("Sections/SectionContent", fieldset)
+					break;
+
+				case "commentViewer":
+					@Html.Partial("Sections/SectionComments", fieldset)
 					break;
 			}
-		}
-
-
-		@if (DocumentType == "FrontPage")
-		{
-			@Html.Partial("Sections/SectionSlider")
-			@Html.Partial("Sections/SectionList")
-			@Html.Partial("Sections/SectionVideo")
-			@Html.Partial("Sections/SectionHero")
-			@Html.Partial("Sections/SectionBoxes")
-			@Html.Partial("Sections/SectionSplit-7x5")
-			@Html.Partial("Sections/SectionProducts")
-		}
-
-		@if (DocumentType == "ProductPage" || DocumentType == "TextPage")
-		{
-			@Html.Partial("Sections/SectionImage")
-			@Html.Partial("Sections/SectionContent")
-			@Html.Partial("Sections/SectionComments")
-			@Html.Partial("Sections/SectionRelevantPages")
-			@Html.Partial("Sections/SectionContact")
-			@Html.Partial("Sections/SectionVideo")
 		}
 
 		@if (DocumentType == "TextPage")
