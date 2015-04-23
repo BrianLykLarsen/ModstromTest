@@ -130,6 +130,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Our.Umbraco.PropertyEditorConverters">
+      <HintPath>..\packages\UmbracoCorePropertyValueConverters 2.1.5\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
+    </Reference>
     <Reference Include="PackageGarden.Licensing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External libs\Seo Checker\PackageGarden.Licensing.dll</HintPath>

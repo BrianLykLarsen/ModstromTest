@@ -1,0 +1,75 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string elementLayout = Model.GetValue<string>("layout");
+
+	string bootstrapClassLeft = "";
+	string bootstrapClassRight = "";
+	
+	if (elementLayout == "1 Column full")
+	{
+		bootstrapClassLeft = "";
+		bootstrapClassRight = "";
+	}
+	else if(elementLayout == "2 Column wide left")
+	{
+		bootstrapClassLeft = "col-sm-7";
+		bootstrapClassRight = "col-sm-5";
+	}
+	else if (elementLayout == "2 Colmn half")
+	{
+		bootstrapClassLeft = "col-sm-6";
+		bootstrapClassRight = "col-sm-6";
+	}
+	else if (elementLayout == "2 Column wide right")
+	{
+		bootstrapClassLeft = "col-sm-5";
+		bootstrapClassRight = "col-sm-7";
+	}
+	
+	string column1 = Model.GetValue<string>("column1");
+	string column2 = Model.GetValue<string>("column2");
+	
+	<section class="section-split">
+		<div class="container">
+			<div class="row">
+
+				<div class="@bootstrapClassLeft column-container">
+
+					@if (column1 == "Article")
+					{
+						@Html.Partial("Sections/Elements/Articles")
+					}
+					@if (column1 == "FAQ")
+					{
+						@Html.Partial("Sections/Elements/Questions")
+					}
+					@if (column1 == "Relevant Pages")
+					{
+						@Html.Partial("Sections/Elements/RelevantPages")
+					}
+				</div>
+
+				<div class="@bootstrapClassRight column-container">
+
+					@if (column2 == "Article")
+					{
+						@Html.Partial("Sections/Elements/Articles")
+					}
+					@if (column2 == "FAQ")
+					{
+						@Html.Partial("Sections/Elements/Questions")
+					}
+					@if (column2 == "Relevant Pages")
+					{
+						@Html.Partial("Sections/Elements/RelevantPages")
+					}
+				</div>
+
+			</div>
+		</div>
+	</section>
+}
