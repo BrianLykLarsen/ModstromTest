@@ -1,14 +1,24 @@
-<section class="section-image">
-    <figure>
-        <div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/image-placeholder-desktop.jpg"  data-imgalt-desktop="This is the alt text">
-            <noscript>
-                <img src="/images/image-placeholder-desktop.jpg" alt="This is the alt text">
-            </noscript>
-        </div>
-        <div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/image-placeholder-mobile.jpg"  data-imgalt-mobile="This is the mobile alt text">
-            <noscript>
-                <img src="/images/image-placeholder-mobile.jpg" alt="This is the alt tsext">
-            </noscript>
-        </div>
-    </figure>
-</section>
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	var imageId = Model.GetValue<int>("image");
+	var imageUrl = Umbraco.TypedMedia(imageId).Url;
+	
+	<section class="section-image">
+		<figure>
+			<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@imageUrl" data-imgalt-desktop="This is the alt text">
+				<noscript>
+					<img src="@imageUrl" alt="This is the alt text">
+				</noscript>
+			</div>
+			<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@imageUrl?width=600" data-imgalt-mobile="This is the mobile alt text">
+				<noscript>
+					<img src="@imageUrl?width=600" alt="This is the alt tsext">
+				</noscript>
+			</div>
+		</figure>
+	</section>
+}

@@ -1,12 +1,26 @@
- <div class="column-article">
-    <h2>Seneste artikler</h2>
-    <a href="/" class="article">
-        <h3>God energi til Ulla :)</h3>
-        "Når folk har heven og piven over deres elregning, har jeg spurgt dem, hvorfor de ikke har skiftet til Modstrøm."
-    </a>
-    <a href="/" class="article">
-        <h3>Når der går sport i at spare</h3>
-        Mange oplever, at de ikke får hjælp og tilbud nok om energiforbedring derhjemme. Det synes vi, ikke er godt nok.
-    </a>
-    <a class="see-all" href="/">Se alle artikler</a>
-</div>
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	var current = (IPublishedContent)ViewData["contentArticle"];
+	var articleNode = current.AncestorOrSelf("Site").Children.First(x => x.DocumentTypeAlias == "Articles");
+	string headline = articleNode.GetPropertyValue<string>("headline");
+
+	 <div class="column-article">
+		<h2>@headline</h2>
+		@foreach (var article in articleNode.Children.Take(2))
+		{
+			string articleHeadline = article.GetPropertyValue<string>("headline");
+			string articleTeaser = article.GetPropertyValue<string>("teaser");
+			<a href="/" class="article">
+				<h3>@articleHeadline</h3>
+				@Html.Raw(articleTeaser)
+			</a>
+		}
+
+		<a class="see-all" href="@articleNode.Url">Se alle artikler</a>
+
+	</div>
+}

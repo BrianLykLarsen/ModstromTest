@@ -508,6 +508,7 @@
     <Content Include="Views\SectionPage.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Partials\Sections\SectionElementBuilder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

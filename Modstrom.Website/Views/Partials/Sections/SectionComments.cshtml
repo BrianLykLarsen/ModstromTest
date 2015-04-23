@@ -1,119 +1,141 @@
-@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 
 @{
-    var noSlider = "";
-    if (CurrentPage.DocumentTypeAlias == "ProductPage") 
-    {
-        noSlider = "no-slider";
-    }
-    
+	string headline = Model.GetValue<string>("headline");
+
+	var selectComments = Model.GetValue<IPublishedContent>("selectComments");
+	
+	string dimsenFlaf = "";
+	var noSlider = "no-slider";
+
+	@*
+		OBS: The logic included in this page it only to illustrate variations in design.
+		The desired logic is simply that the class "no-slider" should be added if there is only one <li>  (two comments)
+	*@
+
+	<section class="section-comments @noSlider">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					@if (dimsenFlaf != "ProductPage")
+					{
+						<h1>@headline</h1>
+					}
+					<div class="comments-container">
+						<ul class="comments slides">
+							 
+							<li>
+								@foreach (var comment in selectComments)
+								{
+									string text = comment.GetPropertyValue<string>("text");
+									@text
+									<div class="comment">
+										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
+											<noscript>
+												<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
+											</noscript>
+										</figure>
+										<div class="comment-text">
+											<p>
+												“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
+												og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
+												Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
+											</p>
+											<p class="comment-author">- Lili Ruby, Randers</p>
+										</div>
+									</div>
+								}
+								<div class="comment">
+									<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
+										<noscript>
+											<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
+										</noscript>
+									</figure>
+									<div class="comment-text">
+										<p>
+											“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
+											og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
+											Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
+										</p>
+										<p class="comment-author">- Lili Ruby, Randers</p>
+									</div>
+								</div>
+							</li>
+							@if (noSlider != "ProductPage")
+							{
+								<li>
+									<div class="comment">
+										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
+											<noscript>
+												<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
+											</noscript>
+										</figure>
+										<div class="comment-text">
+											<p>
+												“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
+												og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
+												Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
+											</p>
+											<p class="comment-author">- Lili Ruby, Randers</p>
+										</div>
+									</div>
+									<div class="comment">
+										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
+											<noscript>
+												<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
+											</noscript>
+										</figure>
+										<div class="comment-text">
+											<p>
+												“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
+												og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
+												Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
+											</p>
+											<p class="comment-author">- Lili Ruby, Randers</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="comment">
+										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
+											<noscript>
+												<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
+											</noscript>
+										</figure>
+										<div class="comment-text">
+											<p>
+												“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
+												og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
+												Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
+											</p>
+											<p class="comment-author">- Lili Ruby, Randers</p>
+										</div>
+									</div>
+									<div class="comment">
+										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
+											<noscript>
+												<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
+											</noscript>
+										</figure>
+										<div class="comment-text">
+											<p>
+												“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
+												og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
+												Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
+											</p>
+											<p class="comment-author">- Lili Ruby, Randers</p>
+										</div>
+									</div>
+								</li>
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 }
-
-@*
-    OBS: The logic included in this page it only to illustrate variations in design.
-    The desired logic is simply that the class "no-slider" should be added if there is only one <li>  (two comments)
-*@
-
-<section class="section-comments @noSlider">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                @if (CurrentPage.DocumentTypeAlias != "ProductPage") 
-                { 
-                    <h1>Det siger kunderne</h1>
-                }
-                <div class="comments-container">
-                    <ul class="comments slides">
-                        <li>
-                            <div class="comment">
-                                <figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg"  data-imgalt-default="This is the alt text">
-                                    <noscript>
-                                        <img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-                                    </noscript>
-                                </figure>
-                                <div class="comment-text">
-                                    <p>“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten - 
-                                    og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat. 
-                                    Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”</p>
-                                    <p class="comment-author">- Lili Ruby, Randers</p>
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg"  data-imgalt-default="This is the alt text">
-                                    <noscript>
-                                        <img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-                                    </noscript>
-                                </figure>
-                                <div class="comment-text">
-                                    <p>“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten - 
-                                    og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat. 
-                                    Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”</p>
-                                    <p class="comment-author">- Lili Ruby, Randers</p>
-                                </div>
-                            </div>
-                        </li>
-                        @if (CurrentPage.DocumentTypeAlias != "ProductPage") 
-                        {                   
-                            <li>
-                                <div class="comment">
-                                    <figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg"  data-imgalt-default="This is the alt text">
-                                        <noscript>
-                                            <img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-                                        </noscript>
-                                    </figure>
-                                    <div class="comment-text">
-                                        <p>“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten - 
-                                        og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat. 
-                                        Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”</p>
-                                        <p class="comment-author">- Lili Ruby, Randers</p>
-                                    </div>
-                                </div>
-                                <div class="comment">
-                                    <figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg"  data-imgalt-default="This is the alt text">
-                                        <noscript>
-                                            <img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-                                        </noscript>
-                                    </figure>
-                                    <div class="comment-text">
-                                        <p>“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten - 
-                                        og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat. 
-                                        Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”</p>
-                                        <p class="comment-author">- Lili Ruby, Randers</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="comment">
-                                    <figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg"  data-imgalt-default="This is the alt text">
-                                        <noscript>
-                                            <img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-                                        </noscript>
-                                    </figure>
-                                    <div class="comment-text">
-                                        <p>“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten - 
-                                        og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat. 
-                                        Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”</p>
-                                        <p class="comment-author">- Lili Ruby, Randers</p>
-                                    </div>
-                                </div>
-                                <div class="comment">
-                                    <figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg"  data-imgalt-default="This is the alt text">
-                                        <noscript>
-                                            <img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-                                        </noscript>
-                                    </figure>
-                                    <div class="comment-text">
-                                        <p>“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten - 
-                                        og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat. 
-                                        Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”</p>
-                                        <p class="comment-author">- Lili Ruby, Randers</p>
-                                    </div>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
