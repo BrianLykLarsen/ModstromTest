@@ -1,37 +1,64 @@
-<section class="section-hero">
-    <figure>
-        <div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/section-hero-placeholder-desktop.jpg"  data-imgalt-desktop="This is the alt text">
-            <noscript>
-                <img src="/images/section-hero-placeholder-desktop.jpg" alt="This is the alt text">
-            </noscript>
-        </div>
-        <div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/section-hero-placeholder-mobile.jpg"  data-imgalt-mobile="This is the mobile alt text">
-            <noscript>
-                <img src="/images/section-hero-placeholder-mobile.jpg" alt="This is the alt tsext">
-            </noscript>
-        </div>
-    </figure>
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 
-    <h2>Spar på energien med Modstrøm</h2>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="text-area">
-                    <p>Du kender de typiske sparetips og husråd, men hvem har egentlig tid og overskud til at følge dem til punkt og prikke?</p>
-                    <p>Svaret er de færreste. Heldigvis kan du sagtens nedsætte dit energiforbrug så det kan mærkes på din elregning, uden at skulle omlægge dit liv og dine vaner drastisk.</p>
-                    <p>Modstrøm tilbyder en række services, der hjælper dig til at reducere dit forbrug.</p>
-                </div>
-                <div class="btn-holder">
-                    <a href="" class="btn btn-orange">Sådan skal du reducere dit EL-forbrug</a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <figure class="img-holder">
-                    <a href="/" title="Spørg Kundo">
-                        <img src="/images/kundo.png" alt="This is the alt text">
-                    </a>
-                </figure>
-            </div>
-        </div>
-    </div>
-</section>
+@{
+	string headline = Model.GetValue<string>("headline1");
+	string text = Model.GetValue<string>("text");
+	string buttonText = Model.GetValue<string>("buttonText");
+
+	var buttonLinkId = Model.GetValue<int>("buttonUrl");
+	var buttonLink = Umbraco.Url(buttonLinkId);
+
+	var imageId = Model.GetValue<int>("image");
+	var imageUrl = Umbraco.TypedMedia(imageId).Url;
+
+	var imageLinkId = Model.GetValue<int>("imageLink");
+	var imageLink = Umbraco.Url(imageLinkId);
+
+	var backgroundImageId = Model.GetValue<int>("backgroundImage");
+	var backgroundImageIdUrl = Umbraco.TypedMedia(backgroundImageId).Url;
+
+	<section class="section-hero">
+		<figure>
+			<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@backgroundImageIdUrl" data-imgalt-desktop="This is the alt text">
+				<noscript>
+					<img src="@backgroundImageIdUrl" alt="This is the alt text">
+				</noscript>
+			</div>
+			<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@backgroundImageIdUrl?width=600" data-imgalt-mobile="This is the mobile alt text">
+				<noscript>
+					<img src="@backgroundImageIdUrl?width=600" alt="This is the alt tsext">
+				</noscript>
+			</div>
+		</figure>
+
+		<h2>@headline</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="text-area">
+						@Html.Raw(text)
+					</div>
+					@if (!string.IsNullOrWhiteSpace(buttonText) && !string.IsNullOrWhiteSpace(buttonLink))
+					{
+						<div class="btn-holder">
+							<a href="@buttonLink" class="btn btn-orange">@buttonText</a>
+						</div>
+					}
+				</div>
+				<div class="col-sm-4">
+					@if (!string.IsNullOrWhiteSpace(imageUrl) && !string.IsNullOrWhiteSpace(imageLink))
+					{
+						<figure class="img-holder">
+							<a href="@imageLink" title="Spørg Kundo">
+								<img src="@imageUrl" alt="This is the alt text">
+							</a>
+						</figure>
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+}
