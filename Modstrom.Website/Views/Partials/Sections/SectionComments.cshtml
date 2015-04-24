@@ -6,7 +6,7 @@
 @{
 	string headline = Model.GetValue<string>("headline");
 
-	var selectComments = Model.GetValue<IPublishedContent>("selectComments");
+	var selectComments = Model.GetValue<int[]>("selectComments").Select(x=>Umbraco.TypedContent(x));
 	
 	string dimsenFlaf = "";
 	var noSlider = "no-slider";
@@ -26,12 +26,11 @@
 					}
 					<div class="comments-container">
 						<ul class="comments slides">
-							 
 							<li>
 								@foreach (var comment in selectComments)
 								{
 									string text = comment.GetPropertyValue<string>("text");
-									@text
+								
 									<div class="comment">
 										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
 											<noscript>
