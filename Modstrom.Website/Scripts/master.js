@@ -61,7 +61,8 @@ modstrom.master = modstrom.master || function () {
             controlNav: false,
             directionNav: false
         });
-    }   
+    }
+
     function productSlider() {
         $('.products-container').flexslider({
             slideshow: false,
@@ -73,8 +74,9 @@ modstrom.master = modstrom.master || function () {
             move: 1
         });
     }
+
     function commentsSlider() {
-        $('.comments-container').flexslider({
+    	$('.comments-container').flexslider({
             slideshow: false,
             animation: "slide",
             animationLoop: false           
