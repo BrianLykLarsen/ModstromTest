@@ -76,13 +76,15 @@
 				case "contactForm":
 					@Html.Partial("Sections/SectionContact", fieldset)
 					break;
-			}
-		}
+				
+				case "textSplit":
+					@Html.Partial("Sections/SectionTextSplit", fieldset)
+					break;
 
-		@if (DocumentType == "TextPage")
-		{
-			@Html.Partial("Sections/SectionContact")
-			@Html.Partial("Sections/SectionVideo")
+				case "text":
+					@Html.Partial("Sections/SectionText", fieldset)
+					break;
+			}
 		}
 
 		@if (DocumentType == "ProductPage")

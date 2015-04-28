@@ -1,39 +1,30 @@
-<section class="section-text-split">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-5 col-sm-offset-1">
-                <div class="text-area">
-                    <h2>Følg dit forbrug på “Min side”</h2>
-                    <ul class="list-icon-bulb">
-                        <li>Vil have gratis strøm fra midnat til klokken seks om morgenen</li>
-                        <li>Vil opnå fordelene ved markedsprisen på el resten af døgnet</li>
-                        <li>Vil have en faktisk afregning af dit strømforbrug - prisen beregnes time for time på baggrund af dit faktiske forbrug</li>
-                    </ul>
-                    <h3>Hvad er inkluderet?</h3>
-                    
-                    <p>Vores priser er inklusive et tillæg til spotprisen på 12,50 øre per kWh, som dækker vore udgifter til indkøb, afregning samt anden administration.</p>
-                    
-                    <p><i><b>Bemærk</b> at Modstrøm ikke har indflydelse på den regning du modtager fra netselskabet, 
-                    der gælder el-afgifter og transporten af elektriciteten. Derfor er det kun selve el-forbruget, der er gratis om natten.</i></p>
-                </div>
-            </div>
-            <div class="col-sm-5">
-                <div class="text-area">
-                    <h2>El-aflæser</h2>
-                    <p>Du skal investere i en automatisk el-aflæser for at få produktet ideEL™.</p>
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 
-                    <p>El-aflæseren består af et digitalt kamera, som du monterer på din el-måler. Fra kameraet sendes 
-                    billeder til en modtager, som du kobler til din router eller dit modem til internettet.</p>
-
-                    <p>Modtageren sender billederne videre til Modstrøm, hvorefter vi aflæser målerstanden elektronisk time for time. 
-                    Derefter kan du lægge så meget af din husholdnings el-forbrug som muligt over til natstrøm - opvaskemaskine, vaskemaskine, 
-                    opladning af batterier m.v. På den måde sparer du penge og sparer klimaet for CO2.</p>
-
-                    <h3>Hvad koster det?</h3>
-
-                    <p>Den automatiske el-aflæser koster 999 kr. og <a href="/">her kan du se hvordan du let monterer den.</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@{
+	string headline1 = Model.GetValue<string>("headline1");
+	string text1 = Model.GetValue<string>("text1");
+	string headline2 = Model.GetValue<string>("headline2");
+	string text2 = Model.GetValue<string>("text2");
+	
+	<section class="section-text-split">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-5 col-sm-offset-1">
+					<div class="text-area">
+						<h2>@headline1</h2>
+						@Html.Raw(text1)
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<div class="text-area">
+						<h2>@headline2</h2>
+						@Html.Raw(text2)
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}
