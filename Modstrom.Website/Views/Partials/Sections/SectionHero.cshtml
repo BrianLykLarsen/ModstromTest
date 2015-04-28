@@ -6,6 +6,8 @@
 @{
 	string headline = Model.GetValue<string>("headline1");
 	string text = Model.GetValue<string>("text");
+	string textColor = slide.GetValue<string>("textColor");
+	
 	string buttonText = Model.GetValue<string>("buttonText");
 
 	var buttonLinkId = Model.GetValue<int>("buttonUrl");
@@ -20,7 +22,7 @@
 	var backgroundImageId = Model.GetValue<int>("backgroundImage");
 	var backgroundImageIdUrl = Umbraco.TypedMedia(backgroundImageId).Url;
 
-	<section class="section-hero">
+	<section class="section-hero @textColor">
 		<figure>
 			<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@backgroundImageIdUrl" data-imgalt-desktop="This is the alt text">
 				<noscript>
@@ -34,11 +36,11 @@
 			</div>
 		</figure>
 
-		<h2>@headline</h2>
+		<h2 class="@textColor">@headline</h2>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8">
-					<div class="text-area">
+					<div class="text-area @textColor">
 						@Html.Raw(text)
 					</div>
 					@if (!string.IsNullOrWhiteSpace(buttonText) && !string.IsNullOrWhiteSpace(buttonLink))
