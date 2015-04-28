@@ -72,13 +72,15 @@
 				case "commentViewer":
 					@Html.Partial("Sections/SectionComments", fieldset)
 					break;
+
+				case "contactForm":
+					@Html.Partial("Sections/SectionContact", fieldset)
+					break;
 			}
 		}
 
 		@if (DocumentType == "TextPage")
 		{
-			@Html.Partial("Sections/SectionComments")
-			@Html.Partial("Sections/SectionRelevantPages")
 			@Html.Partial("Sections/SectionContact")
 			@Html.Partial("Sections/SectionVideo")
 		}

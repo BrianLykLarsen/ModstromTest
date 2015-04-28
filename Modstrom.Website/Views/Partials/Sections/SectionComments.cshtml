@@ -6,10 +6,13 @@
 @{
 	string headline = Model.GetValue<string>("headline");
 
-	var selectComments = Model.GetValue<int[]>("selectComments").Select(x=>Umbraco.TypedContent(x));
-	
-	string dimsenFlaf = "";
-	var noSlider = "no-slider";
+	var selectComments = Model.GetValue<int[]>("selectComments").Select(x => Umbraco.TypedContent(x));
+	int commentCount = selectComments.Count();
+	var noSlider = "";
+	if (commentCount == 2)
+	{
+		noSlider = "no-slider";
+	}
 
 	@*
 		OBS: The logic included in this page it only to illustrate variations in design.
@@ -20,115 +23,69 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					@if (dimsenFlaf != "ProductPage")
+					@if (commentCount == 2)
 					{
 						<h1>@headline</h1>
 					}
 					<div class="comments-container">
 						<ul class="comments slides">
-							<li>
-								@foreach (var comment in selectComments)
-								{
-									string text = comment.GetPropertyValue<string>("text");
-								
-									<div class="comment">
-										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
-											<noscript>
-												<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-											</noscript>
-										</figure>
-										<div class="comment-text">
-											<p>
-												“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
-												og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
-												Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
-											</p>
-											<p class="comment-author">- Lili Ruby, Randers</p>
-										</div>
-									</div>
-								}
-								<div class="comment">
-									<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
-										<noscript>
-											<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-										</noscript>
-									</figure>
-									<div class="comment-text">
-										<p>
-											“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
-											og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
-											Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
-										</p>
-										<p class="comment-author">- Lili Ruby, Randers</p>
-									</div>
-								</div>
-							</li>
-							@if (noSlider != "ProductPage")
+							@if (commentCount == 2)
 							{
 								<li>
-									<div class="comment">
-										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
-											<noscript>
-												<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-											</noscript>
-										</figure>
-										<div class="comment-text">
-											<p>
-												“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
-												og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
-												Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
-											</p>
-											<p class="comment-author">- Lili Ruby, Randers</p>
+									@foreach (var comment in selectComments)
+									{
+										string text = comment.GetPropertyValue<string>("text");
+										var image = comment.GetPropertyValue<IPublishedContent>("image").Url;
+										<div class="comment">
+											<figure class="img-default responsiveimg-default" data-imgsrc-default="@image" data-imgalt-default="This is the alt text">
+												<noscript>
+													<img src="@image" alt="This is the alt text">
+												</noscript>
+											</figure>
+											<div class="comment-text">
+												@Html.Raw(text)
+											</div>
 										</div>
-									</div>
-									<div class="comment">
-										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
-											<noscript>
-												<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-											</noscript>
-										</figure>
-										<div class="comment-text">
-											<p>
-												“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
-												og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
-												Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
-											</p>
-											<p class="comment-author">- Lili Ruby, Randers</p>
-										</div>
-									</div>
+									}
+
 								</li>
-								<li>
-									<div class="comment">
-										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
-											<noscript>
-												<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-											</noscript>
-										</figure>
-										<div class="comment-text">
-											<p>
-												“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
-												og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
-												Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
-											</p>
-											<p class="comment-author">- Lili Ruby, Randers</p>
+							}
+							else
+							{
+								int counter = 0;
+								foreach (var comment in selectComments)
+								{
+									string htmlListStart = "<li>";
+									string htmlListEnd	= "</li>";
+
+									if (counter %2==0)
+									{
+										@Html.Raw(htmlListStart)
+									}
+									
+										<div class="comment">
+											<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
+												<noscript>
+													<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
+												</noscript>
+											</figure>
+											<div class="comment-text">
+												<p>
+													“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
+													og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
+													Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
+												</p>
+												<p class="comment-author">- Lili Ruby, Randers</p>
+											</div>
 										</div>
-									</div>
-									<div class="comment">
-										<figure class="img-default responsiveimg-default" data-imgsrc-default="/images/comments-placeholder.jpg" data-imgalt-default="This is the alt text">
-											<noscript>
-												<img src="/images/comments-placeholder.jpg" alt="This is the alt text">
-											</noscript>
-										</figure>
-										<div class="comment-text">
-											<p>
-												“Jeg er vild med gratis strøm om natten. Vasker tøj, lader min telefon og min computer op om natten -
-												og er i det hele taget meget bevidst om at skubbe så meget af mit forbrug til efter midnat.
-												Det er en god måde at motivere folk til at bruge strøm, når den er grønnest”
-											</p>
-											<p class="comment-author">- Lili Ruby, Randers</p>
-										</div>
-									</div>
-								</li>
+										
+									if(counter != 1 && counter %2 == 1)
+									{
+										@Html.Raw(htmlListEnd)
+									}
+
+									counter++;
+								}
 							}
 						</ul>
 					</div>
