@@ -433,6 +433,7 @@
     <Content Include="less\sections\elements\questions.less" />
     <Content Include="less\sections\elements\articles.less" />
     <Content Include="less\sections\elements\relevant-pages.less" />
+    <None Include="Properties\PublishProfiles\Customer Staging.pubxml" />
     <None Include="Scripts\jquery-1.11.0.intellisense.js" />
     <Content Include="Scripts\compiled\keepme.txt" />
     <Content Include="Scripts\jquery-1.11.0.js" />
@@ -489,7 +490,6 @@
     <Content Include="Views\Partials\Sections\SectionVideo.cshtml" />
     <Content Include="Views\Partials\Sections\SectionHero.cshtml" />
     <Content Include="Views\Partials\Sections\SectionBoxes.cshtml" />
-    <Content Include="Views\Partials\Sections\SectionSplit-7x5.cshtml" />
     <Content Include="Views\Partials\Sections\SectionProducts.cshtml" />
     <Content Include="Views\Partials\Sections\SectionFooter.cshtml" />
     <Content Include="Views\Partials\Sections\SectionHeader.cshtml" />
@@ -503,8 +503,6 @@
     <Content Include="Views\Partials\Sections\SectionTextSplit.cshtml" />
     <Content Include="Views\Partials\Sections\Elements\Questions.cshtml" />
     <Content Include="Views\Partials\Sections\Elements\Articles.cshtml" />
-    <Content Include="Views\Partials\Sections\Elements\RelevantPages.cshtml" />
-    <Content Include="Views\Partials\Sections\SectionSplit-6x6.cshtml" />
     <Content Include="Views\SectionPage.cshtml">
       <SubType>Code</SubType>
     </Content>
