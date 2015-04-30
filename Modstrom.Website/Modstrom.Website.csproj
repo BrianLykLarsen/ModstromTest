@@ -322,6 +322,8 @@
     <Content Include="Config\grid.editors.config.js" />
     <Content Include="css\compiled\keepme.txt" />
     <Content Include="default.aspx" />
+    <None Include="fonts\Modstrom-icons\modstrom-icons.less" />
+    <Content Include="fonts\Modstrom-icons\modstrom.svg" />
     <Content Include="fonts\Sini\2DD7EE_0_0.svg" />
     <Content Include="fonts\Sini\2DD7EE_1_0.svg" />
     <Content Include="Global.asax" />
@@ -433,6 +435,9 @@
     <Content Include="less\sections\elements\questions.less" />
     <Content Include="less\sections\elements\articles.less" />
     <Content Include="less\sections\elements\relevant-pages.less" />
+    <Content Include="fonts\Modstrom-icons\modstrom.eot" />
+    <Content Include="fonts\Modstrom-icons\modstrom.ttf" />
+    <Content Include="fonts\Modstrom-icons\modstrom.woff" />
     <None Include="Scripts\jquery-1.11.0.intellisense.js" />
     <Content Include="Scripts\compiled\keepme.txt" />
     <Content Include="Scripts\jquery-1.11.0.js" />
