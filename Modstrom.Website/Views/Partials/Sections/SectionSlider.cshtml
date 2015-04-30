@@ -45,12 +45,12 @@
 										@if (!String.IsNullOrWhiteSpace(button1Text) && nodeId1 != null)
 										{
 											var link = Umbraco.Url(nodeId1);
-											<a href="@link" class="btn btn-dark">@button1Text</a>
+											<a href="@link" class="btn btn-dark btn-icon btn-icon-play">@button1Text</a>
 										}
 										@if (!String.IsNullOrWhiteSpace(button2Text) && nodeId2 != null)
 										{
 											var link = Umbraco.Url(nodeId2);
-											<a href="@link" class="btn btn-teal">@button2Text</a>
+											<a href="@link" class="btn btn-teal btn-icon btn-icon-login">@button2Text</a>
 										}
 									</div>
 								</div>
