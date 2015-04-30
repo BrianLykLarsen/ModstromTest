@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\UmbracoCms.7.2.4\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.7.2.4\build\UmbracoCms.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{42229FBD-C125-4B8E-9597-C6D54B0911C7}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Modstrom.Website</RootNamespace>
+    <AssemblyName>Modstrom.Website</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin">
+      <HintPath>..\packages\AjaxMin.4.48.4489.28432\lib\net20\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="Archetype">
+      <HintPath>..\packages\Archtype\Archetype.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="businesslogic">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\businesslogic.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientDependency.Core">
+      <HintPath>..\packages\ClientDependency.1.8.3.1\lib\net45\ClientDependency.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientDependency.Core.Mvc">
+      <HintPath>..\packages\ClientDependency-Mvc.1.8.0.0\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="cms">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\cms.dll</HintPath>
+    </Reference>
+    <Reference Include="controls">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\controls.dll</HintPath>
+    </Reference>
+    <Reference Include="CookComputing.XmlRpcV2">
+      <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.4.1.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\dotless.1.4.1.0\lib\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DTG.Spreadsheet, Version=2.7.0.0, Culture=neutral, PublicKeyToken=7b835b529fb706c3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\DTG.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Examine">
+      <HintPath>..\packages\Examine.0.1.60.2941\lib\Examine.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageProcessor">
+      <HintPath>..\packages\ImageProcessor.1.9.5.0\lib\ImageProcessor.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageProcessor.Web">
+      <HintPath>..\packages\ImageProcessor.Web.3.3.1.0\lib\net45\ImageProcessor.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="interfaces">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.1\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler">
+      <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.6.5\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Our.Umbraco.PropertyEditorConverters">
+      <HintPath>..\packages\UmbracoCorePropertyValueConverters 2.1.5\Our.Umbraco.PropertyEditorConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="PackageGarden.Licensing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\PackageGarden.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Core, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.DataTypes, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.DataTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Events, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Extensions, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Library, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Logging, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.PropertyEditorConverters, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.PropertyEditorConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Resources, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="SEOChecker.Validators, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\SEOChecker.Validators.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLCE4Umbraco">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\SQLCE4Umbraco.dll</HintPath>
+    </Reference>
+    <Reference Include="SquishIt.Framework">
+      <HintPath>..\packages\SquishIt.0.9.7\lib\SquishIt.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SquishIt.Less">
+      <HintPath>..\packages\SquishIt.Less.0.9.7\lib\SquishIt.Less.dll</HintPath>
+    </Reference>
+    <Reference Include="SquishIt.Mvc, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SquishIt.Mvc.0.9.7\lib\SquishIt.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="TidyNet">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\TidyNet.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\umbraco.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Core">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\Umbraco.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.DataLayer">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\umbraco.DataLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.editorControls">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\umbraco.editorControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Licensing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External libs\Seo Checker\Umbraco.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.MacroEngines">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\umbraco.MacroEngines.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.providers">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\umbraco.providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Web.UI">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\Umbraco.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UmbracoExamine">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\UmbracoExamine.dll</HintPath>
+    </Reference>
+    <Reference Include="UrlRewritingNet.UrlRewriter">
+      <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\UrlRewritingNet.UrlRewriter.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.4\lib\NETFramework40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\SquishItLess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Plugins\SEOChecker\css\seochecker-propertyeditors.css" />
+    <Content Include="App_Plugins\SEOChecker\directives\valShowError.js" />
+    <Content Include="App_Plugins\SEOChecker\redirects\redirectsController.js" />
+    <Content Include="App_Plugins\SEOChecker\redirects\redirectseditor.html" />
+    <Content Include="App_Plugins\SEOChecker\RobotsTxtEditor\robotstxteditor.html" />
+    <Content Include="App_Plugins\SEOChecker\seochecker\seoCheckerPreValueEditor.html" />
+    <Content Include="App_Plugins\SEOChecker\seochecker\seoCheckerPropertyEditor.html" />
+    <Content Include="App_Plugins\SEOChecker\seochecker\seoCheckerPropertyEditorController.js" />
+    <Content Include="App_Plugins\SEOChecker\XMLSitemapEditor\xmlsitemapeditor.html" />
+    <Content Include="Config\grid.editors.config.js" />
+    <Content Include="css\compiled\keepme.txt" />
+    <Content Include="default.aspx" />
+    <Content Include="fonts\Sini\2DD7EE_0_0.svg" />
+    <Content Include="fonts\Sini\2DD7EE_1_0.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="images\1x1.gif" />
+    <Content Include="images\comments-placeholder.jpg" />
+    <Content Include="images\content-box-logo-enkel.jpg" />
+    <Content Include="images\content-box-logo-ideel.jpg" />
+    <Content Include="images\box-placeholder-desktop-01.jpg" />
+    <Content Include="images\box-placeholder-desktop-02.jpg" />
+    <Content Include="images\box-placeholder-desktop-03.jpg" />
+    <Content Include="images\box-placeholder-desktop-04.jpg" />
+    <Content Include="images\box-placeholder-desktop-05.jpg" />
+    <Content Include="images\box-placeholder-mobile-01.jpg" />
+    <Content Include="images\box-placeholder-mobile-02.jpg" />
+    <Content Include="images\box-placeholder-mobile-03.jpg" />
+    <Content Include="images\box-placeholder-mobile-04.jpg" />
+    <Content Include="images\box-placeholder-mobile-05.jpg" />
+    <Content Include="images\content-box-placeholder.jpg" />
+    <Content Include="images\footer-background-desktop.jpg" />
+    <Content Include="images\footer-background-mobile.jpg" />
+    <Content Include="images\section-hero-placeholder-desktop.jpg" />
+    <Content Include="images\section-hero-placeholder-mobile.jpg" />
+    <Content Include="images\icon-facebook.png" />
+    <Content Include="images\image-placeholder-desktop.jpg" />
+    <Content Include="images\image-placeholder-mobile.jpg" />
+    <Content Include="images\kundo.png" />
+    <Content Include="images\section-list-placeholder.jpg" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\product-placeholder.jpg" />
+    <Content Include="images\relevant-page-placeholder.jpg" />
+    <Content Include="images\shadow-left.png" />
+    <Content Include="images\shadow-right.png" />
+    <Content Include="images\slider-placeholder-desktop.jpg" />
+    <Content Include="images\slider-placeholder-mobile.jpg" />
+    <Content Include="images\text-placeholder.jpg" />
+    <Content Include="images\tripadvisor-placeholder.png" />
+    <Content Include="less\libs\keepme.txt" />
+    <Content Include="less\master.less" />
+    <Content Include="less\libs\novicell.master.bootstrap.less" />
+    <Content Include="less\libs\bootstrap\wells.less" />
+    <Content Include="less\libs\bootstrap\variables.less" />
+    <Content Include="less\libs\bootstrap\utilities.less" />
+    <Content Include="less\libs\bootstrap\type.less" />
+    <Content Include="less\libs\bootstrap\tooltip.less" />
+    <Content Include="less\libs\bootstrap\thumbnails.less" />
+    <Content Include="less\libs\bootstrap\theme.less" />
+    <Content Include="less\libs\bootstrap\tables.less" />
+    <Content Include="less\libs\bootstrap\scaffolding.less" />
+    <Content Include="less\libs\bootstrap\responsive-utilities.less" />
+    <Content Include="less\libs\bootstrap\progress-bars.less" />
+    <Content Include="less\libs\bootstrap\print.less" />
+    <Content Include="less\libs\bootstrap\popovers.less" />
+    <Content Include="less\libs\bootstrap\panels.less" />
+    <Content Include="less\libs\bootstrap\pagination.less" />
+    <Content Include="less\libs\bootstrap\pager.less" />
+    <Content Include="less\libs\bootstrap\normalize.less" />
+    <Content Include="less\libs\bootstrap\navs.less" />
+    <Content Include="less\libs\bootstrap\navbar.less" />
+    <Content Include="less\libs\bootstrap\modals.less" />
+    <Content Include="less\libs\bootstrap\mixins.less" />
+    <Content Include="less\libs\bootstrap\media.less" />
+    <Content Include="less\libs\bootstrap\list-group.less" />
+    <Content Include="less\libs\bootstrap\labels.less" />
+    <Content Include="less\libs\bootstrap\jumbotron.less" />
+    <Content Include="less\libs\bootstrap\input-groups.less" />
+    <Content Include="less\libs\bootstrap\grid.less" />
+    <Content Include="less\libs\bootstrap\glyphicons.less" />
+    <Content Include="less\libs\bootstrap\forms.less" />
+    <Content Include="less\libs\bootstrap\dropdowns.less" />
+    <Content Include="less\libs\bootstrap\component-animations.less" />
+    <Content Include="less\libs\bootstrap\code.less" />
+    <Content Include="less\libs\bootstrap\close.less" />
+    <Content Include="less\libs\bootstrap\carousel.less" />
+    <Content Include="less\libs\bootstrap\buttons.less" />
+    <Content Include="less\libs\bootstrap\button-groups.less" />
+    <Content Include="less\libs\bootstrap\breadcrumbs.less" />
+    <Content Include="less\libs\bootstrap\bootstrap.less" />
+    <Content Include="less\libs\bootstrap\badges.less" />
+    <Content Include="less\libs\bootstrap\alerts.less" />
+    <Content Include="App_Browsers\Form.browser" />
+    <Content Include="App_Browsers\w3cvalidator.browser" />
+    <Content Include="less\common\header.less" />
+    <Content Include="less\common\typography.less" />
+    <Content Include="less\common\utilities.less" />
+    <Content Include="fonts\Sini\2DD7EE_0_0.eot" />
+    <Content Include="fonts\Sini\2DD7EE_0_0.ttf" />
+    <Content Include="fonts\Sini\2DD7EE_0_0.woff" />
+    <Content Include="fonts\Sini\2DD7EE_0_0.woff2" />
+    <Content Include="fonts\Sini\2DD7EE_1_0.eot" />
+    <Content Include="fonts\Sini\2DD7EE_1_0.ttf" />
+    <Content Include="fonts\Sini\2DD7EE_1_0.woff" />
+    <Content Include="fonts\Sini\2DD7EE_1_0.woff2" />
+    <Content Include="less\common\reset.less" />
+    <Content Include="less\sections\section-slider.less" />
+    <Content Include="less\sections\section-list.less" />
+    <Content Include="less\sections\section-video.less" />
+    <Content Include="less\sections\section-hero.less" />
+    <Content Include="less\sections\section-boxes.less" />
+    <Content Include="less\sections\section-split.less" />
+    <Content Include="less\sections\section-products.less" />
+    <Content Include="less\common\footer.less" />
+    <Content Include="less\sections\section-image.less" />
+    <Content Include="less\sections\section-content.less" />
+    <Content Include="less\sections\section-comments.less" />
+    <Content Include="less\sections\section-relevant-pages.less" />
+    <Content Include="less\sections\section-contact.less" />
+    <Content Include="less\sections\section-text.less" />
+    <Content Include="less\sections\section-text-split.less" />
+    <Content Include="less\sections\elements\questions.less" />
+    <Content Include="less\sections\elements\articles.less" />
+    <Content Include="less\sections\elements\relevant-pages.less" />
+    <None Include="Properties\PublishProfiles\Customer Staging.pubxml" />
+    <None Include="Scripts\jquery-1.11.0.intellisense.js" />
+    <Content Include="Scripts\compiled\keepme.txt" />
+    <Content Include="Scripts\jquery-1.11.0.js" />
+    <Content Include="Scripts\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\libs\bootstrap\affix.js" />
+    <Content Include="Scripts\libs\bootstrap\alert.js" />
+    <Content Include="Scripts\libs\bootstrap\button.js" />
+    <Content Include="Scripts\libs\bootstrap\carousel.js" />
+    <Content Include="Scripts\libs\bootstrap\collapse.js" />
+    <Content Include="Scripts\libs\bootstrap\dropdown.js" />
+    <Content Include="Scripts\libs\bootstrap\modal.js" />
+    <Content Include="Scripts\libs\bootstrap\popover.js" />
+    <Content Include="Scripts\libs\bootstrap\scrollspy.js" />
+    <Content Include="Scripts\libs\bootstrap\tab.js" />
+    <Content Include="Scripts\libs\bootstrap\tooltip.js" />
+    <Content Include="Scripts\libs\bootstrap\transition.js" />
+    <Content Include="Scripts\libs\flexslider\flexslider.css" />
+    <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.svg" />
+    <Content Include="Scripts\libs\flexslider\jquery.flexslider.js" />
+    <Content Include="Scripts\libs\modernizr.custom.js" />
+    <Content Include="Scripts\libs\novicell.cookieinfo.js" />
+    <Content Include="Scripts\libs\novicell.examples.js" />
+    <Content Include="Scripts\libs\novicell.imageadjust.js" />
+    <Content Include="Scripts\libs\novicell.js" />
+    <Content Include="Scripts\libs\novicell.lazyload.js" />
+    <Content Include="Scripts\libs\novicell.overlay.js" />
+    <Content Include="Scripts\libs\novicell.responsive.js" />
+    <Content Include="Scripts\libs\parsley\jquery.parsley.js" />
+    <Content Include="Scripts\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Scripts\libs\perfect-scrollbar\jquery.perfect-scrollbar.js" />
+    <Content Include="Scripts\master.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Scripts\jquery-1.11.0.min.map" />
+    <Content Include="Views\FrontPage.cshtml" />
+    <Content Include="Views\Master.cshtml" />
+    <Content Include="Views\TextPage.cshtml" />
+    <Content Include="Views\Partials\Sections\Elements\NavHeader.cshtml" />
+    <Content Include="Views\Partials\Sections\Elements\NavSub.cshtml" />
+    <Content Include="Views\Partials\SEO\ncSiteGoogleAnalytics.cshtml" />
+    <Content Include="Views\Partials\SEO\ncSiteLanguage.cshtml" />
+    <Content Include="Views\Partials\SEO\ncSiteSeo.cshtml" />
+    <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.eot" />
+    <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.ttf" />
+    <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.woff" />
+    <Content Include="Views\Partials\Sections\SectionSlider.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionList.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionVideo.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionHero.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionBoxes.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionProducts.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionFooter.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionHeader.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionImage.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionContent.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionComments.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionRelevantPages.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionContact.cshtml" />
+    <Content Include="Views\ProductPage.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionText.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionTextSplit.cshtml" />
+    <Content Include="Views\Partials\Sections\Elements\Questions.cshtml" />
+    <Content Include="Views\Partials\Sections\Elements\Articles.cshtml" />
+    <Content Include="Views\SectionPage.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Partials\Sections\SectionElementBuilder.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\MacroPartials\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\Grid\Editors\Macro.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\Grid\Editors\Embed.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\Grid\Editors\Base.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\UrlRewriting.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\umbracoSettings.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\trees.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\tinyMceConfig.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\scripting.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\metablogConfig.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\FileSystemProviders.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\feedProxy.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\ExamineSettings.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\ExamineIndex.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\EmbeddedMedia.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\Dashboard.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\ClientDependency.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\BaseRestExtensions.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\applications.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\404handlers.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\SEOChecker.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modstrom.Library\Modstrom.Library.csproj">
+      <Project>{13716b43-3d13-4c65-9472-41142b55c228}</Project>
+      <Name>Modstrom.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54379/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\UmbracoCms.7.2.4\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.4\build\UmbracoCms.props'))" />
+    <Error Condition="!Exists('..\packages\UmbracoCms.7.2.4\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.7.2.4\build\UmbracoCms.targets'))" />
+  </Target>
+  <Import Project="..\packages\UmbracoCms.7.2.4\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.7.2.4\build\UmbracoCms.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
