@@ -436,6 +436,8 @@
     <Content Include="less\sections\elements\articles.less" />
     <Content Include="less\sections\elements\relevant-pages.less" />
     <Content Include="fonts\Modstrom-icons\modstrom.eot" />
+    <Content Include="less\sections\section-search.less" />
+    <Content Include="less\sections\section-testimonial-customer.less" />
     <None Include="Properties\PublishProfiles\Customer Staging.pubxml" />
     <Content Include="fonts\Modstrom-icons\modstrom.ttf" />
     <Content Include="fonts\Modstrom-icons\modstrom.woff" />
@@ -512,6 +514,8 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Partials\Sections\SectionElementBuilder.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionSearch.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionTestimonialCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
