@@ -28,7 +28,7 @@
 @section mainContent
 	{
 	<div id="page">
-
+        
 		@foreach (ArchetypeFieldsetModel fieldset in Model.Content.GetPropertyValue<ArchetypeModel>("sections"))
 		{
 			switch (fieldset.Alias)
@@ -95,6 +95,7 @@
 			@Html.Partial("Sections/SectionSplit-6x6")
 			@Html.Partial("Sections/SectionContact")
 		}
+        @Html.Partial("Sections/SectionSearch")
 	</div>
 }
 
