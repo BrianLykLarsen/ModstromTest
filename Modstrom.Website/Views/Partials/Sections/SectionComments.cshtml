@@ -157,22 +157,22 @@
 									{
 										elementclass = "box-gray arrow-left";
 									}
-									<div class="testimonial col-sm-6">
+									<a class="testimonial fancybox col-sm-6" href="#testimonial-1" rel="testimonial-gallery">
 										<div class="row">
 											@if (counter == 0 || counter == 1)
 											{
 												//First Row
 												<div class="col-sm-6">
-													<a href="/" class="box box-text @elementclass">
+													<div class="box box-text @elementclass">
 														<h3>@customerName</h3>
 														<small>@customerCity</small>
 														@Html.Raw(text)
 														<p class="link">Læs hele anmeldelsen</p>
-													</a>
+													</div>
 												</div>
 
 												<div class="col-sm-6">
-													<a href="/" class="box box-image">
+													<div class="box box-image">
 														<figure>
 															<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@image" data-imgalt-desktop="This is the alt text">
 																<noscript>
@@ -185,14 +185,14 @@
 																</noscript>
 															</div>
 														</figure>
-													</a>
+													</div>
 												</div>
 											}
 											else
 											{
 												//Second Row
 												<div class="col-sm-6">
-													<a href="/" class="box box-image">
+													<div class="box box-image">
 														<figure>
 															<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@image" data-imgalt-desktop="This is the alt text">
 																<noscript>
@@ -205,20 +205,20 @@
 																</noscript>
 															</div>
 														</figure>
-													</a>
+													</div>
 												</div>
 
 												<div class="col-sm-6">
-													<a href="/" class="box box-text @elementclass">
+													<div href="/" class="box box-text @elementclass">
 														<h3>@customerName</h3>
 														<small>@customerCity</small>
 														@Html.Raw(text)
 														<p class="link">Læs hele anmeldelsen</p>
-													</a>
+													</div>
 												</div>
 											}
 										</div>
-									</div>
+									</a>
 									counter++;
 									if (counter == 4)
 									{
@@ -242,7 +242,7 @@
 					{
 				
 						string text = comment.GetPropertyValue<string>("text");
-
+						string fullText = text;
 						if (text.Length > 200)
 						{
 							text = text.Substring(0, 200) + "...";
@@ -270,8 +270,8 @@
 							elementclass = "box-gray";
 						}
 						<li>
-							<div class="testimonial col-xs-12">
-								<a href="/" class="box box-image">
+							<a class="testimonial fancybox col-xs-12" href="#testimonial-1" rel="testimonial-gallery">
+								<div class="box box-image">
 									<figure>
 										<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@image" data-imgalt-desktop="This is the alt text">
 											<noscript>
@@ -284,15 +284,18 @@
 											</noscript>
 										</div>
 									</figure>
-								</a>
+								</div>
 
-								<a href="/" class="box box-text @elementclass arrow-top">
+								<div class="box box-text @elementclass arrow-top">
 									<h3>@customerName</h3>
 									<small>@customerCity</small>
 									@Html.Raw(text)
 									<p class="link">Læs hele anmeldelsen</p>
-								</a>
-							</div>
+									<div class="full-text">
+										@Html.Raw(fullText)
+									</div>
+								</div>
+							</a>
 						</li>
 						counter++;
 						if (counter == 4)
