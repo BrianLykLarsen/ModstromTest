@@ -21,6 +21,7 @@ $(function () {
     modstrom.master.formContact();
     modstrom.master.newsPaging('.news-list');
     modstrom.master.testimonialOverlay();
+    modstrom.master.toggleSearch();
     
 
     modstrom.master.responsiveImage('default');
@@ -42,6 +43,13 @@ var modstrom = modstrom || {};
 
 modstrom.master = modstrom.master || function () {
     function resetUI() {}
+
+    function toggleSearch() {
+        $('#header-search').click(function (e) {
+            $('#header-search-form').fadeToggle();
+            e.preventDefault();
+        });
+    }
 
     function testimonialOverlay() {
         $('.fancybox').fancybox({
@@ -294,7 +302,8 @@ modstrom.master = modstrom.master || function () {
         formContact: formContact,
         testimonialSlider: testimonialSlider,
         newsPaging: newsPaging,
-        testimonialOverlay: testimonialOverlay
+        testimonialOverlay: testimonialOverlay,
+        toggleSearch: toggleSearch
     }
 }();
 
