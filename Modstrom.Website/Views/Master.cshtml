@@ -1,0 +1,67 @@
+﻿@using Modstrom.Library.Helpers
+@using SquishIt.Framework
+@using SquishIt.Mvc
+@using Umbraco.Web
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+    var siteNode = Model.Content.GetSiteNode();
+    
+}<!doctype html>
+ <html lang="@Html.Partial("SEO/ncSiteLanguage")"> 
+    <head>
+        <meta charset="utf-8">
+        @Html.Partial("SEO/ncSiteSeo")
+        
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="msapplication-tap-highlight" content="no" />
+
+        @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteHeader"))
+        @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageHeader"))
+
+        <link type="text/plain" rel="author" href="/humans.txt" />
+        @(Bundle.Css()
+            .Add("~/scripts/libs/flexslider/flexslider.css") 
+            .Add("~/scripts/libs/perfect-scrollbar/perfect-scrollbar.css")
+            .Add("~/scripts/libs/simple-pagination/simple-pagination.css")
+            .Add("~/less/master.less")
+            //.ForceRelease() // enable if you want to squish it in debug=true
+            .MvcRender("~/css/compiled/comb.min_#.css")
+        )
+        <!--[if lt IE 9]>
+            <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+     <body>
+         @Html.Partial("SEO/ncSiteGoogleAnalytics")
+         @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteBodyTop"))
+         @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyTop"))
+	    
+         <div id="site">
+            @Html.Partial("Sections/SectionHeader")
+            @RenderSection("mainContent") 
+            @Html.Partial("Sections/SectionFooter")
+         </div>
+        
+         @(Bundle.JavaScript()
+            .Add("~/scripts/jquery-1.11.0.js")
+            .Add("~/scripts/libs/modernizr.custom.js")
+            .Add("~/scripts/libs/novicell.js")
+            .Add("~/scripts/libs/novicell.responsive.js")
+            
+            .Add("~/scripts/libs/parsley/jquery.parsley.js")              
+            .Add("~/scripts/libs/flexslider/jquery.flexslider.js")
+            .Add("~/scripts/libs/perfect-scrollbar/jquery.perfect-scrollbar.js")
+            .Add("~/scripts/libs/simple-pagination/jquery.simple-pagination.js")
+            .MvcRender("~/scripts/compiled/comb.min_#.js")
+        )
+        
+        <script type="text/javascript" src="/scripts/master.js"></script>
+
+        @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteBodyBottom"))
+        @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyBottom"))
+       
+     </body>
+</html>
