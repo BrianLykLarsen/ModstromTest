@@ -11,8 +11,10 @@ $(function () {
 
     novicell.responsive.init(modstrom.master.resetUI());
     modstrom.master.flexslider('.flexslider');
-    modstrom.master.productSlider('.flexslider');
-    modstrom.master.commentsSlider('.flexslider');
+    modstrom.master.productSlider();
+    modstrom.master.commentsSlider();
+    modstrom.master.testimonialSlider('.testimonials-slider');
+    modstrom.master.testimonialSlider('.testimonials-slider-mobile');
     modstrom.master.mainNavigation();
     modstrom.master.adjustTrigger();
     modstrom.master.questionTrigger();
@@ -83,6 +85,14 @@ modstrom.master = modstrom.master || function () {
         });
     }
 
+    function testimonialSlider(selector) {
+        $(selector).flexslider({
+            slideshow: false,
+            animation: "slide",
+            animationLoop: false
+        });
+    }
+
     //Responsive Images
     function responsiveImage(breakpoint) {
         if($('body').hasClass(breakpoint)) {
@@ -124,6 +134,7 @@ modstrom.master = modstrom.master || function () {
             $(trigger).height(height);
         });
     }
+
     function questionTrigger() {
         $('.questions li').each(function () {
             var el = this;
@@ -180,7 +191,8 @@ modstrom.master = modstrom.master || function () {
         questionTrigger: questionTrigger,
         productSlider: productSlider,
         commentsSlider: commentsSlider,
-        formContact: formContact
+        formContact: formContact,
+        testimonialSlider: testimonialSlider
     }
 }();
 
