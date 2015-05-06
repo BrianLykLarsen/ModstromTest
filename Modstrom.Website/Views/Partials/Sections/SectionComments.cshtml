@@ -129,12 +129,14 @@
 									string htmlListStart = "<li>";
 									string htmlListEnd = "</li>";
 									string text = comment.GetPropertyValue<string>("text");
-
-									if (text.Length > 200)
+									string commentId = "testimonial-" + comment.Id;
+									
+									if (text.Length > 180)
 									{
-										text = text.Substring(0, 200) + "...";
+										text = text.Substring(0, 180) + "...";
 									}
-
+									
+									
 									string customerName = comment.GetPropertyValue<string>("customerName");
 									string customerCity = comment.GetPropertyValue<string>("customerCity");
 									string signature = "- " + customerName + ", " + customerCity;
@@ -157,7 +159,7 @@
 									{
 										elementclass = "box-gray arrow-left";
 									}
-									<a class="testimonial fancybox col-sm-6" href="#testimonial-1" rel="testimonial-gallery">
+									<a class="testimonial fancybox col-sm-6" href="#@commentId" rel="testimonial-gallery">
 										<div class="row">
 											@if (counter == 0 || counter == 1)
 											{
@@ -209,7 +211,7 @@
 												</div>
 
 												<div class="col-sm-6">
-													<div href="/" class="box box-text @elementclass">
+													<div class="box box-text @elementclass">
 														<h3>@customerName</h3>
 														<small>@customerCity</small>
 														@Html.Raw(text)
@@ -219,9 +221,9 @@
 											}
 										</div>
 									</a>
-									counter++;
-									if (counter == 4)
-									{
+											counter++;
+											if (counter == 4)
+											{
 										@Html.Raw(htmlListEnd)
 										counter = 0;
 									}
@@ -240,7 +242,7 @@
 					counter = 0;
 					foreach (var comment in selectComments)
 					{
-				
+						string commentId = "testimonial-" + comment.Id;
 						string text = comment.GetPropertyValue<string>("text");
 						string fullText = text;
 						if (text.Length > 200)
@@ -253,46 +255,54 @@
 						string signature = "- " + customerName + ", " + customerCity;
 						var image = comment.GetPropertyValue<IPublishedContent>("image").Url;
 						string elementclass = "";
+						string overlayClass = "";
+						
 						if (counter == 0)
 						{
 							elementclass = "box-teal";
+							overlayClass = "overlay-teal";
 						}
 						if (counter == 1)
 						{
 							elementclass = "box-dark";
+							overlayClass = "overlay-dark";
 						}
 						if (counter == 2)
 						{
 							elementclass = "box-orange";
+							overlayClass = "overlay-orange";
 						}
 						if (counter == 3)
 						{
 							elementclass = "box-gray";
+							overlayClass = "overlay-gray";
 						}
 						<li>
-							<a class="testimonial fancybox col-xs-12" href="#testimonial-1" rel="testimonial-gallery">
-								<div class="box box-image">
-									<figure>
-										<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@image" data-imgalt-desktop="This is the alt text">
-											<noscript>
-												<img src="@image" alt="This is the alt text">
-											</noscript>
-										</div>
-										<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@image" data-imgalt-mobile="This is the mobile alt text">
-											<noscript>
-												<img src="@image" alt="This is the mobile alt text">
-											</noscript>
-										</div>
-									</figure>
-								</div>
+							<a class="testimonial fancybox col-xs-12" href="#@commentId" rel="testimonial-gallery">
+								<div id="@commentId" class="testimonial-overlay @overlayClass">
+									<div class="box box-image">
+										<figure>
+											<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@image" data-imgalt-desktop="This is the alt text">
+												<noscript>
+													<img src="@image" alt="This is the alt text">
+												</noscript>
+											</div>
+											<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@image" data-imgalt-mobile="This is the mobile alt text">
+												<noscript>
+													<img src="@image" alt="This is the mobile alt text">
+												</noscript>
+											</div>
+										</figure>
+									</div>
 
-								<div class="box box-text @elementclass arrow-top">
-									<h3>@customerName</h3>
-									<small>@customerCity</small>
-									@Html.Raw(text)
-									<p class="link">Læs hele anmeldelsen</p>
-									<div class="full-text">
-										@Html.Raw(fullText)
+									<div class="box box-text @elementclass arrow-top">
+										<h3>@customerName</h3>
+										<small>@customerCity</small>
+										@Html.Raw(text)
+										<p class="link">Læs hele anmeldelsen</p>
+										<div class="full-text">
+											@Html.Raw(fullText)
+										</div>
 									</div>
 								</div>
 							</a>
