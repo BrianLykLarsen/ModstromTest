@@ -1,0 +1,36 @@
+@using Modstrom.Library.Helpers
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+		string footerHeadline = Model.Content.GetPropertyValue<string>("FooterHeadline", true, string.Empty);
+		string footerContent = Model.Content.GetPropertyValue<string>("FooterContent", true, string.Empty);
+}
+<footer id="footer">
+    <figure>
+        <div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/footer-background-desktop.jpg"  data-imgalt-desktop="This is the alt text">
+            <noscript>
+                <img src="/images/footer-background-desktop.jpg" alt="This is the alt text">
+            </noscript>
+        </div>
+        <div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/footer-background-mobile.jpg"  data-imgalt-mobile="This is the mobile alt text">
+            <noscript>
+                <img src="/images/footer-background-mobile.jpg" alt="This is the alt tsext">
+            </noscript>
+        </div>
+    </figure>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="text-area">
+                    <h3>@Html.Raw(footerHeadline)</h3>
+					@Html.Raw(footerContent)
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="footer-social">
+					<a class="footer-tripadvisor" href="/"><img src="/images/tripadvisor-placeholder.png" /></a>
+					<a class="footer-facebook" href="https://www.facebook.com/Modstroem?fref=ts" target="_blank"><img src="/images/icon-facebook.png" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
