@@ -1,0 +1,34 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	var current = (IPublishedContent)ViewData["contentQuestions"];
+	var questionsNode = current.AncestorOrSelf("Site").Children.First(x => x.DocumentTypeAlias == "FaqList");
+	string headline = questionsNode.GetPropertyValue<string>("headline");
+
+
+	<div class="column-questions">
+		<h2>@headline</h2>
+		<ul class="questions">
+			@foreach (var question in questionsNode.Children.Take(3))
+			{
+				string questionHeadline = question.GetPropertyValue<string>("headline");
+				string questionText = question.GetPropertyValue<string>("text");
+				<li>
+					<div class="question-container">
+						<div class="question">
+							@questionHeadline
+						</div>
+						<div class="trigger"></div>
+					</div>
+					<div class="answer-container text-area">
+						@Html.Raw(questionText)
+					</div>
+				</li>
+			}
+		</ul>
+		<a class="see-all" href="/">Se alle spørgsmål og svar</a>
+	</div>
+}

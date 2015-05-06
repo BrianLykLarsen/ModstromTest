@@ -1,0 +1,100 @@
+﻿@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "Master.cshtml";
+
+	if (Model.Content.GetPropertyValue<ArchetypeModel>
+	("sections") == null)
+	{
+		return;
+	}
+
+	string DocumentType = CurrentPage.DocumentTypeAlias;
+	string PageClassName = "textpage";
+
+	if (DocumentType == "FrontPage")
+	{
+		PageClassName = "frontpage";
+	}
+
+	if (DocumentType == "ProductPage")
+	{
+		PageClassName = "product-page";
+	}
+}
+
+@section mainContent
+	{
+	<div id="page">
+
+		@foreach (ArchetypeFieldsetModel fieldset in Model.Content.GetPropertyValue<ArchetypeModel>("sections"))
+		{
+			switch (fieldset.Alias)
+			{
+				case "slider":
+					@Html.Partial("Sections/SectionSlider", fieldset)
+					break;
+
+				case "headerImage":
+					@Html.Partial("Sections/SectionImage", fieldset)
+					break;
+					
+				case "list":
+					@Html.Partial("Sections/SectionList", fieldset)
+					break;
+
+				case "video":
+					@Html.Partial("Sections/SectionVideo", fieldset)
+					break;
+				
+				case "hero":
+					@Html.Partial("Sections/SectionHero", fieldset)
+					break;
+					
+				case "boxes":
+					@Html.Partial("Sections/SectionBoxes", fieldset)
+					break;
+
+				case "elementBuldier":
+					@Html.Partial("Sections/SectionElementBuilder", fieldset, new ViewDataDictionary(ViewData) { { "contentElements", Model.Content } })
+					break;
+					
+				case "productSlider":
+					@Html.Partial("Sections/SectionProducts", fieldset)
+					break;
+
+				case "content":
+					@Html.Partial("Sections/SectionContent", fieldset)
+					break;
+
+				case "commentViewer":
+					@Html.Partial("Sections/SectionComments", fieldset)
+					break;
+
+				case "contactForm":
+					@Html.Partial("Sections/SectionContact", fieldset)
+					break;
+				
+				case "textSplit":
+					@Html.Partial("Sections/SectionTextSplit", fieldset)
+					break;
+
+				case "text":
+					@Html.Partial("Sections/SectionText", fieldset)
+					break;
+			}
+		}
+
+		@if (DocumentType == "ProductPage")
+		{
+			@Html.Partial("Sections/SectionTextSplit")
+			@Html.Partial("Sections/SectionText")
+			@Html.Partial("Sections/SectionComments")
+			@Html.Partial("Sections/SectionSplit-6x6")
+			@Html.Partial("Sections/SectionContact")
+		}
+	</div>
+}
+

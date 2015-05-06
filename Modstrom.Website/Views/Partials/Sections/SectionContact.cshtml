@@ -1,0 +1,112 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	//Property values from archtype
+	string headline = Model.GetValue<string>("headline");
+	string headlineReceipt = Model.GetValue<string>("headlineReceipt");
+	string textReceipt = Model.GetValue<string>("textReceipt");
+	var recipients = Model.GetValue<ArchetypeModel>("recipients");
+	
+	//Requests from postback
+	var request = HttpContext.Current.Request;
+	bool isPostback = false;
+
+	//Robot validation
+	string areURobot = request["firstName"]; //This is a logic name for robots to fill in, but it should be left blank!
+	bool robotIsPosting = false;
+
+	if (areURobot != "")
+	{
+		robotIsPosting = true;
+	}
+
+	//If validated send mail
+	if (request.HttpMethod == "POST" && !robotIsPosting)
+	{
+		isPostback = true;
+		
+		string lastName			= request["lastName"]; //This is fullname
+		string emailSender		= request["email"];
+		string phone			= request["phone"];
+		string emailReceiver	= request["recipient"];
+		string contactOpening	= request["contact-opening"];
+
+		string emailHtml = "" + contactOpening;
+		
+		var smtp = new System.Net.Mail.SmtpClient();
+		var mail = new System.Net.Mail.MailMessage();
+		mail.From = new System.Net.Mail.MailAddress(emailSender);
+		mail.To.Add(new System.Net.Mail.MailAddress(emailReceiver));
+		
+		mail.Subject = headline;
+		mail.Body = emailHtml.ToString();
+		mail.IsBodyHtml = true;
+		smtp.Send(mail);
+	}
+
+	<section class="section-contact" id="post">
+		<div class="container">
+			<div class="row">
+				@if (!isPostback)
+				{
+					<h2 class="col-xs-12">@headline</h2>
+					<form id="form-contact" data-parsley-validate method="post" action="#post">
+						<input type="text" style="display:none;" name="firstName" value="" />
+						<div class="col-md-6 form-configuration">
+							<div class="input-container">
+								<label>Navn</label>
+								<input type="text" id="contact-name" name="lastName"  placeholder="Navn" data-parsley-required />
+							</div>
+							<div class="input-container">
+								<label>Email</label>
+								<input type="email" id="contact-email" name="email" placeholder="Email" data-parsley-required />
+							</div>
+							<div class="input-container">
+								<label>Telefon</label>
+								<input type="tel" id="contact-phone" name="phone" placeholder="Telefon (valgfri)" />
+							</div>
+							<div class="group-half">
+								<div class="half">
+									<div class="select input-container">
+										<select id="contact-recipient" name="recipient" data-parsley-required>
+											@foreach (var recipient in recipients)
+											{
+												string recipientName = recipient.GetValue<string>("recipientName");
+												string recipientEmail = recipient.GetValue<string>("recipientEmail");
+												string recipientDescription = recipient.GetValue<string>("recipientDescription");
+			   
+												<option data-opening="@recipientDescription" value="@recipientEmail">@recipientName</option>
+											}
+										</select>
+									</div>
+								</div>
+								<div class="half">
+									<div class="input-container">
+										<input type="text" id="contact-opening" name="contact-opening" readonly="readonly" value="" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 form-message">
+							<div class="input-container">
+								<label>Besked</label>
+								<textarea id="contact-message" placeholder="Besked..." name="contact-message" data-parsley-required></textarea>
+							</div>
+						</div>
+						<div class="button-holder">
+							<button type="submit" class="btn btn-orange">Send besked</button>
+						</div>
+					</form>
+				}
+				else
+				{
+					<h2 class="col-xs-12">@headlineReceipt</h2>
+					@Html.Raw(textReceipt)
+				}
+			</div>
+		</div>
+	</section>
+}
