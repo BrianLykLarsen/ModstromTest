@@ -20,6 +20,8 @@ $(function () {
     modstrom.master.questionTrigger();
     modstrom.master.formContact();
     modstrom.master.newsPaging('.news-list');
+    modstrom.master.testimonialOverlay();
+    
 
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
@@ -40,6 +42,14 @@ var modstrom = modstrom || {};
 
 modstrom.master = modstrom.master || function () {
     function resetUI() {}
+
+    function testimonialOverlay() {
+        $('.fancybox').fancybox({
+            openEffect: 'none',
+            closeEffect: 'none'
+
+        });
+    }
 
     function mainNavigation() {
         var container = '#nav-container';
@@ -283,7 +293,8 @@ modstrom.master = modstrom.master || function () {
         commentsSlider: commentsSlider,
         formContact: formContact,
         testimonialSlider: testimonialSlider,
-        newsPaging: newsPaging
+        newsPaging: newsPaging,
+        testimonialOverlay: testimonialOverlay
     }
 }();
 
