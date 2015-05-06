@@ -1,0 +1,29 @@
+@using Modstrom.Library.Helpers
+
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    var siteNode = Model.Content.GetSiteNode();
+    var level2Node = Model.Content.AncestorOrSelf(2);
+}
+
+<ul id="nav-header">
+    	@{
+
+			// Get umbraco pages where 'show in top navigation' is true
+			foreach (var page in siteNode.Children.Where(n => n.IsVisible()))
+			{
+				// If looped item is equal to current node, set class to active
+				string childClass = page.Id == level2Node.Id ? " class=\"active\"" : string.Empty;
+
+
+				if (page.GetPropertyValue<bool>("isFrontpage") == true)
+				{
+					<li @(Html.Raw(childClass))><a href="/">@page.Name</a></li>
+				}
+				else{
+				<li @(Html.Raw(childClass))><a href="@page.Url">@page.Name</a></li>
+				}
+			}
+		}
+</ul>

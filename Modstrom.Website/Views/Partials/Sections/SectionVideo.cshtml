@@ -1,0 +1,41 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string headline = Model.GetValue<string>("headline");
+	string youtubeVideoId = Model.GetValue<string>("youtubeVideoId");
+	string buttonText = Model.GetValue<string>("buttonText");
+	string eksternalUrl = Model.GetValue<string>("eksternalUrl");
+	var linkId = Model.GetValue<int>("internalUrl");
+	var link = Umbraco.Url(linkId);
+	
+	<section class="section-video">
+		<i class="curve"></i>
+		<div class="content-container">
+			<div class="container">
+				<div class="row">
+					<h2 class="col-xs-12 col-sm-6 col-sm-offset-3">@headline</h2>
+					<div class="col-xs-12">
+						<div class="video-container">
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/@youtubeVideoId" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+
+					@if (!string.IsNullOrWhiteSpace(buttonText))
+					{
+						if (!string.IsNullOrWhiteSpace(eksternalUrl))
+						{
+							<a href="@eksternalUrl" target="_blank" class="btn btn-dark btn-icon btn-icon-login">@buttonText</a>
+						}
+						else
+						{
+							<a href="@link" class="btn btn-dark btn-icon btn-icon-login">@buttonText</a>
+						}
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+}
