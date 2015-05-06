@@ -360,6 +360,8 @@
     <Content Include="images\shadow-right.png" />
     <Content Include="images\slider-placeholder-desktop.jpg" />
     <Content Include="images\slider-placeholder-mobile.jpg" />
+    <Content Include="images\testimonial-placeholder-desktop.jpg" />
+    <Content Include="images\testimonial-placeholder-mobile.jpg" />
     <Content Include="images\text-placeholder.jpg" />
     <Content Include="images\tripadvisor-placeholder.png" />
     <Content Include="less\libs\keepme.txt" />
@@ -440,6 +442,8 @@
     <Content Include="fonts\Modstrom-icons\modstrom.eot" />
     <Content Include="less\sections\section-search.less" />
     <Content Include="less\sections\section-testimonial-customer.less" />
+    <Content Include="less\sections\section-testimonial-business.less" />
+    <Content Include="less\sections\section-news.less" />
     <None Include="Properties\PublishProfiles\Customer Staging.pubxml" />
     <Content Include="fonts\Modstrom-icons\modstrom.ttf" />
     <Content Include="fonts\Modstrom-icons\modstrom.woff" />
@@ -460,6 +464,14 @@
     <Content Include="Scripts\libs\bootstrap\tab.js" />
     <Content Include="Scripts\libs\bootstrap\tooltip.js" />
     <Content Include="Scripts\libs\bootstrap\transition.js" />
+    <Content Include="Scripts\libs\fancybox\blank.gif" />
+    <Content Include="Scripts\libs\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Scripts\libs\fancybox\fancybox_loading.gif" />
+    <Content Include="Scripts\libs\fancybox\fancybox_overlay.png" />
+    <Content Include="Scripts\libs\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Scripts\libs\fancybox\fancybox_sprite.png" />
+    <Content Include="Scripts\libs\fancybox\jquery.fancybox.css" />
+    <Content Include="Scripts\libs\fancybox\jquery.fancybox.js" />
     <Content Include="Scripts\libs\flexslider\flexslider.css" />
     <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.svg" />
     <Content Include="Scripts\libs\flexslider\jquery.flexslider.js" />
@@ -474,7 +486,9 @@
     <Content Include="Scripts\libs\parsley\jquery.parsley.js" />
     <Content Include="Scripts\libs\perfect-scrollbar\perfect-scrollbar.css" />
     <Content Include="Scripts\libs\perfect-scrollbar\jquery.perfect-scrollbar.js" />
+    <Content Include="Scripts\libs\simple-pagination\jquery.simple-pagination.js" />
     <Content Include="Scripts\master.js" />
+    <Content Include="Web.config" />
     <Content Include="umbraco\Actions\delete.aspx" />
     <Content Include="umbraco\Actions\editContent.aspx" />
     <Content Include="umbraco\Actions\preview.aspx" />
@@ -3013,18 +3027,13 @@
     <Content Include="umbraco_client\Ui\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
     <Content Include="umbraco_client\Ui\ui-lightness\images\ui-icons_ffffff_256x240.png" />
     <Content Include="umbraco_client\Ui\ui-lightness\jquery-ui.custom.css" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.11.0.min.map" />
     <Content Include="Views\FrontPage.cshtml" />
     <Content Include="Views\Master.cshtml" />
@@ -3061,6 +3070,9 @@
     <Content Include="Views\Partials\Sections\SectionElementBuilder.cshtml" />
     <Content Include="Views\Partials\Sections\SectionSearch.cshtml" />
     <Content Include="Views\Partials\Sections\SectionTestimonialCustomer.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionTestimonialBusiness.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionNews.cshtml" />
+    <Content Include="Scripts\libs\simple-pagination\simple-pagination.css" />
     <Content Include="umbraco\assets\fonts\helveticons\helveticons.eot" />
     <Content Include="umbraco\assets\fonts\helveticons\helveticons.ttf" />
     <Content Include="umbraco\assets\fonts\helveticons\helveticons.woff" />
