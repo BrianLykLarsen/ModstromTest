@@ -19,6 +19,7 @@ $(function () {
     modstrom.master.adjustTrigger();
     modstrom.master.questionTrigger();
     modstrom.master.formContact();
+    modstrom.master.newsPaging('.news-list');
 
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
@@ -55,6 +56,95 @@ modstrom.master = modstrom.master || function () {
         $('#nav-container').perfectScrollbar({
             maxScrollbarLength: 250
         });
+    }
+
+    function newsPaging(selector) {
+
+        if ($(selector).length) {
+            var filter = $('.news-filter')
+            var pager = $('.news-list-paging');
+            var items = $('li', selector);
+            var activeItems = $('.active', selector);
+            var activeItemsLength = $('.active', selector).length;
+            var perPage = 4;
+            var showFrom = '';
+            var showTo = '';
+
+            if (activeItemsLength > perPage) {
+                $(activeItems).slice(perPage).hide();
+                $(pager).pagination({
+                    items: activeItemsLength,
+                    itemsOnPage: perPage,
+                    onPageClick: function (pageNumber) {
+                        showFrom = perPage * (pageNumber - 1);
+                        showTo = showFrom + perPage;
+
+                        $(activeItems).hide()
+                             .slice(showFrom, showTo).show();
+                    }
+                });
+            }
+
+            var filterYear = $('#news-filter-year', filter);
+            var filterMonth = $('#news-filter-month', filter);
+
+            var year = '';
+            var month = '';
+
+            $('.news-filter select').change(function () {
+
+                year = $(filterYear).val()
+                month = $(filterMonth).val()
+
+                $(items).each(function () {
+                    var current = this;
+
+                        // Filtering variables
+                        if ($(current).data('year') == year && $(current).data('month') == month) {
+                            $(current).addClass('active');
+
+                        } else if (year == 'all-years' && $(current).data('month') == month){
+                            $(current).addClass('active');
+
+                        } else if (month == 'all-months' && $(current).data('year') == year){
+                            $(current).addClass('active');
+
+                        } else if (year == 'all-years' && month == 'all-months'){
+                            $(current).addClass('active');
+
+                        } else {
+                            $(current).removeClass('active');
+                        }                   
+                });
+
+                // Refire paging after filtering
+                activeItems = $('.active', selector);
+                activeItemsLength = $('.active', selector).length;
+                showFrom = '';
+                showTo = '';
+
+                $(items).hide()                
+                $(activeItems).show();
+
+                if (activeItemsLength > perPage) {               
+                    $(activeItems).slice(perPage).hide();
+
+                    $(pager).pagination({
+                        items: activeItemsLength,
+                        itemsOnPage: perPage,
+                        onPageClick: function (pageNumber) {
+                            showFrom = perPage * (pageNumber - 1);
+                            showTo = showFrom + perPage;
+
+                            $(activeItems).hide()
+                                 .slice(showFrom, showTo).show();
+                        }
+                    });
+                } else {
+                    $(pager).pagination('destroy');
+                }
+            });
+        }
     }
 
     // Sliders
@@ -192,7 +282,8 @@ modstrom.master = modstrom.master || function () {
         productSlider: productSlider,
         commentsSlider: commentsSlider,
         formContact: formContact,
-        testimonialSlider: testimonialSlider
+        testimonialSlider: testimonialSlider,
+        newsPaging: newsPaging
     }
 }();
 
