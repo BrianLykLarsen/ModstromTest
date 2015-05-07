@@ -8,7 +8,7 @@
     
 }
 
-@if (level2Node.Children.Count() > 0) 
+@if (level2Node.Children.Where(n => n.IsVisible()).Count() > 0 && level2Node.DocumentTypeAlias != "Articles") 
 {
     <ul id="nav-sub">
         @foreach (var node in level2Node.Children.Where(n => n.IsVisible()))

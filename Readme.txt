@@ -4,7 +4,7 @@ Republish Site in umbraco
 
 BAM! You are up and running :-)
 
-*** DATABASE ANW WEBDEPLOY ***
+*** DATABASE AND WEBDEPLOY ***
 Development
 Database
 Host: nc-sql03
@@ -12,21 +12,12 @@ DB Name: ModstromDevelopment
 DB User: ModstromDevelopmentUser
 Pass: RTrz36r882w7dRKY
 
-Site
+Development Webdeploy 
 Host: nc-iis01
 URL: modstrom.development.novicell.dk
-[X] Webdeploy
 
-Customer Staging
-Site Webdeploy
-Host:lab.modstroem.dk
-User: AKMOD\Novicell
-Pass: Bordetfanger12
- 
-IIS user
-User: DeployWebsite_Novicell
-Pass: 12345678
-
-AD user
+Customer Staging Webdeploy
+Host: https://lab.modstroem.dk:8172/MsDeploy.axd
+SiteName:lab.modstroem.dk
 User: AKMOD\Novicell
 Pass: Kodeord123
