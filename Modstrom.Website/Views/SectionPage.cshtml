@@ -73,6 +73,10 @@
 					@Html.Partial("Sections/SectionComments", fieldset)
 					break;
 
+				case "caseViewer":
+				@Html.Partial("Sections/SectionCases", fieldset)
+					break;
+
 				case "contactForm":
 					@Html.Partial("Sections/SectionContact", fieldset)
 					break;
@@ -83,6 +87,10 @@
 
 				case "text":
 					@Html.Partial("Sections/SectionText", fieldset)
+					break;
+					
+				case "search":
+				@Html.Partial("Sections/SectionSearch", fieldset, new ViewDataDictionary(ViewData) { { "content", Model.Content } })
 					break;
 			}
 		}
@@ -95,10 +103,11 @@
 			@Html.Partial("Sections/SectionSplit-6x6")
 			@Html.Partial("Sections/SectionContact")
 		}
-        @Html.Partial("Sections/SectionSearch")
-        @Html.Partial("Sections/SectionTestimonialCustomer")
-        @Html.Partial("Sections/SectionTestimonialBusiness")
-        @Html.Partial("Sections/SectionNews")
+		
+		@*
+	@Html.Partial("Sections/SectionTestimonialBusiness")
+	@Html.Partial("Sections/SectionNews")
+		*@
 	</div>
 }
 

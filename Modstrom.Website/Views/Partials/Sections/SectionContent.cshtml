@@ -4,7 +4,7 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 
 @{
-	string headline = Model.GetValue<string>("headline1");
+	string headline = Model.GetValue<string>("headline");
 	string text = Model.GetValue<string>("text");
 	string videoId = Model.GetValue<string>("video");
 	<section class="section-content">
@@ -46,7 +46,7 @@
 @helper renderBox(string boxName)
 {
 	var box = Model.GetValue<ArchetypeModel>(boxName).FirstOrDefault();
-
+	if (box != null) { 
 	string headline = box.GetValue<string>("headline");
 	string text = box.GetValue<string>("text");
 	var imageId = box.GetValue<int>("image");
@@ -72,4 +72,5 @@
 			}
 		</div>
 	</div>
+	}
 }

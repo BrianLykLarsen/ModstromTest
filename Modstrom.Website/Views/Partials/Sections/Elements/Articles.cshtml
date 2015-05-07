@@ -6,15 +6,15 @@
 @{
 	var current = (IPublishedContent)ViewData["contentArticle"];
 	var articleNode = current.AncestorOrSelf("Site").Children.First(x => x.DocumentTypeAlias == "Articles");
-	string headline = articleNode.GetPropertyValue<string>("headline");
+	string headline = articleNode.GetPropertyValue<string>("pageHeadline");
 
 	 <div class="column-article">
 		<h2>@headline</h2>
 		@foreach (var article in articleNode.Children.Take(2))
 		{
-			string articleHeadline = article.GetPropertyValue<string>("headline");
-			string articleTeaser = article.GetPropertyValue<string>("teaser");
-			<a href="/" class="article">
+			string articleHeadline = article.GetPropertyValue<string>("pageHeadline");
+			string articleTeaser = article.GetPropertyValue<string>("pageDescription");
+			<a href="@article.Url" class="article">
 				<h3>@articleHeadline</h3>
 				@Html.Raw(articleTeaser)
 			</a>

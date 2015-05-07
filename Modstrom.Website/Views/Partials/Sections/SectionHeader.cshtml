@@ -1,23 +1,29 @@
-<header id="header">
-    <figure id="logo">
-        <a href="/">
-            <img src="/images/logo.png" />
-        </a>
-    </figure>
-    <nav id="nav-container">
-        @Html.Partial("Sections/Elements/NavHeader")
+@using Modstrom.Library.Helpers
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	IPublishedContent searchPage = Model.Content.AncestorOrSelf("Site").GetPropertyValue<IPublishedContent>("searchPage");
+	
+	<header id="header">
+		<figure id="logo">
+			<a href="/">
+				<img src="/images/logo.png" />
+			</a>
+		</figure>
+		<nav id="nav-container">
+			@Html.Partial("Sections/Elements/NavHeader")
         
-    </nav>
-    <div id="header-utilities"> 
-        <a id="header-basket" href="/"><span>0,00</span><i class="icon icon-cart"></i></a>
-        <a id="header-login" href="/"><i class="icon icon-login"></i></a>
-        <a id="header-search" href="/"><i class="icon icon-search-compressor"></i></a>
-        <form id="header-search-form" data-parsley-validate>
-            <div class="input-container">
-                <input type="text" placeholder="Søg..." data-parsley-required />
-            </div>
-            <input type="submit" class="btn btn-orange" value="Søg" />
-        </form>
-    </div>
-    @Html.Partial("Sections/Elements/NavSub")
-</header>
+		</nav>
+		<div id="header-utilities"> 
+			<a id="header-basket" href="/"><span>0,00</span><i class="icon icon-cart"></i></a>
+			<a id="header-login" href="/"><i class="icon icon-login"></i></a>
+			<a id="header-search" href="/"><i class="icon icon-search-compressor"></i></a>
+			<form id="header-search-form" action="@searchPage.Url" method="post" data-parsley-validate>
+				<div class="input-container">
+					<input type="text" name="searchParameter" placeholder="Søg..." data-parsley-required />
+				</div>
+				<input type="submit" class="btn btn-orange" value="Søg" />
+			</form>
+		</div>
+		@Html.Partial("Sections/Elements/NavSub")
+	</header>
+}
