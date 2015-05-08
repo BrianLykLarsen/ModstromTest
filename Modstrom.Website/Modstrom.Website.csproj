@@ -450,7 +450,6 @@
     <Content Include="Config\grid.editors.config.js" />
     <Content Include="css\compiled\keepme.txt" />
     <Content Include="default.aspx" />
-    <Content Include="webdeploy virker.txt" />
     <Content Include="xslt\seochecker-notification.xslt" />
     <Content Include="xslt\seochecker-scheduledtask.xslt" />
     <Content Include="bin\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
