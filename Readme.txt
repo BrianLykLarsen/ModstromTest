@@ -21,3 +21,9 @@ Host: https://lab.modstroem.dk:8172/MsDeploy.axd
 SiteName:lab.modstroem.dk
 User: AKMOD\Novicell
 Pass: Kodeord123
+
+Customer Live Database / Customer Staging Database
+DATABASE NAMES: Umbraco_LIVE,Umbraco_TEST
+Server:	database.modstroem.dk,42002 (77.66.28.41)
+Login: Umbraco
+Pass: Gardenparty2345
