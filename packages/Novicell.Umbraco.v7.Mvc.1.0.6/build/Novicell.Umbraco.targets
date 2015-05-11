@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <!-- http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/deploying-extra-files -->
+  
+  <Target Name="UmbracoFiles">
+    <ItemGroup>
+      <_umbraco_client_files Include="umbraco_client\**\*" />
+      <FilesForPackagingFromProject Include="%(_umbraco_client_files.Identity)">
+        <DestinationRelativePath>umbraco_client\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>      
+    </ItemGroup>
+  </Target>
+  
+  <Target Name="uCommerceLicense" Condition="Exists('uCommerce.$(Configuration).key')">
+    <ItemGroup>
+      <_uCommerceLicenseFile Include="uCommerce.$(Configuration).key" />
+      <FilesForPackagingFromProject Include="%(_uCommerceLicenseFile.Identity)">
+        <DestinationRelativePath>uCommerce.key</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+  </Target>
+  
+  <Target Name="ContourLicense" Condition="Exists('./bin/umbracoForms.lic')">
+    <ItemGroup>
+      <_ContourLicenseFile Include="./bin/umbracoForms.lic" />
+      <FilesForPackagingFromProject Include="%(_ContourLicenseFile.Identity)">
+        <DestinationRelativePath>./bin/umbracoForms.lic</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+  </Target>
+  
+  <PropertyGroup>
+       <CopyAllFilesToSingleFolderForPackageDependsOn>
+             UmbracoFiles;uCommerceLicense;ContourLicense;
+             $(CopyAllFilesToSingleFolderForPackageDependsOn);
+       </CopyAllFilesToSingleFolderForPackageDependsOn>
+       
+       <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+            UmbracoFiles;uCommerceLicense;ContourLicense;
+            $(CopyAllFilesToSingleFolderForPackageDependsOn);
+       </CopyAllFilesToSingleFolderForMsdeployDependsOn>
+    
+    
+  </PropertyGroup>
+    
+</Project>

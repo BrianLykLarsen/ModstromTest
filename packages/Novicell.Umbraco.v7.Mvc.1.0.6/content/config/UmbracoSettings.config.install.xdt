@@ -1,0 +1,6 @@
+﻿<?xml version="1.0"?>
+<settings xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <templates>
+    <defaultRenderingEngine xdt:Transform="Replace">Mvc</defaultRenderingEngine>
+  </templates>
+</settings >
