@@ -68,8 +68,20 @@
 					
 					if (!showMulitbleRecipients)
 					{
-						@Html.Raw(description)
-						<img src="@image.Url" />
+                        <div class="form-description">
+                            <div class="col-sm-5 col-sm-offset-2">
+						        @Html.Raw(description)
+                            </div>
+                            <div class="col-sm-3">
+                                <figure>
+			                        <div class="img-default responsiveimg-default" data-imgsrc-default="@image.Url" data-hrnd-default="1" data-imgalt-default="This is the alt text">
+				                        <noscript>
+					                        <img src="@image.Url" alt="This is the alt text">
+				                        </noscript>
+			                        </div>
+		                        </figure>
+                            </div>
+                        </div>
 					}
 					
 					<form id="form-contact" data-parsley-validate method="post" action="#post">
