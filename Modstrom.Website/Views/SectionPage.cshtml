@@ -94,7 +94,7 @@
 					break;
 
 				case "newsList":
-					@Html.Partial("Sections/SectionNews", fieldset)
+					@Html.Partial("Sections/SectionNews", fieldset, new ViewDataDictionary(ViewData) { { "contentArticles", Model.Content } })
 					break;
 			}
 		}

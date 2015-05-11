@@ -1,27 +1,42 @@
-@using Archetype.Models
-@using Archetype.Extensions
-@using Archetype.PropertyConverters
-@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
-
+ï»¿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-	string headline = Model.GetValue<string>("headline");
-	string text = Model.GetValue<string>("text");
-	//var current = (IPublishedContent)ViewData["contentArticles"];
-	var articleNode = Model.GetValue<IPublishedContent>("articleNode");
-	
+	Layout = "Master.cshtml";
+
+	string headline = Model.Content.GetPropertyValue<string>("pageHeadline");
+	string description = Model.Content.GetPropertyValue<string>("pageDescription");
+	var image = Model.Content.GetPropertyValue<IPublishedContent>("pageDescription");
+}
+
+@section mainContent
+{
+	<section class="section-image">
+		<figure>
+			<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@image.Url" data-imgalt-desktop="This is the alt text">
+				<noscript>
+					<img src="@image.Url" alt="This is the alt text">
+				</noscript>
+			</div>
+			<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@image.Url?width=600" data-imgalt-mobile="This is the mobile alt text">
+				<noscript>
+					<img src="@image.Url?width=600" alt="This is the alt text">
+				</noscript>
+			</div>
+		</figure>
+	</section>
+
 	<section class="section-news">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
 					<h2>@headline</h2>
 					<div class="text-area">
-						@Html.Raw(text)
+						@Html.Raw(description)
 					</div>
 					<form class="news-filter row">
 						<div class="col-sm-offset-3 col-sm-3">
 							<div class="input-container">
 								<select id="news-filter-year" class="">
-									<option value="all-years" selected="selected">Alle år</option>
+									<option value="all-years" selected="selected">Alle Ã¥r</option>
 									<option value="2015">2015</option>
 									<option value="2014">2014</option>
 								</select>
@@ -30,7 +45,7 @@
 						<div class="col-sm-3">
 							<div class="input-container">
 								<select id="news-filter-month" class="">
-									<option value="all-months" selected="selected">Alle måneder</option>
+									<option value="all-months" selected="selected">Alle mÃ¥neder</option>
 									<option value="jan">Januar</option>
 									<option value="feb">Febuar</option>
 									<option value="mar">Marts</option>
@@ -41,7 +56,7 @@
 					<div class="news-list-container row">
 						<div class="col-sm-offset-1 col-sm-10">
 							<ul class="news-list row">
-								@foreach (var article in articleNode.Children)
+								@foreach (var article in Model.Content.Children)
 								{
 									string articleHeadline = article.GetPropertyValue<string>("pageHeadline");
 									string articleTeaser = article.GetPropertyValue<string>("pageDescription");
@@ -49,9 +64,9 @@
 
 									<li class="active col-sm-6" data-year="2014" data-month="jan">
 										<figure>
-											<div class="bg-container img-default responsiveimg-default" data-imgsrc-default="@articleImage.Url" data-imgalt-default="This is the alt text">
+											<div class="bg-container img-default responsiveimg-default" data-imgsrc-default="" data-imgalt-default="This is the alt text">
 												<noscript>
-													<img src="@articleImage.Url?width=460&height=300&mode=crop" alt="This is the alt text">
+													<img src="" alt="This is the alt text">
 												</noscript>
 											</div>
 										</figure>
@@ -60,7 +75,7 @@
 										<div class="news-text">
 											@Html.Raw(articleTeaser)
 										</div>
-										<a href="@article.Url" class="see-all">Læs hele artiklen</a>
+										<a href="@article.Url" class="see-all">LÃ¦s hele artiklen</a>
 									</li>
 								}
 							</ul>
@@ -71,4 +86,5 @@
 			</div>
 		</div>
 	</section>
+
 }

@@ -3339,6 +3339,7 @@
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Sieve\LICENSE" />
     <Content Include="Views\Partials\Sections\SectionCases.cshtml" />
     <Content Include="Views\Articles.cshtml" />
+    <Content Include="Views\ArticleList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
