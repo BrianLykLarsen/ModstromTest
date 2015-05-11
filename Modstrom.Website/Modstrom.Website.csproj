@@ -3202,7 +3202,7 @@
     <Content Include="Views\Partials\Sections\SectionElementBuilder.cshtml" />
     <Content Include="Views\Partials\Sections\SectionSearch.cshtml" />
     <Content Include="Views\Partials\Sections\_SectionTestimonialCustomer.cshtml" />
-    <Content Include="Views\Partials\Sections\SectionTestimonialBusiness.cshtml" />
+    <Content Include="Views\Partials\Sections\_SectionTestimonialBusiness.cshtml" />
     <Content Include="Views\Partials\Sections\SectionNews.cshtml" />
     <Content Include="Scripts\libs\simple-pagination\simple-pagination.css" />
     <Content Include="umbraco\assets\fonts\helveticons\helveticons.eot" />

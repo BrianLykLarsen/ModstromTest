@@ -6,15 +6,27 @@
 @{
 	//Property values from archtype
 	string headline = Model.GetValue<string>("headline");
+	
+	string description = Model.GetValue<string>("description");
+	var image = Model.GetValue<IPublishedContent>("image");
+	
 	string headlineReceipt = Model.GetValue<string>("headlineReceipt");
 	string textReceipt = Model.GetValue<string>("textReceipt");
 	var recipients = Model.GetValue<ArchetypeModel>("recipients");
+	bool showMulitbleRecipients = false;
 	
+	string formCss = "small-form";
+	if (recipients.Count() > 1)
+	{
+		showMulitbleRecipients = true;
+		formCss = "large-form";
+	}
+
 	//Requests from postback
 	var request = HttpContext.Current.Request;
 	bool isPostback = false;
 
-	//Robot validation
+	//Robot validation / Honnypot
 	string areURobot = request["firstName"]; //This is a logic name for robots to fill in, but it should be left blank!
 	bool robotIsPosting = false;
 
@@ -27,38 +39,45 @@
 	if (request.HttpMethod == "POST" && !robotIsPosting)
 	{
 		isPostback = true;
-		
-		string lastName			= request["lastName"]; //This is fullname
-		string emailSender		= request["email"];
-		string phone			= request["phone"];
-		string emailReceiver	= request["recipient"];
-		string contactOpening	= request["contact-opening"];
+
+		string lastName = request["lastName"]; //This is fullname
+		string emailSender = request["email"];
+		string phone = request["phone"];
+		string emailReceiver = request["recipient"];
+		string contactOpening = request["contact-opening"];
 
 		string emailHtml = "" + contactOpening;
-		
+
 		var smtp = new System.Net.Mail.SmtpClient();
 		var mail = new System.Net.Mail.MailMessage();
 		mail.From = new System.Net.Mail.MailAddress(emailSender);
 		mail.To.Add(new System.Net.Mail.MailAddress(emailReceiver));
-		
+
 		mail.Subject = headline;
 		mail.Body = emailHtml.ToString();
 		mail.IsBodyHtml = true;
 		smtp.Send(mail);
 	}
 
-	<section class="section-contact" id="post">
+	<section class="section-contact @formCss" id="post">
 		<div class="container">
 			<div class="row">
 				@if (!isPostback)
 				{
 					<h2 class="col-xs-12">@headline</h2>
+					
+					if (!showMulitbleRecipients)
+					{
+						@Html.Raw(description)
+						<img src="@image.Url" />
+					}
+					
 					<form id="form-contact" data-parsley-validate method="post" action="#post">
 						<input type="text" style="display:none;" name="firstName" value="" />
 						<div class="col-md-6 form-configuration">
 							<div class="input-container">
 								<label>Navn</label>
-								<input type="text" id="contact-name" name="lastName"  placeholder="Navn" data-parsley-required />
+								<input type="text" id="contact-name" name="lastName" placeholder="Navn" data-parsley-required />
 							</div>
 							<div class="input-container">
 								<label>Email</label>
@@ -68,27 +87,40 @@
 								<label>Telefon</label>
 								<input type="tel" id="contact-phone" name="phone" placeholder="Telefon (valgfri)" />
 							</div>
-							<div class="group-half">
-								<div class="half">
-									<div class="select input-container">
-										<select id="contact-recipient" name="recipient" data-parsley-required>
-											@foreach (var recipient in recipients)
-											{
-												string recipientName = recipient.GetValue<string>("recipientName");
-												string recipientEmail = recipient.GetValue<string>("recipientEmail");
-												string recipientDescription = recipient.GetValue<string>("recipientDescription");
-			   
-												<option data-opening="@recipientDescription" value="@recipientEmail">@recipientName</option>
-											}
-										</select>
+							@if (showMulitbleRecipients)
+							{
+								<div class="group-half">
+									<div class="half">
+										<div class="select input-container">
+											<select id="contact-recipient" name="recipient" data-parsley-required>
+												@foreach (var recipient in recipients)
+												{
+													string recipientName = recipient.GetValue<string>("recipientName");
+													string recipientEmail = recipient.GetValue<string>("recipientEmail");
+													string recipientDescription = recipient.GetValue<string>("recipientDescription");
+
+													<option data-opening="@recipientDescription" value="@recipientEmail">@recipientName</option>
+												}
+											</select>
+										</div>
+									</div>
+									<div class="half">
+										<div class="input-container">
+											<input type="text" id="contact-opening" name="contact-opening" readonly="readonly" value="" />
+										</div>
 									</div>
 								</div>
-								<div class="half">
-									<div class="input-container">
-										<input type="text" id="contact-opening" name="contact-opening" readonly="readonly" value="" />
-									</div>
-								</div>
-							</div>
+							}
+							else
+							{
+								foreach (var recipient in recipients)
+								{
+
+									string recipientEmail = recipient.GetValue<string>("recipientEmail");
+
+									<input type="hidden" id="contact-recipient" name="recipient" />
+								}
+							}
 						</div>
 						<div class="col-md-6 form-message">
 							<div class="input-container">
