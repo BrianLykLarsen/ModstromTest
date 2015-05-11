@@ -217,7 +217,7 @@ modstrom.master = modstrom.master || function () {
                 }
 
                 var wRnd = Math.round(w / 20) * 20;
-                var hRnd = '0';
+                var hRnd = "300";
 
                 if ($(el).hasClass('responsiveimg-background-' + breakpoint)) {
                     $(el).attr('style', 'background-image:url(' + src + '?' + focalPoint + '&width=' + wRnd + '&height=' + hRnd + '&mode=crop&quality=70&format=jpg);');
