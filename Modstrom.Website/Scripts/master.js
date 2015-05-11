@@ -219,12 +219,18 @@ modstrom.master = modstrom.master || function () {
                 var wRnd = Math.round(w / 20) * 20;
                 var hRnd = '0';
 
+                if ($(el).attr('data-hrnd-' + breakpoint)) {
+                    var proportion = $(el).attr('data-hrnd-' + breakpoint);
+                    hRnd = Math.round(wRnd) * proportion;
+                }
+
                 if ($(el).hasClass('responsiveimg-background-' + breakpoint)) {
                     $(el).attr('style', 'background-image:url(' + src + '?' + focalPoint + '&width=' + wRnd + '&height=' + hRnd + '&mode=crop&quality=70&format=jpg);');
                 } else {
                     el.insertAdjacentHTML('afterbegin', '<img src="' + src + '?' + focalPoint + '&width=' + wRnd + '&height=' + hRnd + '&mode=crop&quality=70&format=jpg" width="' + w + '" alt="' + alt + '">');
                 }
 
+                $(el).removeAttr('data-hrnd-' + breakpoint);
                 $(el).removeAttr('data-imgsrc-' + breakpoint);
                 $(el).removeAttr('data-imgalt-' + breakpoint);
                 $(el).removeClass('responsiveimg-' + breakpoint);
