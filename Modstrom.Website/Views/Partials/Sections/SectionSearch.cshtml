@@ -8,6 +8,7 @@
 @using Archetype.Extensions
 @using Archetype.PropertyConverters
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
 <section class="section-search">
 	<div class="container">
 		<div class="row">
@@ -25,7 +26,7 @@
 					{
 						SearchTerm = CleanseSearchTerm((searchParameter).ToLower(CultureInfo.InvariantCulture)),
 						CurrentPage = int.TryParse(searchPage, out parsedInt) ? parsedInt : 1,
-						PageSize = 10,					//GetMacroParam(current, "pageSize", s => int.Parse(s), 10),
+						PageSize = 5,					//GetMacroParam(current, "pageSize", s => int.Parse(s), 10),
 						RootContentNodeId = -1,			//GetMacroParam(current, "rootContentNodeId", s => int.Parse(s), -1),
 						RootMediaNodeId = -1,			//GetMacroParam(current, "rootMediaNodeId", s => int.Parse(s), -1),
 						IndexType = "CONTENT",			//GetMacroParam(current, "indexType", s => s.ToLower(CultureInfo.InvariantCulture), ""),
@@ -188,7 +189,7 @@
 		</div>
 	</div>
 </section>
-}
+
 @*
 	==================================================
 	 Render Functions
