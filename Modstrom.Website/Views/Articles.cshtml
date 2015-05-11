@@ -1,0 +1,54 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "Master.cshtml";
+
+	string headline = Model.Content.GetPropertyValue<string>("pageHeadline");
+}
+
+@section mainContent
+{
+
+<section class="section-image">
+	<figure>
+		<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/image-placeholder-desktop.jpg" data-imgalt-desktop="This is the alt text">
+			<noscript>
+				<img src="/images/image-placeholder-desktop.jpg" alt="This is the alt text">
+			</noscript>
+		</div>
+		<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/image-placeholder-desktop.jpg?width=600" data-imgalt-mobile="This is the mobile alt text">
+			<noscript>
+				<img src="/images/image-placeholder-desktop.jpg?width=600" alt="This is the alt tsext">
+			</noscript>
+		</div>
+	</figure>
+</section>
+
+	<div id="page" class="article-list">
+			<section class="section-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+
+							<div class="column-article">
+
+								<div class="row">
+									<div class="col-sm-10 col-sm-offset-1">
+										<h2>@headline</h2>
+										@foreach (var article in Model.Content.Children)
+										{
+											string articleHeadline = article.GetPropertyValue<string>("pageHeadline");
+											string articleTeaser = article.GetPropertyValue<string>("pageDescription");
+											<a href="@article.Url" class="article">
+												<h3>@articleHeadline</h3>
+												@Html.Raw(articleTeaser)
+											</a>
+										}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</section>
+	</div>
+}
