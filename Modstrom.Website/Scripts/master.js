@@ -217,7 +217,7 @@ modstrom.master = modstrom.master || function () {
                 }
 
                 var wRnd = Math.round(w / 20) * 20;
-                var hRnd = "300";
+                var hRnd = "0";
 
                 if ($(el).attr('data-hrnd-' + breakpoint)) {
                     var proportion = $(el).attr('data-hrnd-' + breakpoint);

@@ -8,17 +8,29 @@
 @using Archetype.Extensions
 @using Archetype.PropertyConverters
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
-
+@{
+	string headline = Model.GetValue<string>("headline");
+}
 <section class="section-search">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
+				<div class="content-container">
+					<div class="top-element"></div>
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1">
+							<div class="text-area">
+								<h1>@headline</h1>
+							</div>
+						</div>
+					</div>
+				</div>
 				@{
 					var current = (IPublishedContent)ViewData["content"];
 
-					string searchParameter = Request["searchParameter"].IsNullOrWhiteSpace() ? "" : Request["searchParameter"].Replace("!","");
-					string searchPage =	Request["page"].IsNullOrWhiteSpace() ? "1" : Request["page"];
-					
+					string searchParameter = Request["searchParameter"].IsNullOrWhiteSpace() ? "" : Request["searchParameter"].Replace("!", "");
+					string searchPage = Request["page"].IsNullOrWhiteSpace() ? "1" : Request["page"];
+
 					int parsedInt;
 
 					// Parse querystring / macro parameter
@@ -153,9 +165,9 @@
 							{
 								@RenderForm(searchModel)
 							}
-						
+
 							@RenderNoResults(searchModel)
-						
+
 						}
 						else
 						{
@@ -240,7 +252,7 @@
 	string headline = result.GetPropertyValue<string>("pageHeadline").IsNullOrWhiteSpace() ? result.Name : result.GetPropertyValue<string>("pageHeadline");
 	string description = result.GetPropertyValue<string>("pageDescription");
 	var image = result.GetPropertyValue<IPublishedContent>("pageImage");
-	
+
 	<li class="search-result">
 		<a href="@result.Url">
 			<h3>@headline</h3>
