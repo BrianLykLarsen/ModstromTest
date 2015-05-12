@@ -8,18 +8,18 @@
 	var articleNode = current.AncestorOrSelf("Site").Children.First(x => x.DocumentTypeAlias == "Articles");
 	string headline = articleNode.GetPropertyValue<string>("pageHeadline");
 	string amount = Model.GetValue<string>("articlesElementsToShow");
-	var articleNodeList = articleNode.Children.Take(0);
+	var articleNodeList = articleNode.Descendants("SectionPage").Take(0);
 	bool showLink = true;
 	
 	if (amount == "All" || amount == "" || amount == null)
 	{
-		articleNodeList = articleNode.Children;
+		articleNodeList = articleNode.Descendants("SectionPage");
 		showLink = false;
 	}
 	else 
 	{
 		int amountNum = Convert.ToInt32(amount);
-		articleNodeList = articleNode.Children.Take(amountNum);
+		articleNodeList = articleNode.Descendants("SectionPage").Take(amountNum);
 	}
 	
 	<div class="column-article">

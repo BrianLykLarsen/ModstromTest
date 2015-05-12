@@ -39,7 +39,7 @@
 							<div class="input-container">
 								<select id="news-filter-year" class="">
 									<option value="all-years" selected="selected">Alle år</option>
-									@foreach (var year in articleNode.Children.GroupBy(x=>x.CreateDate.Year).Select(x=>x.First().CreateDate.Year))
+									@foreach (var year in articleNode.Descendants("SectionPage").GroupBy(x=>x.CreateDate.Year).Select(x=>x.First().CreateDate.Year))
 									{
 										<option value="@year">@year</option>
 									}
@@ -50,7 +50,7 @@
 							<div class="input-container">
 								<select id="news-filter-month" class="">
 									<option value="all-months" selected="selected">Alle måneder</option>
-									@foreach (var month in articleNode.Children.GroupBy(x => x.CreateDate.Month).Select(x => x.First().CreateDate.Month))
+									@foreach (var month in articleNode.Descendants("SectionPage").GroupBy(x => x.CreateDate.Month).Select(x => x.First().CreateDate.Month))
 									{
 										<option value="@month">@months[month]</option>
 									}
@@ -61,7 +61,7 @@
 					<div class="news-list-container row">
 						<div class="col-sm-offset-1 col-sm-10">
 							<ul class="news-list row">
-								@foreach (var article in articleNode.Children)
+								@foreach (var article in articleNode.Descendants("SectionPage").OrderBy("CreateDate desc"))
 								{
 									string articleHeadline = article.GetPropertyValue<string>("pageHeadline");
 									string articleTeaser = article.GetPropertyValue<string>("pageDescription");
@@ -76,12 +76,12 @@
 										<figure>
 											<div class="bg-container img-default responsiveimg-default" data-imgsrc-default="@articleImage.Url" data-hrnd-default="0.66" data-imgalt-default="This is the alt text">
 												<noscript>
-													<img src="@articleImage.Url?width=460&height=300&mode=crop" alt="This is the alt text">
+													<img src="@articleImage.Url" alt="This is the alt text">
 												</noscript>
 											</div>
 										</figure>
 										<h3>@articleHeadline</h3>
-										<small>Skrevet den <time>4 januar, @article.CreateDate.Year</time></small>
+										<small>Skrevet den <time>@article.CreateDate.Day <span style="text-transform:lowercase;">@months[@article.CreateDate.Month]</span>, @article.CreateDate.Year</time></small>
 										<div class="news-text">
 											<p>
 												@Html.Raw(articleTeaser)
