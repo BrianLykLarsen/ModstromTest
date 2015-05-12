@@ -7,10 +7,24 @@
 	var current = (IPublishedContent)ViewData["contentArticle"];
 	var articleNode = current.AncestorOrSelf("Site").Children.First(x => x.DocumentTypeAlias == "Articles");
 	string headline = articleNode.GetPropertyValue<string>("pageHeadline");
-
-	 <div class="column-article">
+	string amount = Model.GetValue<string>("articlesElementsToShow");
+	var articleNodeList = articleNode.Children.Take(0);
+	bool showLink = true;
+	
+	if (amount == "All" || amount == "" || amount == null)
+	{
+		articleNodeList = articleNode.Children;
+		showLink = false;
+	}
+	else 
+	{
+		int amountNum = Convert.ToInt32(amount);
+		articleNodeList = articleNode.Children.Take(amountNum);
+	}
+	
+	<div class="column-article">
 		<h2>@headline</h2>
-		@foreach (var article in articleNode.Children.Take(2))
+		@foreach (var article in articleNodeList)
 		{
 			string articleHeadline = article.GetPropertyValue<string>("pageHeadline");
 			string articleTeaser = article.GetPropertyValue<string>("pageDescription");
@@ -20,7 +34,10 @@
 			</a>
 		}
 
-		<a class="see-all" href="@articleNode.Url">Se alle artikler</a>
-
+		
+		@if (showLink)
+		{
+			<a class="see-all" href="@articleNode.Url">Se alle artikler</a>
+		}
 	</div>
 }

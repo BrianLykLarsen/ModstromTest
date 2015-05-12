@@ -7,12 +7,26 @@
 	var current = (IPublishedContent)ViewData["contentQuestions"];
 	var questionsNode = current.AncestorOrSelf("Site").Children.First(x => x.DocumentTypeAlias == "FaqList");
 	string headline = questionsNode.GetPropertyValue<string>("headline");
-
+	string amount = Model.GetValue<string>("faqElementsToShow");
+	var faqUrl = Model.GetValue<IPublishedContent>("faqPage");
+	var faqNodeList = questionsNode.Children.Take(0);
+	bool showLink = true;
+	
+	if (amount == "All" || amount == "" || amount == null)
+	{
+		faqNodeList = questionsNode.Children;
+		showLink = false;
+	}
+	else
+	{
+		int amountNum = Convert.ToInt32(amount);
+		faqNodeList = questionsNode.Children.Take(amountNum);
+	}
 
 	<div class="column-questions">
 		<h2>@headline</h2>
 		<ul class="questions">
-			@foreach (var question in questionsNode.Children.Take(3))
+			@foreach (var question in faqNodeList)
 			{
 				string questionHeadline = question.GetPropertyValue<string>("headline");
 				string questionText = question.GetPropertyValue<string>("text");
@@ -31,6 +45,11 @@
 				</li>
 			}
 		</ul>
-		<a class="see-all" href="/">Se alle spørgsmål og svar</a>
+		
+		@if(showLink)
+		{ 
+			<a class="see-all" href="@faqUrl.Url">Se alle spørgsmål og svar</a>
+		}
+		
 	</div>
 }

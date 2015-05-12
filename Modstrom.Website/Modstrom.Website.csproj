@@ -364,7 +364,9 @@
     <Content Include="bin\interfaces.xml" />
     <Content Include="bin\log4net.dll" />
     <Content Include="bin\Lucene.Net.dll" />
-    <Content Include="bin\Lucene.Net.xml" />
+    <Content Include="bin\Lucene.Net.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="bin\LumenWorks.Framework.IO.dll" />
     <Content Include="bin\Microsoft.ApplicationBlocks.Data.dll" />
     <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
@@ -403,7 +405,9 @@
     <Content Include="bin\System.Data.SqlServerCe.dll" />
     <Content Include="bin\System.Data.SqlServerCe.Entity.dll" />
     <Content Include="bin\System.Net.Http.Formatting.dll" />
-    <Content Include="bin\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\System.Net.Http.Formatting.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="bin\System.Web.Helpers.dll" />
     <Content Include="bin\System.Web.Helpers.xml" />
     <Content Include="bin\System.Web.Http.dll" />
