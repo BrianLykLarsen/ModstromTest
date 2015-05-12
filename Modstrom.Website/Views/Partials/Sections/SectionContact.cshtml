@@ -6,15 +6,15 @@
 @{
 	//Property values from archtype
 	string headline = Model.GetValue<string>("headline");
-	
+
 	string description = Model.GetValue<string>("description");
 	var image = Model.GetValue<IPublishedContent>("image");
-	
+
 	string headlineReceipt = Model.GetValue<string>("headlineReceipt");
 	string textReceipt = Model.GetValue<string>("textReceipt");
 	var recipients = Model.GetValue<ArchetypeModel>("recipients");
 	bool showMulitbleRecipients = false;
-	
+
 	string formCss = "small-form";
 	if (recipients.Count() > 1)
 	{
@@ -65,25 +65,29 @@
 				@if (!isPostback)
 				{
 					<h2 class="col-xs-12">@headline</h2>
-					
-					if (!showMulitbleRecipients)
+					if (image != null)
 					{
-                        <div class="form-description">
-                            <div class="col-sm-5 col-sm-offset-2">
-						        @Html.Raw(description)
-                            </div>
-                            <div class="col-sm-3">
-                                <figure>
-			                        <div class="img-default responsiveimg-default" data-imgsrc-default="@image.Url" data-hrnd-default="1" data-imgalt-default="This is the alt text">
-				                        <noscript>
-					                        <img src="@image.Url" alt="This is the alt text">
-				                        </noscript>
-			                        </div>
-		                        </figure>
-                            </div>
-                        </div>
+						<div class="form-description">
+							<div class="col-sm-5 col-sm-offset-2">
+								@Html.Raw(description)
+							</div>
+							<div class="col-sm-3">
+								<figure>
+									<div class="img-default responsiveimg-default" data-imgsrc-default="@image.Url" data-hrnd-default="1" data-imgalt-default="This is the alt text">
+										<noscript>
+											<img src="@image.Url" alt="This is the alt text">
+										</noscript>
+									</div>
+								</figure>
+							</div>
+						</div>
 					}
-					
+					else
+					{
+						<div class="col-sm-12 text-area">
+							@Html.Raw(description)
+						</div>
+					}
 					<form id="form-contact" data-parsley-validate method="post" action="#post">
 						<input type="text" style="display:none;" name="firstName" value="" />
 						<div class="col-md-6 form-configuration">

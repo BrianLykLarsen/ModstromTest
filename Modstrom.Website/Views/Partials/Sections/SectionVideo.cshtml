@@ -1,17 +1,23 @@
 @using Archetype.Models
 @using Archetype.Extensions
 @using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 
 @{
 	string headline = Model.GetValue<string>("headline");
 	string youtubeVideoId = Model.GetValue<string>("youtubeVideoId");
 	string buttonText = Model.GetValue<string>("buttonText");
-	string eksternalUrl = Model.GetValue<string>("eksternalUrl");
-	var linkId = Model.GetValue<int>("internalUrl");
-	var link = Umbraco.Url(linkId);
+	string sectionID = Model.GetValue<string>("sectionID");
+	string marginTop = Model.GetValue<string>("addMarginTop");
+	string marginTopClass = "";
+	if (marginTop=="True")
+	{
+		marginTopClass = "add-margin-top";
+	}
+	var buttonLink = Model.GetValue<MultiUrls>("buttonLink");
 	
-	<section class="section-video">
+	<section id="@sectionID" class="section-video @marginTopClass">
 		<i class="curve"></i>
 		<div class="content-container">
 			<div class="container">
@@ -23,16 +29,9 @@
 						</div>
 					</div>
 
-					@if (!string.IsNullOrWhiteSpace(buttonText))
+					@if (!string.IsNullOrWhiteSpace(buttonText) && buttonLink != null)
 					{
-						if (!string.IsNullOrWhiteSpace(eksternalUrl))
-						{
-							<a href="@eksternalUrl" target="_blank" class="btn btn-dark btn-icon btn-icon-login">@buttonText</a>
-						}
-						else
-						{
-							<a href="@link" class="btn btn-dark btn-icon btn-icon-login">@buttonText</a>
-						}
+						<a href="@buttonLink.FirstOrDefault().Url" target="@buttonLink.FirstOrDefault().Target" class="btn btn-dark btn-icon btn-icon-login">@buttonText</a>
 					}
 				</div>
 			</div>

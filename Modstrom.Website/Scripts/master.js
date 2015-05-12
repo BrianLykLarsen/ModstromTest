@@ -22,11 +22,12 @@ $(function () {
     modstrom.master.newsPaging('.news-list');
     modstrom.master.testimonialOverlay();
     modstrom.master.toggleSearch();
-    
+    modstrom.master.scrollTo();
 
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
     modstrom.master.responsiveImage('desktop');
+    
 });
 
 $(window).resize(function () {
@@ -296,6 +297,23 @@ modstrom.master = modstrom.master || function () {
         });       
     }
 
+    function scrollTo() {
+    	$('a[href*=#]:not([href=#])').click(function () {
+    		if(!$(this).hasClass("testimonial")){
+    			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+    				var target = $(this.hash);
+    				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+    				if (target.length) {
+    					$('html,body').animate({
+    						scrollTop: target.offset().top
+    					}, 1000);
+    					return false;
+    				}
+    			}
+    		}
+    	});
+    }
+
     return {
         resetUI: resetUI,
         mainNavigation: mainNavigation,
@@ -309,7 +327,8 @@ modstrom.master = modstrom.master || function () {
         testimonialSlider: testimonialSlider,
         newsPaging: newsPaging,
         testimonialOverlay: testimonialOverlay,
-        toggleSearch: toggleSearch
+        toggleSearch: toggleSearch,
+        scrollTo: scrollTo
     }
 }();
 

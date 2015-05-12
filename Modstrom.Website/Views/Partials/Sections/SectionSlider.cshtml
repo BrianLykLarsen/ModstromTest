@@ -1,6 +1,7 @@
 @using Archetype.Models
 @using Archetype.Extensions
 @using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 
 @{
@@ -18,11 +19,11 @@
 					var backgroundImage = slide.GetValue<IPublishedContent>("image").Url;
 			
 					string button1Text = slide.GetValue<string>("button1Text");
-					var nodeId1 = slide.GetValue<int>("button1Url");
-					
+					var buttonLink1 = slide.GetValue<MultiUrls>("button1Url");
+		
 					string button2Text = slide.GetValue<string>("button2Text");
-					var nodeId2 = slide.GetValue<int>("button2Url");
-			
+					var buttonLink2 = slide.GetValue<MultiUrls>("button2Url");
+				
 					<li>
 						<figure>
 							<div class="img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@backgroundImage">
@@ -42,15 +43,13 @@
 								<div class="slide-content col-sm-8 col-xs-10 @textColor">
 									<h2>@headline</h2>
 									<div class="slide-utilities">
-										@if (!String.IsNullOrWhiteSpace(button1Text) && nodeId1 != null)
+										@if (!String.IsNullOrWhiteSpace(button1Text) && buttonLink1 != null)
 										{
-											var link = Umbraco.Url(nodeId1);
-											<a href="@link" class="btn btn-dark btn-icon btn-icon-play">@button1Text</a>
+											<a href="@buttonLink1.FirstOrDefault().Url" target="@buttonLink1.FirstOrDefault().Target" class="btn btn-dark btn-icon btn-icon-play">@button1Text</a>
 										}
-										@if (!String.IsNullOrWhiteSpace(button2Text) && nodeId2 != null)
+										@if (!String.IsNullOrWhiteSpace(button2Text) && buttonLink2 != null)
 										{
-											var link = Umbraco.Url(nodeId2);
-											<a href="@link" class="btn btn-teal btn-icon btn-icon-login">@button2Text</a>
+											<a href="@buttonLink2.FirstOrDefault().Url" target="@buttonLink2.FirstOrDefault().Target" class="btn btn-teal btn-icon btn-icon-login">@button2Text</a>
 										}
 									</div>
 								</div>

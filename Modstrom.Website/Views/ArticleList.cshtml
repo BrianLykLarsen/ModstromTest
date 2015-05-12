@@ -56,7 +56,7 @@
 					<div class="news-list-container row">
 						<div class="col-sm-offset-1 col-sm-10">
 							<ul class="news-list row">
-								@foreach (var article in Model.Content.Children)
+								@foreach (var article in Model.Content.Descendants("SectionPage"))
 								{
 									string articleHeadline = article.GetPropertyValue<string>("pageHeadline");
 									string articleTeaser = article.GetPropertyValue<string>("pageDescription");
