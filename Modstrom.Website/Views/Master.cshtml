@@ -41,6 +41,7 @@
          @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyTop"))
 	    
          <div id="site">
+		 	@Html.Partial("SupportSplash")
             @Html.Partial("Sections/SectionHeader")
             @RenderSection("mainContent") 
             @Html.Partial("Sections/SectionFooter")
