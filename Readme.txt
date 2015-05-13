@@ -23,7 +23,7 @@ User: AKMOD\Novicell
 Pass: Kodeord123
 
 Customer Live Database / Customer Staging Database
-DATABASE NAMES: Umbraco_LIVE,Umbraco_TEST
+Database: Umbraco_LIVE, Umbraco_TEST
 Server:	database.modstroem.dk,42002 (77.66.28.41)
 Login: Umbraco
 Pass: Gardenparty2345
