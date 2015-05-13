@@ -23,7 +23,7 @@ $(function () {
     modstrom.master.testimonialOverlay();
     modstrom.master.toggleSearch();
     modstrom.master.scrollTo();
-
+    modstrom.master.support();
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
     modstrom.master.responsiveImage('desktop');
@@ -314,6 +314,22 @@ modstrom.master = modstrom.master || function () {
     	});
     }
 
+    function support() {
+    	var support = $('#support'),
+        supportRevealer = $('.support-revealer'),
+        supportBody = $('.support-body');
+
+    	supportRevealer.click(function () {
+    		$(this).next().animate({ width: 'toggle' }, 'fast', function () {
+    			if (supportBody.css('display') == 'block') {
+    				supportRevealer.addClass('reveal');
+    			} else {
+    				supportRevealer.removeClass('reveal');
+    			}
+    		});
+    	});
+    }
+
     return {
         resetUI: resetUI,
         mainNavigation: mainNavigation,
@@ -328,7 +344,8 @@ modstrom.master = modstrom.master || function () {
         newsPaging: newsPaging,
         testimonialOverlay: testimonialOverlay,
         toggleSearch: toggleSearch,
-        scrollTo: scrollTo
+        scrollTo: scrollTo,
+        support: support
     }
 }();
 
