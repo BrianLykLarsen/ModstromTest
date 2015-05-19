@@ -6,11 +6,17 @@
 @{
 	string headline = Model.GetValue<string>("headline");
 	string text = Model.GetValue<string>("text");
+	bool centerText = Model.GetValue<bool>("centerText");
+	string centerTextClass = "";
+	if (centerText)
+	{
+		centerTextClass = "center";
+	}
 	<section class="section-text">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-10 col-sm-offset-1">
-					<div class="text-area">
+					<div class="text-area @centerTextClass">
 						<h1>@headline</h1>
 						@Html.Raw(text)
 					</div>

@@ -7,14 +7,9 @@
 * Usage: 
 
     var cookieInfoOptions = {
-        'autohide': false,
         'btnhide': 'Cookies?',
         'btnshow': 'OK. close box',
         'cookieInfoPath': $('#cookieInfo').attr('data-cookie-info-path')
-    }
-    // You may want to override autohide for hiding per default on phone - requires novicell.responsive.js
-    if ($('body').hasClass('phone')) {
-        cookieInfoOptions.autohide = true;
     }
     novicell.cookieinfo.init(cookieInfoOptions);
 
@@ -33,45 +28,63 @@
 */
 
 
-novicell.cookieinfo = new function () {
+novicell.cookieinfo = new function() {
     var self = this;
-    this.init = function (args) {
+    this.init = function(args) {
         self.elm = $('#cookieInfo');
         self.options = args;
-        if ($.cookie("cookieAccept") == undefined && args.autohide != true) {
-            $.cookie("cookieAccept", "accepted", { expires: 365, path: '/' });
-            self.render({ 'mode': 'show' });
-        }
-        else {
-            self.render({ 'mode': 'hide' });
-        }
-    }
-    this.toggle = function () {
-        $('a.cookie-info-toggle', self.elm).on('click', function (e) {
-            e.preventDefault();
-            if (self.elm.attr('data-mode') == 'show') {
+        if (self.elm.length) {
+            if ($.cookie("cookieAccept") != undefined && $.cookie("cookieAccept") == "displayed") {
+                $.cookie("cookieAccept", "accepted", { expires: 365, path: '/' });
+            }
+
+            if ($.cookie("cookieAccept") == undefined) {
+                self.render({ 'mode': 'show' });
+            } else {
                 self.render({ 'mode': 'hide' });
             }
-            else {
-                self.render({ 'mode': 'show' });
+
+            if ($.cookie("cookieAccept") == undefined) {
+                $.cookie("cookieAccept", "displayed", { path: '/' });
             }
-        });
-    }
-    this.render = function (args) {
+
+            $('body').on('click', '#cookieInfo a.cookie-info-toggle', function(e) {
+                e.preventDefault();
+                if (self.elm.attr('data-mode') == 'show') {
+                    self.render({ 'mode': 'hide' });
+                    $.cookie("cookieAccept", "accepted", { expires: 365, path: '/' });
+                } else {
+                    self.render({ 'mode': 'show' });
+                }
+            });
+        }
+    };
+    this.toggle = function() {
+       
+    };
+    this.render = function(args) {
         self.elm.html('');
         var btn = $('<a>').addClass('cookie-info-toggle').attr('href', '#cookieInfo' + args.mode).text(self.options['btn' + args.mode]);
         var markup = '';
         if (args.mode == 'show') {
-            var cookieInfoText = $('<div>').text('Cookie text error');
-            $.get(self.options.cookieInfoPath, function (data) {
+            var cookieInfoText = $('<div>')//;.text('Cookie text error');
+          /*  $.get(self.options.cookieInfoPath, function(data) {
                 cookieInfoText.html(data);
+            });*/
+            $.ajax({
+                url: self.options.cookieInfoPath,
+                crossDomain: true,
+                cache: false,
+                success:  function (data) {
+                    cookieInfoText.html(data);
+                }
             });
-            markup = $('<div>').addClass('cookie-info-content').append(btn, $('<div>').addClass('cookie-info-text').append(cookieInfoText));
-        }
-        else {
-            markup = btn;
+
+            markup = $('<div>').addClass('cookie-info-content').append(/*btn,*/ $('<div>').addClass('cookie-info-text').append(cookieInfoText));
+        } else {
+            markup = $('<div>').addClass('').append(btn); //btn;
         }
         self.elm.attr('class', 'cookie-info-' + args.mode).attr('data-mode', args.mode).html(markup);
         self.toggle();
-    }
-}
+    };
+};

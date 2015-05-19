@@ -25,7 +25,7 @@
 		{12,"December"}
 	};
 
-	
+
 	<section class="section-news">
 		<div class="container">
 			<div class="row">
@@ -39,7 +39,7 @@
 							<div class="input-container">
 								<select id="news-filter-year" class="">
 									<option value="all-years" selected="selected">Alle år</option>
-									@foreach (var year in articleNode.Descendants("SectionPage").GroupBy(x=>x.CreateDate.Year).Select(x=>x.First().CreateDate.Year))
+									@foreach (var year in articleNode.Descendants("SectionPage").GroupBy(x => x.CreateDate.Year).Select(x => x.First().CreateDate.Year))
 									{
 										<option value="@year">@year</option>
 									}
@@ -66,19 +66,30 @@
 									string articleHeadline = article.GetPropertyValue<string>("pageHeadline");
 									string articleTeaser = article.GetPropertyValue<string>("pageDescription");
 									var articleImage = article.GetPropertyValue<IPublishedContent>("pageImage");
+									string articleImageUrl = "";
+									bool showImage = false;
+									if (articleImage != null)
+									{
+										articleImageUrl = articleImage.Url;
+										showImage = true;
+									}
 
 									if (articleTeaser.Length > 50)
 									{
 										articleTeaser = articleTeaser.Substring(0, 50) + "...";
 									}
-			
+
 									<li class="active col-sm-6" data-year="@article.CreateDate.Year" data-month="@article.CreateDate.Month">
+
 										<figure>
-											<div class="bg-container img-default responsiveimg-default" data-imgsrc-default="@articleImage.Url" data-hrnd-default="0.66" data-imgalt-default="This is the alt text">
-												<noscript>
-													<img src="@articleImage.Url" alt="This is the alt text">
-												</noscript>
-											</div>
+											@if (showImage)
+											{
+												<div class="bg-container img-default responsiveimg-default" data-imgsrc-default="@articleImageUrl" data-hrnd-default="0.66" data-imgalt-default="This is the alt text">
+													<noscript>
+														<img src="@articleImageUrl" alt="This is the alt text">
+													</noscript>
+												</div>
+											}
 										</figure>
 										<h3>@articleHeadline</h3>
 										<small>Skrevet den <time>@article.CreateDate.Day <span style="text-transform:lowercase;">@months[@article.CreateDate.Month]</span>, @article.CreateDate.Year</time></small>

@@ -24,10 +24,18 @@ $(function () {
     modstrom.master.toggleSearch();
     modstrom.master.scrollTo();
     modstrom.master.support();
+    modstrom.master.showMoreCases();
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
     modstrom.master.responsiveImage('desktop');
-    
+	/** COOKIES **/
+    var cookieInfoOptions = {
+    	'autohide': false,
+    	'btnhide': 'Cookies?',
+    	'btnshow': 'OK. close box',
+    	'cookieInfoPath': $('#cookieInfo').attr('data-cookie-info-path')
+    }
+    novicell.cookieinfo.init(cookieInfoOptions);
 });
 
 $(window).resize(function () {
@@ -314,6 +322,13 @@ modstrom.master = modstrom.master || function () {
     	});
     }
 
+    function showMoreCases() {
+    	$('#caseButton').click(function () {
+    		$(this).fadeOut();
+    		$(".hidden-element").fadeIn();
+    	});
+    }
+
     function support() {
     	var support = $('#support'),
         supportRevealer = $('.support-revealer'),
@@ -345,7 +360,8 @@ modstrom.master = modstrom.master || function () {
         testimonialOverlay: testimonialOverlay,
         toggleSearch: toggleSearch,
         scrollTo: scrollTo,
-        support: support
+        support: support,
+        showMoreCases: showMoreCases
     }
 }();
 

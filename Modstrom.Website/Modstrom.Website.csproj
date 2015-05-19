@@ -457,6 +457,7 @@
     <Content Include="Config\grid.editors.config.js" />
     <Content Include="css\compiled\keepme.txt" />
     <Content Include="default.aspx" />
+    <Content Include="images\favicon.png" />
     <Content Include="images\support.png" />
     <Content Include="xslt\seochecker-notification.xslt" />
     <Content Include="xslt\seochecker-scheduledtask.xslt" />
@@ -3349,6 +3350,8 @@
     <Content Include="Views\_Articles.cshtml" />
     <Content Include="Views\_ArticleList.cshtml" />
     <Content Include="Views\Partials\SupportSplash.cshtml" />
+    <Content Include="Views\Partials\CookiePopup.cshtml" />
+    <Content Include="Views\CookiePopup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />

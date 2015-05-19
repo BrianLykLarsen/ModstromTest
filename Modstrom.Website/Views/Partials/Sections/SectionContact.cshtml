@@ -45,9 +45,15 @@
 		string phone = request["phone"];
 		string emailReceiver = request["recipient"];
 		string contactOpening = request["contact-opening"];
-
-		string emailHtml = "" + contactOpening;
-
+		string message = request["contact-message"];
+		
+		string emailHtml = "";
+		emailHtml += "Navn: " + lastName + "<br />";
+		emailHtml += "Email: " + emailSender + "<br />";
+		emailHtml += "Telefon: " + phone + "<br />";
+		emailHtml += "Træffes bedst: " + contactOpening + "<br />";
+		emailHtml += "Besked:<br /> " + message;
+		
 		var smtp = new System.Net.Mail.SmtpClient();
 		var mail = new System.Net.Mail.MailMessage();
 		mail.From = new System.Net.Mail.MailAddress(emailSender);
@@ -134,7 +140,7 @@
 
 									string recipientEmail = recipient.GetValue<string>("recipientEmail");
 
-									<input type="hidden" id="contact-recipient" name="recipient" />
+									<input type="hidden" name="recipient" value="@recipientEmail" />
 								}
 							}
 						</div>
