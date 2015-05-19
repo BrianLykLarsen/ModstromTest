@@ -20,6 +20,7 @@
 
         @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteHeader"))
         @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageHeader"))
+		<link href="/images/favicon.png" rel="shortcut icon" />
 
         <link type="text/plain" rel="author" href="/humans.txt" />
         @(Bundle.Css()
@@ -39,7 +40,7 @@
          @Html.Partial("SEO/ncSiteGoogleAnalytics")
          @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteBodyTop"))
          @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyTop"))
-	    
+		 @Html.Partial("CookiePopup")
          <div id="site">
 		 	@Html.Partial("SupportSplash")
             @Html.Partial("Sections/SectionHeader")
@@ -52,7 +53,8 @@
             .Add("~/scripts/libs/modernizr.custom.js")
             .Add("~/scripts/libs/novicell.js")
             .Add("~/scripts/libs/novicell.responsive.js")
-            
+			.Add("~/scripts/libs/jquery.cookie.js")
+			.Add("~/scripts/libs/novicell.cookieinfo.js")
             .Add("~/scripts/libs/parsley/jquery.parsley.js")              
             .Add("~/scripts/libs/flexslider/jquery.flexslider.js")
             .Add("~/scripts/libs/fancybox/jquery.fancybox.js") 
