@@ -46,14 +46,14 @@
 		string emailReceiver = request["recipient"];
 		string contactOpening = request["contact-opening"];
 		string message = request["contact-message"];
-		
+
 		string emailHtml = "";
 		emailHtml += "Navn: " + lastName + "<br />";
 		emailHtml += "Email: " + emailSender + "<br />";
 		emailHtml += "Telefon: " + phone + "<br />";
 		emailHtml += "Træffes bedst: " + contactOpening + "<br />";
 		emailHtml += "Besked:<br /> " + message;
-		
+
 		var smtp = new System.Net.Mail.SmtpClient();
 		var mail = new System.Net.Mail.MailMessage();
 		mail.From = new System.Net.Mail.MailAddress(emailSender);
@@ -158,7 +158,9 @@
 				else
 				{
 					<h2 class="col-xs-12">@headlineReceipt</h2>
-					@Html.Raw(textReceipt)
+					<div class="col-sm-12 text-area">
+						@Html.Raw(textReceipt)
+					</div>
 				}
 			</div>
 		</div>
