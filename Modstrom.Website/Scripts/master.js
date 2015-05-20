@@ -64,7 +64,6 @@ modstrom.master = modstrom.master || function () {
         $('.fancybox').fancybox({
             openEffect: 'none',
             closeEffect: 'none'
-
         });
     }
 
@@ -75,7 +74,7 @@ modstrom.master = modstrom.master || function () {
         var childWidth = 0;
 
         $('li', nav).each(function () {
-            childWidth += $(this).outerWidth();
+            childWidth += $(this).outerWidth()+4;
         });
 
         $(nav).width(childWidth);

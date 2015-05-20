@@ -3176,9 +3176,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.11.0.min.map" />
-    <Content Include="Views\_FrontPage.cshtml" />
     <Content Include="Views\Master.cshtml" />
-    <Content Include="Views\_TextPage.cshtml" />
     <Content Include="Views\Partials\Sections\Elements\NavHeader.cshtml" />
     <Content Include="Views\Partials\Sections\Elements\NavSub.cshtml" />
     <Content Include="Views\Partials\SEO\ncSiteGoogleAnalytics.cshtml" />
@@ -3200,7 +3198,6 @@
     <Content Include="Views\Partials\Sections\SectionComments.cshtml" />
     <Content Include="Views\Partials\Sections\SectionRelevantPages.cshtml" />
     <Content Include="Views\Partials\Sections\SectionContact.cshtml" />
-    <Content Include="Views\_ProductPage.cshtml" />
     <Content Include="Views\Partials\Sections\SectionText.cshtml" />
     <Content Include="Views\Partials\Sections\SectionTextSplit.cshtml" />
     <Content Include="Views\Partials\Sections\Elements\Questions.cshtml" />
@@ -3210,8 +3207,6 @@
     </Content>
     <Content Include="Views\Partials\Sections\SectionElementBuilder.cshtml" />
     <Content Include="Views\Partials\Sections\SectionSearch.cshtml" />
-    <Content Include="Views\Partials\Sections\_SectionTestimonialCustomer.cshtml" />
-    <Content Include="Views\Partials\Sections\_SectionTestimonialBusiness.cshtml" />
     <Content Include="Views\Partials\Sections\SectionNews.cshtml" />
     <Content Include="Scripts\libs\simple-pagination\simple-pagination.css" />
     <Content Include="umbraco\assets\fonts\helveticons\helveticons.eot" />
@@ -3347,8 +3342,6 @@
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Razor\LICENSE" />
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Sieve\LICENSE" />
     <Content Include="Views\Partials\Sections\SectionCases.cshtml" />
-    <Content Include="Views\_Articles.cshtml" />
-    <Content Include="Views\_ArticleList.cshtml" />
     <Content Include="Views\Partials\SupportSplash.cshtml" />
     <Content Include="Views\Partials\CookiePopup.cshtml" />
     <Content Include="Views\CookiePopup.cshtml" />

@@ -74,9 +74,9 @@
 										showImage = true;
 									}
 
-									if (articleTeaser.Length > 50)
+									if (articleTeaser.Length > 180)
 									{
-										articleTeaser = articleTeaser.Substring(0, 50) + "...";
+										articleTeaser = articleTeaser.Substring(0, 180) + "...";
 									}
 
 									<li class="active col-sm-6" data-year="@article.CreateDate.Year" data-month="@article.CreateDate.Month">
