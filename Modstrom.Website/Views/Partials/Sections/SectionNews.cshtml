@@ -37,7 +37,7 @@
 							<div class="input-container">
 								<select id="news-filter-year" class="">
 									<option value="all-years" selected="selected">Alle år</option>
-									@foreach (var year in articleNode.Descendants("SectionPage").GroupBy(x => x.CreateDate.Year).Select(x => x.First().CreateDate.Year))
+									@foreach (var year in articleNode.Descendants("SectionPage").GroupBy(x => x.UpdateDate.Year).Select(x => x.First().UpdateDate.Year))
 									{
 										<option value="@year">@year</option>
 									}
@@ -48,7 +48,7 @@
 							<div class="input-container">
 								<select id="news-filter-month" class="">
 									<option value="all-months" selected="selected">Alle måneder</option>
-									@foreach (var month in articleNode.Descendants("SectionPage").GroupBy(x => x.CreateDate.Month).Select(x => x.First().CreateDate.Month))
+									@foreach (var month in articleNode.Descendants("SectionPage").GroupBy(x => x.UpdateDate.Month).Select(x => x.First().UpdateDate.Month))
 									{
 										<option value="@month">@months[month]</option>
 									}
@@ -77,7 +77,7 @@
 										articleTeaser = articleTeaser.Substring(0, 180) + "...";
 									}
 
-									<li class="active col-sm-6" data-year="@article.CreateDate.Year" data-month="@article.CreateDate.Month">
+									<li class="active col-sm-6" data-year="@article.UpdateDate.Year" data-month="@article.UpdateDate.Month">
 
 										<figure>
 											@if (showImage)
@@ -90,7 +90,7 @@
 											}
 										</figure>
 										<h3>@articleHeadline</h3>
-										<small>Skrevet den <time>@article.CreateDate.Day <span style="text-transform:lowercase;">@months[@article.CreateDate.Month]</span>, @article.CreateDate.Year</time></small>
+										<small>Opdateret den <time>@article.UpdateDate.Day <span style="text-transform:lowercase;">@months[@article.UpdateDate.Month]</span>, @article.UpdateDate.Year</time></small>
 										<div class="news-text">
 											<p>
 												@Html.Raw(articleTeaser)
