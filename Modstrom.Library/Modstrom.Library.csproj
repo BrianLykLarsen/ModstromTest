@@ -196,6 +196,7 @@
     <Compile Include="Controllers\Base\BaseSurfaceController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\MyPageController.cs" />
     <Compile Include="Events\Helpers\CacheUtil.cs" />
     <Compile Include="Events\Helpers\ExtensionMethods.cs" />
     <Compile Include="Events\Helpers\Global.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="Events\UmbracoEvents.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\MyPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
