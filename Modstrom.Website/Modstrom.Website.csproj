@@ -333,6 +333,7 @@
     <Content Include="Scripts\libs\jquery.cookie.js" />
     <Content Include="xslt\seochecker-notification.xslt" />
     <Content Include="xslt\seochecker-scheduledtask.xslt" />
+    <Content Include="bin\seo-checker.lic" />
     <None Include="fonts\Modstrom-icons\modstrom-icons.less" />
     <Content Include="fonts\Modstrom-icons\modstrom.svg" />
     <Content Include="fonts\Sini\2DD7EE_0_0.svg" />
