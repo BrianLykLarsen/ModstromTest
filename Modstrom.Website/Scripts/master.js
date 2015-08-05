@@ -70,18 +70,11 @@ modstrom.master = modstrom.master || function () {
     function mainNavigation() {
         var container = '#nav-container';
         var nav = '#nav-header';
-        var navWidth = $(nav).outerWidth();
-        var childWidth = 0;
 
-        $('li', nav).each(function () {
-            childWidth += $(this).outerWidth()+4;
+        $('.nav-trigger').click(function () {
+            $(container).toggleClass('active');
         });
-
-        $(nav).width(childWidth);
-
-        $('#nav-container').perfectScrollbar({
-            maxScrollbarLength: 250
-        });
+        
     }
 
     function newsPaging(selector) {
