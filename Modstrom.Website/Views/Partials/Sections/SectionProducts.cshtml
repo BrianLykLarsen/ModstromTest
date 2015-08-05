@@ -1,0 +1,177 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string headline = Model.GetValue<string>("headline");
+	string sectionID = Model.GetValue<string>("sectionID");
+	var productNode = Model.GetValue<IPublishedContent>("productList").Children;
+
+	<section id ="@sectionID" class="section-products">
+		<div class="container">
+			<div class="row">
+				<h2 class="col-xs-12">@headline</h2>
+				<div class="products-container col-xs-12">
+					<ul class="list-products slides">
+
+						@foreach (var product in productNode)
+						{
+							string productName = product.GetPropertyValue<string>("headline");
+
+							IPublishedContent productImage = product.GetPropertyValue<IPublishedContent>("productImage");
+							string productText = product.GetPropertyValue<string>("text");
+
+							if (productText.Length > 80)
+							{
+								productText = productText.Substring(0, 80) + "...";
+							}
+
+							string productPrice = product.GetPropertyValue<string>("price");
+							string productLink = product.GetPropertyValue<string>("link");
+							string productRibbon = product.GetPropertyValue<string>("ribbon");
+							string productRibbonText = product.GetPropertyValue<string>("ribbonText");
+
+							<li>
+								<div class="product">
+									@if (productRibbon == "Kampagne")
+									{
+										<i class="banner banner-campain">@productRibbonText</i>
+									}
+
+									@if (productRibbon == "Spar")
+									{
+										<i class="banner banner-save">@productRibbonText</i>
+									}
+
+									@if (productImage != null)
+									{
+										<figure class="responsiveimg-default" data-hrnd-default="1" data-imgsrc-default="@productImage.Url" data-imgalt-default="This is the alt-text">
+											<noscript>
+												<img src="@productImage.Url" alt="This is the alt text">
+											</noscript>
+										</figure>
+									}
+									<div class="product-details">
+										<h3>@productName</h3>
+										<div class="description">
+											@productText
+										</div>
+										<div class="price">@productPrice</div>
+										<a href="@productLink" class="btn btn-teal">Mere info</a>
+									</div>
+								</div>
+							</li>
+
+						}
+						@*TODO: CLEAN UP DELETE THIS
+												<li>
+								<div class="product">
+									<i class="banner banner-save">Spar 15%</i>
+									<figure class="responsiveimg-default" data-imgsrc-default="/images/product-placeholder.jpg" data-imgalt-default="This is the alt-text">
+										<noscript>
+											<img src="/images/product-placeholder.jpg" alt="This is the alt text">
+										</noscript>
+									</figure>
+									<div class="product-details">
+										<h3>Sunjar</h3>
+										<div class="description">
+											Glasset har solceller i låget og et indbygget genopladeligt batteri.
+										</div>
+										<div class="price">Kr. 195,00</div>
+										<a href="/" class="btn btn-teal">Mere info</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="product">
+									<figure class="responsiveimg-default" data-imgsrc-default="/images/product-placeholder.jpg" data-imgalt-default="This is the alt-text">
+										<noscript>
+											<img src="/images/product-placeholder.jpg" alt="This is the alt text">
+										</noscript>
+									</figure>
+									<div class="product-details">
+										<h3>Sunjar</h3>
+										<div class="description">
+											Glasset har solceller i låget og et indbygget genopladeligt batteri.
+										</div>
+										<div class="price">Kr. 195,00</div>
+										<a href="/" class="btn btn-teal">Mere info</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="product">
+									<figure class="responsiveimg-default" data-imgsrc-default="/images/product-placeholder.jpg" data-imgalt-default="This is the alt-text">
+										<noscript>
+											<img src="/images/product-placeholder.jpg" alt="This is the alt text">
+										</noscript>
+									</figure>
+									<div class="product-details">
+										<h3>Sunjar</h3>
+										<div class="description">
+											Glasset har solceller i låget og et indbygget genopladeligt batteri.
+										</div>
+										<div class="price">Kr. 195,00</div>
+										<a href="/" class="btn btn-teal">Mere info</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="product">
+									<figure class="responsiveimg-default" data-imgsrc-default="/images/product-placeholder.jpg" data-imgalt-default="This is the alt-text">
+										<noscript>
+											<img src="/images/product-placeholder.jpg" alt="This is the alt text">
+										</noscript>
+									</figure>
+									<div class="product-details">
+										<h3>Sunjar</h3>
+										<div class="description">
+											Glasset har solceller i låget og et indbygget genopladeligt batteri.
+										</div>
+										<div class="price">Kr. 195,00</div>
+										<a href="/" class="btn btn-teal">Mere info</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="product">
+									<figure class="responsiveimg-default" data-imgsrc-default="/images/product-placeholder.jpg" data-imgalt-default="This is the alt-text">
+										<noscript>
+											<img src="/images/product-placeholder.jpg" alt="This is the alt text">
+										</noscript>
+									</figure>
+									<div class="product-details">
+										<h3>Sunjar</h3>
+										<div class="description">
+											Glasset har solceller i låget og et indbygget genopladeligt batteri.
+										</div>
+										<div class="price">Kr. 195,00</div>
+										<a href="/" class="btn btn-teal">Mere info</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="product">
+									<figure class="responsiveimg-default" data-imgsrc-default="/images/product-placeholder.jpg" data-imgalt-default="This is the alt-text">
+										<noscript>
+											<img src="/images/product-placeholder.jpg" alt="This is the alt text">
+										</noscript>
+									</figure>
+									<div class="product-details">
+										<h3>Sunjar</h3>
+										<div class="description">
+											Glasset har solceller i låget og et indbygget genopladeligt batteri.
+										</div>
+										<div class="price">Kr. 195,00</div>
+										<a href="/" class="btn btn-teal">Mere info</a>
+									</div>
+								</div>
+							</li>*@
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</section>
+}

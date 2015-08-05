@@ -1,0 +1,115 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string headline = Model.GetValue<string>("headline");
+	string text = Model.GetValue<string>("text");
+	var rightImage = Model.GetValue<IPublishedContent>("rightImage");
+	
+	string buttonText = Model.GetValue<string>("buttonText");
+	var buttonLink = Model.GetValue<MultiUrls>("buttonLink");
+	
+	string videoId = Model.GetValue<string>("video");
+	bool centerText = Model.GetValue<bool>("centerText");
+	string centerTextClass = "";
+	if (centerText)
+	{
+		centerTextClass = "center";
+	}
+
+	<section class="section-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+
+					<div class="content-container">
+						<div class="top-element"></div>
+						<div class="row">
+							<div class="col-sm-10 col-sm-offset-1">
+								<div class="text-area @centerTextClass">
+									<h1>@headline</h1>
+									@if (rightImage == null)
+									{
+										@Html.Raw(text)
+									}
+									else
+									{
+										<div class="row">
+											<div class="col-sm-8">@Html.Raw(text)</div>
+											<div class="col-sm-4">
+												<figure class="responsiveimg-default" data-imgsrc-default="@rightImage.Url" data-imgalt-default="This is the alt-text">
+													<noscript>
+														<img src="@rightImage.Url" alt="This is the alt text">
+													</noscript>
+												</figure>
+
+												@if (!string.IsNullOrWhiteSpace(buttonText) && buttonLink != null)
+												{
+													
+				
+													<div class="btn-holder">
+														<a href="@buttonLink.FirstOrDefault().Url" class="btn btn-teal btn-icon btn-icon-bulb">@buttonText</a>
+													</div>
+												}
+											</div>
+										</div>
+									}
+								</div>
+								@if (!string.IsNullOrWhiteSpace(videoId))
+								{
+									<div class="video-container">
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/@videoId" frameborder="0" allowfullscreen></iframe>
+									</div>
+								}
+								else
+								{
+									<div class="content-boxes">
+										@renderBox("box1")
+
+										@renderBox("box2")
+									</div>
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+
+@helper renderBox(string boxName)
+{
+	var box = Model.GetValue<ArchetypeModel>(boxName).FirstOrDefault();
+	if (box != null)
+	{
+		string headline = box.GetValue<string>("headline");
+		string text = box.GetValue<string>("text");
+		var imageId = box.GetValue<int>("image");
+		var imageUrl = Umbraco.TypedMedia(imageId).Url;
+
+		string buttonText = box.GetValue<string>("buttonText");
+		var linkId = box.GetValue<int>("link");
+		var link = Umbraco.Url(linkId);
+
+		<div class="box ide-el">
+			<h3>@headline</h3>
+			<figure class="img-default responsiveimg-default" data-imgsrc-default="@imageUrl" data-imgalt-default="This is the alt text">
+				<noscript>
+					<img src="@imageUrl" alt="This is the alt text">
+				</noscript>
+			</figure>
+			<div class="box-text">
+				<i></i>
+				@Html.Raw(text)
+				@if (!string.IsNullOrWhiteSpace(buttonText))
+				{
+					<a href="@link" class="btn btn-dark">@buttonText</a>
+				}
+			</div>
+		</div>
+	}
+}

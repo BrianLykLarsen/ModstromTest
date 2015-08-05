@@ -1,0 +1,121 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	var slides = Model.GetValue<ArchetypeModel>("slide");
+
+	if(slides.Any())
+	{
+		<section id="slider" class="flexslider">
+			<ul class="slides">
+				@foreach(var slide in slides)
+				{
+					string headline = slide.GetValue<string>("headline");
+					string textColor = slide.GetValue<string>("textColor");
+		
+					var backgroundImage = slide.GetValue<IPublishedContent>("image").Url;
+			
+					string button1Text = slide.GetValue<string>("button1Text");
+					var buttonLink1 = slide.GetValue<MultiUrls>("button1Url");
+		
+					string button2Text = slide.GetValue<string>("button2Text");
+					var buttonLink2 = slide.GetValue<MultiUrls>("button2Url");
+				
+					<li>
+						<figure>
+							<div class="img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@backgroundImage">
+								<noscript>
+									<img src="@backgroundImage" alt="This is the alt text">
+								</noscript>
+							</div>
+							<div class="img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@backgroundImage">
+								<noscript>
+									<img src="@backgroundImage" alt="This is the alt text">
+								</noscript>
+							</div>
+						</figure>
+
+						<div class="container">
+							<div class="row">
+								<div class="slide-content col-sm-8 col-xs-10 @textColor">
+									<h2>@headline</h2>
+									<div class="slide-utilities">
+										@if (!String.IsNullOrWhiteSpace(button1Text) && buttonLink1 != null)
+										{
+											<a href="@buttonLink1.FirstOrDefault().Url" target="@buttonLink1.FirstOrDefault().Target" class="btn btn-dark btn-icon btn-icon-play">@button1Text</a>
+										}
+										@if (!String.IsNullOrWhiteSpace(button2Text) && buttonLink2 != null)
+										{
+											<a href="@buttonLink2.FirstOrDefault().Url" target="@buttonLink2.FirstOrDefault().Target" class="btn btn-teal btn-icon btn-icon-login">@button2Text</a>
+										}
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				}
+			</ul>
+		</section>
+
+	}
+	@*TODO: CLEAN UP
+		<section id="slider" class="flexslider">
+		<ul class="slides">
+			<li>
+				<figure>
+					<div class="img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/slider-placeholder-desktop.jpg">
+						<noscript>
+							<img src="/images/slider-placeholder-desktop-01.jpg" alt="This is the alt text">
+						</noscript>
+					</div>
+					<div class="img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/slider-placeholder-mobile.jpg">
+						<noscript>
+							<img src="/images/slider-placeholder-mobile-01.jpg" alt="This is the alt text">
+						</noscript>
+					</div>
+				</figure>
+
+				<div class="container">
+					<div class="row">
+						<div class="slide-content col-sm-8 col-xs-10">
+							<h2>Den billigste kilo-watt time er den du ikke bruger...</h2>
+							<div class="slide-utilities">
+								<a href="/" class="btn btn-dark">Gå mod strømmen</a>
+								<a href="/" class="btn btn-teal">Bliv kunde</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<figure>
+					<div class="img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/section-hero-placeholder-desktop.jpg">
+						<noscript>
+							<img src="/images/slider-placeholder-desktop-01.jpg" alt="This is the alt text">
+						</noscript>
+					</div>
+					<div class="img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/slider-placeholder-mobile.jpg">
+						<noscript>
+							<img src="/images/slider-placeholder-mobile-01.jpg" alt="This is the alt text">
+						</noscript>
+					</div>
+				</figure>
+
+				<div class="container">
+					<div class="row">
+						<div class="slide-content col-sm-8 col-xs-10">
+							<h2>n du ikke bruger...</h2>
+							<div class="slide-utilities">
+								<a href="/" class="btn btn-dark">Gå mod fuy strømmen</a>
+								<a href="/" class="btn btn-teal">Bliv wertwe  kunde</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</section>*@
+}
