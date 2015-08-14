@@ -4,7 +4,7 @@ $(function () {
     novicell.responsive.breakpoints({
         0:      'default mobile',
         480:    'default mobile',
-        768:    'default desktop tablet',
+        768:    'default tablet',
         980:    'default desktop',
         1185:   'default desktop'
     });
@@ -27,6 +27,7 @@ $(function () {
     modstrom.master.showMoreCases();
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
+    modstrom.master.responsiveImage('tablet');
     modstrom.master.responsiveImage('desktop');
 	/** COOKIES **/
     var cookieInfoOptions = {
@@ -43,9 +44,10 @@ $(window).resize(function () {
 
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
+    modstrom.master.responsiveImage('tablet');
     modstrom.master.responsiveImage('desktop');
 
-    $('#nav-container').perfectScrollbar('update');
+    //$('#nav-container').perfectScrollbar('update');
 });
 
 var modstrom = modstrom || {};
