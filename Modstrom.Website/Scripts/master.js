@@ -25,6 +25,7 @@ $(function () {
     modstrom.master.scrollTo();
     modstrom.master.support();
     modstrom.master.showMoreCases();
+    modstrom.master.toggleTestimonial();
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
     modstrom.master.responsiveImage('tablet');
@@ -339,6 +340,17 @@ modstrom.master = modstrom.master || function () {
     	});
     }
 
+    function toggleTestimonial() {
+        if($('.section-testimonial-business').length) {
+            var container = $('.section-testimonial-business');
+            $('.testimonial', container).click(function() {
+                var current = $(this);
+                var collapsible = $('.collapsible-text', current);
+                $(collapsible).slideToggle();
+            });
+        }
+    }
+
     return {
         resetUI: resetUI,
         mainNavigation: mainNavigation,
@@ -355,7 +367,8 @@ modstrom.master = modstrom.master || function () {
         toggleSearch: toggleSearch,
         scrollTo: scrollTo,
         support: support,
-        showMoreCases: showMoreCases
+        showMoreCases: showMoreCases,
+        toggleTestimonial
     }
 }();
 
