@@ -24,6 +24,9 @@ syntax: glob
 *Website/App_Data/Logs/*
 *Website/App_Data/NuGetBackup/*
 
+Modstrom.Website/node_modules/*
+Modstrom.Website/dist/*
+Modstrom.Website/vendor/*
 Modstrom.Website/App_Data/preview/*
 Modstrom.Website/App_Data/cache/*
 Modstrom.Website/Properties/PublishProfiles/*

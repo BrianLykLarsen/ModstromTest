@@ -23,15 +23,7 @@
 		<link href="/images/favicon.png" rel="shortcut icon" />
 
         <link type="text/plain" rel="author" href="/humans.txt" />
-        @(Bundle.Css()
-            .Add("~/scripts/libs/flexslider/flexslider.css") 
-            .Add("~/scripts/libs/perfect-scrollbar/perfect-scrollbar.css")
-            .Add("~/scripts/libs/simple-pagination/simple-pagination.css")
-            .Add("~/scripts/libs/fancybox/jquery.fancybox.css")
-            .Add("~/less/master.less")
-            //.ForceRelease() // enable if you want to squish it in debug=true
-            .MvcRender("~/css/compiled/comb.min_#.css")
-        )
+        <link rel="stylesheet" href="/dist/css/master.min.css">
         <!--[if lt IE 9]>
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -48,22 +40,8 @@
             @Html.Partial("Sections/SectionFooter")
          </div>
         
-         @(Bundle.JavaScript()
-            .Add("~/scripts/jquery-1.11.0.js")
-            .Add("~/scripts/libs/modernizr.custom.js")
-            .Add("~/scripts/libs/novicell.responsive.js")
-			.Add("~/scripts/libs/jquery.cookie.js")
-			.Add("~/scripts/libs/novicell.cookieinfo.js")
-            .Add("~/scripts/libs/parsley/jquery.parsley.js")              
-            .Add("~/scripts/libs/flexslider/jquery.flexslider.js")
-            .Add("~/scripts/libs/fancybox/jquery.fancybox.js") 
-            .Add("~/scripts/libs/perfect-scrollbar/jquery.perfect-scrollbar.js")
-            .Add("~/scripts/libs/simple-pagination/jquery.simple-pagination.js")
-			.Add("~/scripts/libs/novicell.js")
-            .MvcRender("~/scripts/compiled/comb.min_#.js")
-        )
-        
-        <script type="text/javascript" src="/scripts/master.js"></script>
+        <script src="/dist/scripts/vendor.min.js"></script>
+        <script src="/dist/scripts/master.min.js"></script>
 
         @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteBodyBottom"))
         @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyBottom"))
