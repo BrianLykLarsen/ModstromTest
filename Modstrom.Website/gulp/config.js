@@ -128,7 +128,7 @@ module.exports = (function () {
                 projectPath + "Scripts/libs/parsley/jquery.parsley.js",              
                 projectPath + "Scripts/libs/flexslider/jquery.flexslider.js",
                 projectPath + "Scripts/libs/fancybox/jquery.fancybox.js", 
-                projectPath + "Scripts/libs/perfect-scrollbar/jquery.perfect-scrollbar.js",
+                // projectPath + "Scripts/libs/perfect-scrollbar/jquery.perfect-scrollbar.js",
                 projectPath + "Scripts/libs/simple-pagination/jquery.simple-pagination.js",
                 projectPath + "Scripts/libs/novicell.js"
             ]

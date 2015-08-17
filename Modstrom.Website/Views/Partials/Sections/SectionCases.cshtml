@@ -35,7 +35,7 @@
 								hiddenClass = "hidden-element";
 							}
 							<li class="testimonial @hiddenClass">
-								<a href="@comment.Url" class="row">
+								<div class="row">
 									<figure class="col-sm-4 image-container">
 										@if (showImage) { 
 										<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@pageImageUrl" data-imgalt-desktop="This is the alt text">
@@ -56,9 +56,16 @@
 											<p>
 												@Html.Raw(pageDescription)
 											</p>
+                                            <div class="collapsible-text">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
+                                                   cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                <a href="@comment.Url"><h4>Gå til artiklen</h4></a>
+                                            </div>
 										</div>
 									</div>
-								</a>
+								</div>
 							</li>
 							
 							counter++;
