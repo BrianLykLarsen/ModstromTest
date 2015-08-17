@@ -1,0 +1,40 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string headline = Model.GetValue<string>("headline");
+	string youtubeVideoId = Model.GetValue<string>("youtubeVideoId");
+	string buttonText = Model.GetValue<string>("buttonText");
+	string sectionID = Model.GetValue<string>("sectionID");
+	string marginTop = Model.GetValue<string>("addMarginTop");
+	string marginTopClass = "";
+	if (marginTop=="True")
+	{
+		marginTopClass = "add-margin-top";
+	}
+	var buttonLink = Model.GetValue<MultiUrls>("buttonLink");
+	
+	<section id="@sectionID" class="section-video @marginTopClass">
+		<i class="curve"></i>
+		<div class="content-container">
+			<div class="container">
+				<div class="row">
+					<h2 class="col-xs-12 col-sm-6 col-sm-offset-3">@headline</h2>
+					<div class="col-xs-12">
+						<div class="video-container">
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/@youtubeVideoId" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+
+					@if (!string.IsNullOrWhiteSpace(buttonText) && buttonLink != null)
+					{
+						<a href="@buttonLink.FirstOrDefault().Url" target="@buttonLink.FirstOrDefault().Target" class="btn btn-dark btn-icon btn-icon-login">@buttonText</a>
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+}

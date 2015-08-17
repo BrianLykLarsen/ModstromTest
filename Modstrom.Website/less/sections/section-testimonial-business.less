@@ -1,0 +1,111 @@
+.section-testimonial-business {padding:40px 0 60px 0;background:@modstrom-gray-light;text-align:center;
+    .hidden-element{display:none;}
+	h2 {text-align:center;margin:0 0 40px 0;}
+    .text-area {text-align:center;font-size:18px;margin-bottom:60px;}
+
+    .testimonials {
+        .testimonial {overflow:hidden;margin-top:30px;background:white;border-radius:4px;box-shadow:0 0 3px rgba(0,0,0,0.15);position:relative;
+            a {display:block;overflow:hidden;
+               figure {position:relative;position:absolute;top:0;height:100%;
+                   div {width:100%;height:100%;background-size:cover;background-position:center;}
+                   &:after {display:block;content:'';position:absolute;width: 50px;height: 100%;background: white;top:0;}
+               }
+               .testimonial-text {color:@modstrom-dark;padding:50px 50px;text-align:left;
+                   h3 {font-size:32px;color:@modstrom-teal;padding-bottom:30px;margin:0;}
+                   p {margin:0;}
+               }
+            }
+
+            &:nth-child(odd) {
+                .image-container {left:-15px;}
+                .text-container {float:right;}
+                figure {
+                    div {border-radius:4px 0 0 4px;}
+                    &:after {.transform(skew(-5deg));right:-15px;}
+                }
+                .testimonial-text {padding-left:0;}
+            }
+
+            &:nth-child(even) {
+                .image-container {right:-15px;}
+                .text-container {float:left;}
+                figure {
+                    div {border-radius:0 4px 4px 0;}
+                    &:after {.transform(skew(5deg));left:-15px;}
+                }
+                .testimonial-text {padding-right:0;}
+                &:after {color:white;}
+            }
+            &:after { content: 'b'; display: block; position: absolute; bottom: 15px; right: 15px; height: 30px; width: 20px;font-family:modstrom;line-height:30px;font-size:25px;color:@modstrom-gray;}
+        }
+    }
+    .btn {display:inline-block;margin-top:50px;}
+}
+    
+@media (max-width: @screen-md-max) {
+    .section-testimonial-business { padding: 40px 0 50px 0;
+        h2 { margin: 0 0 35px 0; }
+        .text-area { font-size: 18px; margin-bottom: 50px; }
+        .testimonials {
+            .testimonial {margin-top:30px;
+                a {
+                   .testimonial-text {padding:40px 40px;
+                       h3 {font-size:25px;padding-bottom:25px;}
+                   }
+                }
+            }
+        }
+        .btn {margin-top:40px;}
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    .section-testimonial-business {padding:40px 0 40px 0;
+        h2 {margin:0 0 30px 0;}
+        .text-area {font-size:16px;margin-bottom:40px;}  
+        .testimonials {
+            .testimonial {margin-top:20px;
+                a {
+                   .testimonial-text {padding:30px 30px;
+                       h3 {font-size:20px;padding-bottom:15px;}
+                   }
+                }
+            }
+        } 
+        .btn {margin-top:30px;}  
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .section-testimonial-business {padding:30px 0 30px 0;
+        h2 {margin:0 0 25px 0;text-align:left;}
+        .text-area {font-size:16px;margin-bottom:30px;text-align:left;}
+
+        .testimonials {border-radius:0;
+            .testimonial {margin-top:20px;
+                a {
+                    figure {height:170px;
+                        div {}
+                        &:after {display:none;}
+                    }
+                }
+
+                &:nth-child(odd),
+                &:nth-child(even) {
+                    a {
+                        .image-container {position:static;}
+                        .text-container {float:none;}
+                        figure {
+                            div {border-radius:0;}
+                        }
+                        .testimonial-text {padding:20px 20px 40px 20px;font-size:14px;
+                           h3 {padding-bottom:10px;}
+                       }
+                    }
+                    &:after {color:@modstrom-gray;}
+                }
+            }
+        }   
+        .btn {margin-top:20px;}
+    }
+}

@@ -1,0 +1,66 @@
+.section-search {padding:50px 0;border-top:solid 1px @modstrom-gray-light;
+    #page-search {background:@modstrom-teal;padding:15px;
+        input {width:100%;margin:0;min-height:47px;}
+
+        ::-webkit-input-placeholder { color: #d6d6d6; }
+        :-moz-placeholder { color: #d6d6d6; }
+        ::-moz-placeholder { color: #d6d6d6; }
+        :-ms-input-placeholder { color: #d6d6d6; }
+    }
+    .search-results {
+        .search-result {margin-top:30px;
+            a {display:block;color:@modstrom-dark;padding:20px;border:solid 1px @modstrom-gray-light;position:relative;
+               h3 {border-bottom:solid 1px @modstrom-dark;.transition(0.25s);float:left;margin-bottom:25px;}
+               .row {clear:both;
+                    figure {
+                        img {border-radius:50%;width:100%;height:auto;}
+                    }
+               }
+               &:after { content: 'b'; display: block; position: absolute; bottom: 10px; right: 15px; height: 30px; width: 20px;font-family:modstrom;line-height:30px;font-size:25px;color:@modstrom-teal;}
+               &:hover {background:#f9f9f9;
+                    h3 {}
+               }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-md-max) {
+    .section-search {padding:40px 0;
+        .search-results {
+            .search-result {margin-top:25px;
+                a {
+                   h3 {margin-bottom:20px;}
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    .section-search {padding:30px 0;
+        .search-results {
+            .search-result {margin-top:20px;
+                a {padding:15px;
+                   h3 {margin-bottom:15px;}
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .section-search { padding: 20px 0 30px 0;
+        #page-search { 
+            .btn {margin-top:15px;min-height:initial;}
+        }
+        .search-results {
+            .search-result { margin-top: 15px;
+                a { padding: 15px;
+                    h3 { margin-bottom: 15px; }
+                    figure { margin-bottom: 15px; }
+                }
+            }
+        }
+    }
+}

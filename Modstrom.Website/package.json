@@ -1,0 +1,67 @@
+{
+  "name": "novicell-frontend",
+  "version": "1.0.0",
+  "author": {
+    "name": "Adam Peter Nielsen",
+    "email": "apn@novicell.dk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Novicell/novicell-frontend.git"
+  },
+  "main": "index.js",
+  "contributors": [
+    {
+      "name": "Emil Busch",
+      "email": "ebu@novicell.dk"
+    },
+    {
+      "name": "Danni Larsen",
+      "email": "dla@novicell.dk"
+    },
+    {
+      "name": "Emil Rasmussen",
+      "email": "era@novicell.dk"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^0.1.3",
+    "gulp": "^3.8.8",
+    "gulp-autoprefixer": "^1.0.1",
+    "gulp-bower": "0.0.7",
+    "gulp-concat": "^2.4.1",
+    "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^1.2.1",
+    "gulp-jscs": "^1.2.0",
+    "gulp-jshint": "^1.8.5",
+    "gulp-less": "^1.3.6",
+    "gulp-livereload": "^2.1.1",
+    "gulp-load-plugins": "^0.7.1",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-minify-html": "^0.1.6",
+    "gulp-newer": "^0.3.0",
+    "gulp-ng-html2js": "^0.1.8",
+    "gulp-notify": "^2.0.0",
+    "gulp-plumber": "^0.6.6",
+    "gulp-resolve-dependencies": "^1.0.1",
+    "gulp-sourcemaps": "^1.2.8",
+    "gulp-svg-sprite": "^1.0.18",
+    "gulp-uglify": "^1.0.1",
+    "merge-stream": "^0.1.6",
+    "node-notifier": "^4.0.2",
+    "yargs": "^1.3.2"
+  },
+  "gitHead": "e3a272b051387c658887330eac098420ff9e2611",
+  "readme": "# Novicell Default Frontend\r\n\r\n##  Preparation\r\n\r\n- Download and install Node.js (https://nodejs.org/download/)\r\n- Download and install Git (http://git-scm.com/downloads)\r\n  Remember to check \"Git bash here\" in context menu options\r\n\r\n  To check if node is working, go to CMD / Powershell / Gitbash / Terminal and type `node -v`\r\n  If you get a version number, you'r good to go.\r\n\r\n##  Installation\r\n\r\nFirst navigate to your website and install novicell fronend package:\r\n\r\n    cd \"c:\\Visual studio projects\\project-name\\Project.Website\"\r\n    npm install github:Novicell/novicell-frontend\r\n\r\n## How to use GULP\r\n\r\nFirst navigate to your website\r\n\r\n    cd c:\\\"Visual studio projects\"\\project-name\\Project.Website\r\n\r\n- To build whats already in there (runs the build task): `gulp`\r\n- To never touch the cmd window again (runs the watch task): `gulp watch`\r\n- To Stop/Restart GULP: `CTRl + c`\r\n\r\nAll tasks can be run like: `gulp <task name>`.\r\n\r\n## Tasks in this package\r\n\r\nThe following tasks are available:\r\n\r\n- build -\tRuns all the tasks defined in: gulp-config.json > tasksToBuild\r\n- clean -\tDeletes the files/directories defined in: gulp-config.json > pathsToClean\r\n- rebuild -\tRuns the clean task, and then the build task.\r\n- styles -\tMinifies and bundles CSS files defined in: gulp-config.json > bundles > {bundleName} > styles\r\n- scripts -\tMinifies and bundles JS files defined in: gulp-config.json > bundles > {bundleName} > scripts\r\n- images -\tMinifies images defined in: gulp-config.json > bundles > {bundleName} > images\r\n- icons -\tMinifies and generates a svg sprite, from the icons defined in: gulp-config.json > bundles > {bundleName} > icons\r\n- fonts -\tCopies the fonts defined in: gulp-config.json > bundles > {bundleName} > fonts\r\n- watch\r\n\r\n  - Runs the scripts, styles, images, icons and fonts task whenever a file has changed. The paths it listens on, is defined in the file gulp-config.json > watch.\r\n  - Also it automatically refreshes your browser window, using livereload (port can be changed in gulp-config.json > livereload > port).\r\n  The paths it listens on, is defined in: gulp-config.json > livereload > paths.\r\n\r\n  Google Chrome Plugin: https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei\r\n\r\n  - Generates sourcemaps, if debug is set to true in gulp-config.json.\r\n\r\nNOTE: The distribution path for each task, can be defined in gulp-config.json - so can the basePath.\r\n\r\n## How to use SVG sprite sheet\r\n\r\nUse the following HTML. Remember to set correct path and id of chosen symbol, in svg href value.\r\n\r\n    <svg class=\"icon-instagram\">\r\n    \t<use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"/dist/icons/icons.svg#instagram\">\r\n    </use></svg>\r\n\r\n\r\n#### CSS/LESS:\r\nUse classes in \"/dist/icons/icons.less\".\r\n\r\n## What is GULP by the way?\r\n\r\nGULP is a streaming build system - or short for:\r\n\r\n\"I'll take care of minifiyng the images, scripts, styles and icons\r\n- now you just focus on doing what you do best: CODE!\"\r\n\r\n# License\r\nThe Novicell Default Frontend is licensed under the MIT Open Source license.\r\n",
+  "readmeFilename": "README.md",
+  "description": "- Download and install Node.js (https://nodejs.org/download/)\r - Download and install Git (http://git-scm.com/downloads)\r   Remember to check \"Git bash here\" in context menu options",
+  "bugs": {
+    "url": "https://github.com/Novicell/novicell-frontend/issues"
+  },
+  "homepage": "https://github.com/Novicell/novicell-frontend#readme",
+  "_id": "novicell-frontend@1.0.0",
+  "_shasum": "0a89f8b121d7af549650fc51a1a2bd6e78c03052",
+  "_from": "novicell/novicell-frontend",
+  "_resolved": "git://github.com/novicell/novicell-frontend.git#e3a272b051387c658887330eac098420ff9e2611"
+}

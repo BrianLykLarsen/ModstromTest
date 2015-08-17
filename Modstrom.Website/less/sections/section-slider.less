@@ -1,0 +1,76 @@
+.flexslider {margin:0;border:none;}
+
+#slider { width: 100%;
+    .slides {
+        li { position: relative;width:100%;height:700px;
+            figure { 
+                div {height: 100%; width: 100%; position: absolute; background-repeat: no-repeat; background-position: center; background-size: cover;}
+            }
+            .slide-content {margin-top:240px;
+				&.text-dark{color:@modstrom-dark;
+					h2{color:@modstrom-dark;}
+				}
+				&.text-light{color:#FFF;
+					h2{color:#FFF;}
+				}
+                h2 { font-size: 65px; margin: 0;line-height:1.15em; }
+                .slide-utilities {margin-top:60px;overflow:hidden;
+                    .btn {float:left;
+                        &:first-child {margin-right:30px;}  
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-md-max) {
+    #slider {
+        .slides {
+            li {height:550px;
+                .slide-content {margin-top:160px;
+                    h2 { font-size: 50px;}
+                    .slide-utilities {margin-top:40px;
+                        .btn {
+                            &:first-child {margin-right:20px;}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    #slider {
+        .slides {
+            li {height:450px;
+                .slide-content {margin-top:135px;
+                    h2 { font-size: 45px;}
+                    .slide-utilities {margin-top:30px;
+                        .btn {
+                            &:first-child {margin-right:20px;}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    #slider {padding-top:46px;
+        .slides {
+            li {height:390px;
+                .slide-content {margin-top:65px;
+                    h2 { font-size: 30px;}
+                    .slide-utilities {margin-top:30px;
+                        .btn {clear:both;
+                            &:first-child {margin:0 0 20px 0;}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
