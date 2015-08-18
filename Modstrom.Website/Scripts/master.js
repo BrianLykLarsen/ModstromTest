@@ -9,7 +9,7 @@ $(function () {
         1185:   'default desktop'
     });
 
-    novicell.responsive.init(modstrom.master.resetUI());
+    novicell.responsive.init();
     modstrom.master.flexslider('.flexslider');
     modstrom.master.productSlider();
     modstrom.master.commentsSlider();
@@ -368,7 +368,7 @@ modstrom.master = modstrom.master || function () {
         scrollTo: scrollTo,
         support: support,
         showMoreCases: showMoreCases,
-        toggleTestimonial
+        toggleTestimonial: toggleTestimonial
     }
 }();
 
