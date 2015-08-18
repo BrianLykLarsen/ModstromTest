@@ -30,6 +30,7 @@ $(function () {
     modstrom.master.responsiveImage('mobile');
     modstrom.master.responsiveImage('tablet');
     modstrom.master.responsiveImage('desktop');
+
 	/** COOKIES **/
     var cookieInfoOptions = {
     	'autohide': false,
@@ -368,7 +369,7 @@ modstrom.master = modstrom.master || function () {
         scrollTo: scrollTo,
         support: support,
         showMoreCases: showMoreCases,
-        toggleTestimonial
+        toggleTestimonial: toggleTestimonial
     }
 }();
 
