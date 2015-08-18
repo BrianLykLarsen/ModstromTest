@@ -9,7 +9,7 @@ $(function () {
         1185:   'default desktop'
     });
 
-    novicell.responsive.init(modstrom.master.resetUI());
+    novicell.responsive.init();
     modstrom.master.flexslider('.flexslider');
     modstrom.master.productSlider();
     modstrom.master.commentsSlider();

@@ -8,6 +8,7 @@
 
   //FlexSlider: Object Instance
   $.flexslider = function(el, options) {
+
     var slider = $(el);
 
     // making variables public
