@@ -28,7 +28,6 @@
 
 var novicell = novicell || {};
 
-
 novicell.responsive = novicell.responsive || function () {
 
     var responsiveMode = 'desktop';

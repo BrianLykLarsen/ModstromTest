@@ -122,6 +122,7 @@ module.exports = (function () {
             scripts: [
                 projectPath + "Scripts/jquery-1.11.0.js",
                 projectPath + "Scripts/libs/modernizr.custom.js",
+                projectPath + "Scripts/libs/novicell.js",
                 projectPath + "Scripts/libs/novicell.responsive.js",
                 projectPath + "Scripts/libs/jquery.cookie.js",
                 projectPath + "Scripts/libs/novicell.cookieinfo.js",
@@ -129,8 +130,7 @@ module.exports = (function () {
                 projectPath + "Scripts/libs/flexslider/jquery.flexslider.js",
                 projectPath + "Scripts/libs/fancybox/jquery.fancybox.js", 
                 // projectPath + "Scripts/libs/perfect-scrollbar/jquery.perfect-scrollbar.js",
-                projectPath + "Scripts/libs/simple-pagination/jquery.simple-pagination.js",
-                projectPath + "Scripts/libs/novicell.js"
+                projectPath + "Scripts/libs/simple-pagination/jquery.simple-pagination.js"
             ]
         },
         {
