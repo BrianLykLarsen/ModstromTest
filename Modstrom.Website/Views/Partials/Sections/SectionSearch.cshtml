@@ -154,7 +154,7 @@
 						searchModel.CurrentPage = Math.Max(1, Math.Min(searchModel.TotalPages, searchModel.CurrentPage));
 
 						// Page the results
-						searchModel.PagedResults = searchModel.AllResults.Skip(searchModel.PageSize * (searchModel.CurrentPage - 1)).Take(searchModel.PageSize);
+						searchModel.PagedResults = searchModel.AllResults.OrderByDescending(r => Umbraco.TypedContent(r.Fields["id"]).GetPropertyValue<int>("searchPriority")).Skip(searchModel.PageSize * (searchModel.CurrentPage - 1)).Take(searchModel.PageSize);
 
 						LogHelper.Debug<string>("[ezSearch] Searching Lucene with the following query: " + query.ToString());
 
@@ -251,6 +251,7 @@
 
 	string headline = result.GetPropertyValue<string>("pageHeadline").IsNullOrWhiteSpace() ? result.Name : result.GetPropertyValue<string>("pageHeadline");
 	string description = result.GetPropertyValue<string>("pageDescription");
+	string searchPriority = result.GetPropertyValue<string>("searchPriority");
 	var image = result.GetPropertyValue<IPublishedContent>("pageImage");
 
 	<li class="search-result">

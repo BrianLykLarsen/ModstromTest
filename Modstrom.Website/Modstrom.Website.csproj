@@ -353,6 +353,7 @@
     <Content Include="css\compiled\keepme.txt" />
     <Content Include="css\editor.css" />
     <Content Include="default.aspx" />
+    <Content Include="dist\css\fonts\flexslider-icon.svg" />
     <Content Include="dist\css\master.min.css" />
     <Content Include="dist\scripts\vendor.min.js" />
     <Content Include="images\404.png" />
@@ -362,6 +363,9 @@
     <Content Include="xslt\seochecker-notification.xslt" />
     <Content Include="xslt\seochecker-scheduledtask.xslt" />
     <Content Include="bin\seo-checker.lic" />
+    <Content Include="dist\css\fonts\flexslider-icon.eot" />
+    <Content Include="dist\css\fonts\flexslider-icon.ttf" />
+    <Content Include="dist\css\fonts\flexslider-icon.woff" />
     <None Include="fonts\Modstrom-icons\modstrom-icons.less" />
     <Content Include="fonts\Modstrom-icons\modstrom.svg" />
     <Content Include="fonts\Sini\2DD7EE_0_0.svg" />
@@ -3243,6 +3247,23 @@
     <Content Include="Views\Partials\CookiePopup.cshtml" />
     <Content Include="Views\CookiePopup.cshtml" />
     <Content Include="Views\MyPage.cshtml" />
+    <Content Include="Views\Partials\Sections\SectionForm.cshtml" />
+    <Content Include="Views\Partials\Forms\Export\csv.cshtml" />
+    <Content Include="Views\Partials\Forms\Export\html.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.CheckBox.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.CheckBoxList.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.DatePicker.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.DropDownList.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.FileUpload.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.HiddenField.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.PasswordField.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.RadioButtonList.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\Fieldtype.Recaptcha.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.Text.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.Textarea.cshtml" />
+    <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.Textfield.cshtml" />
+    <Content Include="Views\Partials\Forms\Form.cshtml" />
+    <Content Include="Views\Partials\Forms\Script.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
