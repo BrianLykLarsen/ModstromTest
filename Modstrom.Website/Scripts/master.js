@@ -26,6 +26,7 @@ $(function () {
     modstrom.master.support();
     modstrom.master.showMoreCases();
     modstrom.master.toggleTestimonial();
+    modstrom.master.formFix();
     modstrom.master.responsiveImage('default');
     modstrom.master.responsiveImage('mobile');
     modstrom.master.responsiveImage('tablet');
@@ -56,6 +57,19 @@ var modstrom = modstrom || {};
 
 modstrom.master = modstrom.master || function () {
     function resetUI() {}
+
+    function formFix() {
+    	var form = $(".contour");
+
+    	form.each(function (index) {
+
+    		var formId = $(this).attr("id");
+    		var form = $(this).find("form")
+    		var formAction = form.attr("action");
+    		
+    		form.attr("action", formAction + "#" + formId);
+    	});
+    }
 
     function toggleSearch() {
         $('#header-search').click(function (e) {
@@ -353,23 +367,24 @@ modstrom.master = modstrom.master || function () {
     }
 
     return {
-        resetUI: resetUI,
-        mainNavigation: mainNavigation,
-        flexslider: flexslider,
-        responsiveImage: responsiveImage,
-        adjustTrigger: adjustTrigger,
-        questionTrigger: questionTrigger,
-        productSlider: productSlider,
-        commentsSlider: commentsSlider,
-        formContact: formContact,
-        testimonialSlider: testimonialSlider,
-        newsPaging: newsPaging,
-        testimonialOverlay: testimonialOverlay,
-        toggleSearch: toggleSearch,
-        scrollTo: scrollTo,
-        support: support,
-        showMoreCases: showMoreCases,
-        toggleTestimonial: toggleTestimonial
+    	resetUI: resetUI,
+    	mainNavigation: mainNavigation,
+    	flexslider: flexslider,
+    	responsiveImage: responsiveImage,
+    	adjustTrigger: adjustTrigger,
+    	questionTrigger: questionTrigger,
+    	productSlider: productSlider,
+    	commentsSlider: commentsSlider,
+    	formContact: formContact,
+    	testimonialSlider: testimonialSlider,
+    	newsPaging: newsPaging,
+    	testimonialOverlay: testimonialOverlay,
+    	toggleSearch: toggleSearch,
+    	scrollTo: scrollTo,
+    	support: support,
+    	showMoreCases: showMoreCases,
+    	toggleTestimonial: toggleTestimonial,
+    	formFix:formFix
     }
 }();
 

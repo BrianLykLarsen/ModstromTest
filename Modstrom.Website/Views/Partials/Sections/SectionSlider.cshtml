@@ -17,8 +17,18 @@
 					string textColor = slide.GetValue<string>("textColor");
 
 					var backgroundImageDesktop = slide.GetValue<IPublishedContent>("imageDesktop").Url;
+					var backgroundImageDesktopFtop = slide.GetValue<IPublishedContent>("imageDesktop").GetPropertyValue<dynamic>("umbracoFile").focalPoint.top;
+					var backgroundImageDesktopFleft = slide.GetValue<IPublishedContent>("imageDesktop").GetPropertyValue<dynamic>("umbracoFile").focalPoint.left;
+		
+
 					var backgroundImageTablet = slide.GetValue<IPublishedContent>("imageTablet").Url;
+					var backgroundImageTabletFtop = slide.GetValue<IPublishedContent>("imageTablet").GetPropertyValue<dynamic>("umbracoFile").focalPoint.top;
+					var backgroundImageTabletFleft = slide.GetValue<IPublishedContent>("imageTablet").GetPropertyValue<dynamic>("umbracoFile").focalPoint.left;
+		
 					var backgroundImageMobile = slide.GetValue<IPublishedContent>("imageMobile").Url;
+					var backgroundImageMobileFtop = slide.GetValue<IPublishedContent>("imageMobile").GetPropertyValue<dynamic>("umbracoFile").focalPoint.top;
+					var backgroundImageMobileFleft = slide.GetValue<IPublishedContent>("imageMobile").GetPropertyValue<dynamic>("umbracoFile").focalPoint.left;
+		
 					string button1Text = slide.GetValue<string>("button1Text");
 					var buttonLink1 = slide.GetValue<MultiUrls>("button1Url");
 
@@ -32,21 +42,23 @@
 								@backgroundImageTablet
 								@backgroundImageMobile
 							*@
-							<div class="img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@backgroundImageDesktop">
-								<noscript>
-									<img src="@backgroundImageDesktop" alt="This is the alt text">
-								</noscript>
-							</div>
-                            <div class="img-tablet responsiveimg-tablet responsiveimg-background-tablet" data-imgsrc-tablet="@backgroundImageTablet">
-								<noscript>
-									<img src="@backgroundImageTablet" alt="This is the alt text">
-								</noscript>
-							</div>
-							<div class="img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@backgroundImageMobile">
-								<noscript>
-									<img src="@backgroundImageMobile" alt="This is the alt text">
-								</noscript>
-							</div>
+							<p>
+			
+								<div class="img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@backgroundImageDesktop?center=@backgroundImageDesktopFtop,@backgroundImageDesktopFleft">
+									<noscript>
+										<img src="@backgroundImageDesktop" alt="This is the alt text">
+									</noscript>
+								</div>
+								<div class="img-tablet responsiveimg-tablet responsiveimg-background-tablet" data-imgsrc-tablet="@backgroundImageTablet?center=@backgroundImageTabletFtop,@backgroundImageTabletFleft">
+									<noscript>
+										<img src="@backgroundImageTablet" alt="This is the alt text">
+									</noscript>
+								</div>
+								<div class="img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@backgroundImageMobile?center=@backgroundImageMobileFtop,@backgroundImageMobileFleft">
+									<noscript>
+										<img src="@backgroundImageMobile" alt="This is the alt text">
+									</noscript>
+								</div>
 						</figure>
 
 						<div class="container">
