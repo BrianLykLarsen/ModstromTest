@@ -10,19 +10,6 @@
 	{
 		return;
 	}
-
-	string DocumentType = CurrentPage.DocumentTypeAlias;
-	string PageClassName = "textpage";
-
-	if (DocumentType == "FrontPage")
-	{
-		PageClassName = "frontpage";
-	}
-
-	if (DocumentType == "ProductPage")
-	{
-		PageClassName = "product-page";
-	}
 }
 
 @section mainContent
@@ -96,22 +83,12 @@
 				case "newsList":
 					@Html.Partial("Sections/SectionNews", fieldset, new ViewDataDictionary(ViewData) { { "contentArticles", Model.Content } })
 					break;
+
+				case "formPicker":
+					@Html.Partial("Sections/SectionForm", fieldset)
+					break;
 			}
 		}
-
-		@if (DocumentType == "ProductPage")
-		{
-			@Html.Partial("Sections/SectionTextSplit")
-			@Html.Partial("Sections/SectionText")
-			@Html.Partial("Sections/SectionComments")
-			@Html.Partial("Sections/SectionSplit-6x6")
-			@Html.Partial("Sections/SectionContact")
-		}
-		
-		@*
-			@Html.Partial("Sections/SectionTestimonialBusiness")
-			@Html.Partial("Sections/SectionNews")
-		*@
 	</div>
 }
 

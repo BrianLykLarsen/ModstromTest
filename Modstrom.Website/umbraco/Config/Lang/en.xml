@@ -40,6 +40,11 @@
     <key alias="SEOCheckerEditRobots">Edit robots.txt file</key>
     <key alias="SEOCheckerImportRedirects">Import redirects</key>
     <key alias="SEOCheckerExportRedirects">Export redirects</key>
+    <key alias="exportContourForm">Export form</key>
+    <key alias="importContourForm">Import form</key>
+    <key alias="archiveContourForm">Archive form</key>
+    <key alias="unarchiveContourForm">Unarchive form</key>
+    <key alias="defaultValue">Default value</key>
   </area>
   <area alias="assignDomain">
     <key alias="permissionDenied">Permission denied.</key>
@@ -749,6 +754,7 @@ To manage your website, simply open the Umbraco back office and start adding con
     <key alias="forms">Forms</key>
     <key alias="analytics">Analytics</key>
     <key alias="seochecker">SEO Checker</key>
+    <key alias="forms">Forms</key>
   </area>
   <area alias="settings">
     <key alias="defaulttemplate">Default template</key>
@@ -851,7 +857,7 @@ To manage your website, simply open the Umbraco back office and start adding con
   </area>
   <area alias="grid">
     <key alias="insertControl">Insert control</key>
-    <key alias="addRows">Add rows to your layout</key>
+    <key alias="addRows">Choose a layout for the page</key>
     <key alias="addElement"><![CDATA[To start, click the <i class="icon icon-add blue"></i> below and add your first element]]></key>
     <key alias="clickToEmbed">Click to embed</key>
     <key alias="clickToInsertImage">Click to insert image</key>
@@ -1004,7 +1010,7 @@ To manage your website, simply open the Umbraco back office and start adding con
     <key alias="editors">Editor</key>
     <key alias="excerptField">Excerpt field</key>
     <key alias="language">Language</key>
-    <key alias="loginname">Login</key>
+    <key alias="loginname">Username</key>
     <key alias="mediastartnode">Start Node in Media Library</key>
     <key alias="modules">Sections</key>
     <key alias="noConsole">Disable Umbraco Access</key>
@@ -1023,7 +1029,7 @@ To manage your website, simply open the Umbraco back office and start adding con
     <key alias="permissionSelectPages">Select pages to modify their permissions</key>
     <key alias="searchAllChildren">Search all children</key>
     <key alias="startnode">Start Node in Content</key>
-    <key alias="username">Username</key>
+    <key alias="username">Name</key>
     <key alias="userPermissions">User permissions</key>
     <key alias="usertype">User type</key>
     <key alias="userTypes">User types</key>
