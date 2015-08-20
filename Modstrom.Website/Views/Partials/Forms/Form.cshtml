@@ -39,9 +39,7 @@
 					@Html.HiddenFor(x => Model.FormName)
 					@Html.HiddenFor(x => Model.RecordId)
 					@Html.HiddenFor(x => Model.PreviousClicked)
-
 					<input type="hidden" name="FormStep" value="@Model.FormStep" />
-
 					if (string.IsNullOrEmpty(Model.CurrentPage.Caption) == false)
 					{
 						<h4 class="contourPageName">@Html.Raw(Model.CurrentPage.Caption)</h4>
