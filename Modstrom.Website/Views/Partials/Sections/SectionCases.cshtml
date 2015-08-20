@@ -21,6 +21,27 @@
 						{
 							string pageHeadline = comment.GetPropertyValue<string>("pageHeadline");
 							string pageDescription = comment.GetPropertyValue<string>("pageDescription");
+							string pageDescriptionPart1 = "";
+							string pageDescriptionPart2 = "";
+							int desciptionLength = pageDescription.Length;
+
+							string articleUrl = "<a href=\"" + comment.Url + "\"><h4>Gå til artiklen</h4></a>";
+
+							int firstDot = pageDescription.IndexOf(".") + 1;
+
+							if (firstDot > 0)
+							{
+								if (desciptionLength > firstDot)
+								{
+									pageDescriptionPart1 = pageDescription.Substring(0, firstDot).Replace(System.Environment.NewLine, "<br />");
+								}
+
+								if (desciptionLength > firstDot)
+								{
+									pageDescriptionPart2 = pageDescription.Substring(firstDot, desciptionLength - firstDot).Replace(System.Environment.NewLine, "<br />");
+								}
+							}
+
 							var pageImage = comment.GetPropertyValue<IPublishedContent>("pageImage");
 							string pageImageUrl = "";
 							bool showImage = false;
@@ -31,48 +52,49 @@
 							}
 
 							string hiddenClass = "";
-							if(counter > 1){
+							if (counter > 1)
+							{
 								hiddenClass = "hidden-element";
 							}
 							<li class="testimonial @hiddenClass">
 								<div class="row">
 									<figure class="col-sm-4 image-container">
-										@if (showImage) { 
-										<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@pageImageUrl" data-imgalt-desktop="This is the alt text">
-											<noscript>
-												<img src="@pageImageUrl" alt="This is the alt text">
-											</noscript>
-										</div>
-										<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@pageImageUrl" data-imgalt-mobile="This is the mobile alt text">
-											<noscript>
-												<img src="@pageImageUrl" alt="This is the mobile alt text">
-											</noscript>
-										</div>
+										@if (showImage)
+										{
+											<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@pageImageUrl" data-imgalt-desktop="This is the alt text">
+												<noscript>
+													<img src="@pageImageUrl" alt="This is the alt text">
+												</noscript>
+											</div>
+											<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@pageImageUrl" data-imgalt-mobile="This is the mobile alt text">
+												<noscript>
+													<img src="@pageImageUrl" alt="This is the mobile alt text">
+												</noscript>
+											</div>
 										}
 									</figure>
 									<div class="col-sm-8 text-container">
 										<div class="testimonial-text">
 											<h3>@pageHeadline</h3>
 											<p>
-												@Html.Raw(pageDescription)
+												@Html.Raw(pageDescriptionPart1)
 											</p>
-                                            <div class="collapsible-text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                                                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-                                                   cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                <a href="@comment.Url"><h4>Gå til artiklen</h4></a>
-                                            </div>
+											<div class="collapsible-text">
+												<p>
+													@Html.Raw(pageDescriptionPart2)
+													@Html.Raw(articleUrl)
+												</p>
+											</div>
 										</div>
 									</div>
 								</div>
 							</li>
-							
-							counter++;
+
+										counter++;
 						}
 					</ul>
 					@if (counter > 1)
-					{ 
+					{
 						<button id="caseButton" class="btn btn-dark">Se flere cases</button>
 					}
 				</div>
