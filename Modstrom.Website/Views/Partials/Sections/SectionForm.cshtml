@@ -3,7 +3,6 @@
 @using Archetype.PropertyConverters
 @using Umbraco.Forms.Web.Controllers
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
-
 @{
 	string formPicker = Model.GetValue<string>("form");
 	string headline = Model.GetValue<string>("headline");
@@ -14,7 +13,6 @@
 		<div class="container">
 			<div class="row">
 				<h2 class="col-xs-12">@headline</h2>
-
 				@if (image != null)
 				{
 					<div class="form-description">
@@ -38,7 +36,6 @@
 						@Html.Raw(description)
 					</div>
 				}
-
 			</div>
 			<div class="row">
 				@if (!string.IsNullOrWhiteSpace(formPicker))
@@ -47,7 +44,6 @@
 					@Umbraco.RenderMacro("FormsRenderForm", new { FormGuid = formPicker, mode = "form" });
 				}
 			</div>
-
 		</div>
 	</section>
 }
