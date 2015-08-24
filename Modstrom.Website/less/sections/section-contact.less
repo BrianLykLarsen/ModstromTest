@@ -1,0 +1,66 @@
+.section-contact { border-top: solid 1px #f3f3f3; padding: 40px 0 40px 0;
+    h2 { margin: 0 0 40px 0; text-align: center; }
+    form { text-align: center;
+        .form-configuration { text-align: left; }
+
+        .form-message,.input-container { text-align: left; 
+            textarea {height:290px;}
+        }
+
+        .button-holder {clear:both;
+            .btn {margin-top:20px;}
+        }
+    }
+
+    &.small-form {background:@modstrom-dark;color:white;
+        .form-description {margin-bottom:40px;clear:both;overflow:hidden;
+            img {border-radius:50%;width:100%;height:auto;}
+        }
+		.form-message {  
+            textarea {height:210px;}
+        }
+        
+    }
+
+	.error-message{position:absolute;top:2px;left:15px;font-size:10px;color:#F00;}
+}
+
+@media (max-width: @screen-md-max) {
+    .section-contact {padding: 35px 0 40px 0;
+        h2 { margin: 0 0 35px 0;}
+        form {
+            .button-holder {
+                .btn {margin-top:15px;}
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    .section-contact {padding: 30px 0 35px 0;
+        h2 { margin: 0 0 30px 0;}
+        form {
+            .form-message {
+                textarea {height:175px;}
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .section-contact {padding: 20px 0 25px 0;
+        h2 { margin: 0 0 20px 0;}
+        form {
+
+            #contact-recipient {margin-bottom:0;border-radius:3px 3px 0 0;border-bottom:none;}
+            #contact-opening {border-radius:0 0 3px 3px;}
+
+            .form-message {
+                textarea {height:150px;}
+            }
+            .button-holder {
+                .btn {margin-top:15px;}
+            }
+        }
+    }
+}
