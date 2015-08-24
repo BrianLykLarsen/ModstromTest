@@ -57,8 +57,8 @@
 }
 
 #support{position:fixed;top:50%;right:0;z-index:999;box-shadow:0 0 3px rgba(0,0,0,0.3);transition:all 0.3s;
-    .support-revealer { float:left; width:50px; height:50px; padding-top:4px; padding-right:1px; border-radius:3px 0 0 3px; background:#ed6c1f;; text-align:center; cursor:pointer;
-        &:before {content:" ";display:block;position:relative;height:45px;width:45px;background-image:url(/images/support.png);background-position:center center; background-repeat:no-repeat;}
+    .support-revealer { float:left; width:50px; height:50px; padding-top:3px; padding-right:1px; border-radius:3px 0 0 3px; background:#ed6c1f;; text-align:center; cursor:pointer;
+        &:before {content:" ";display:block;position:relative;height:45px;width:45px;background-image:url(/images/support-new.png);background-position:center center; background-repeat:no-repeat;}
         &.reveal { padding-top:8px; padding-right:0;
 			&:before { display:block; width:32px; height:32px; margin:0 auto; border-radius:32px; color:#FFF; content:'X'; font-weight:bold; font-size:22px; border:1px solid white;background-image:url(); }
         }
@@ -72,6 +72,44 @@
         }
     }
 }
+
+#back-to-top {
+    position:fixed;
+    bottom: 50px;
+    right: 40px;
+    z-index: 9999;
+    opacity:0;
+    border-radius: 50%;
+    -o-border-radius: 52px;
+    -moz-border-radius: 52px;
+     -webkit-border-radius: 52px; 
+     border-radius: 52px; 
+    -webkit-transition: all .2s ease 0s;
+    -moz-transition: all .2s ease 0s;
+    -o-transition: all .2s ease 0s;
+    border: 2px solid #e8e8e8;
+    background: transparent;
+
+    &:hover {
+        background-color:#e8e8e8;
+    }
+
+    &:before {
+        content: "";
+        display:block;
+        position:relative;
+        height: 40px;
+        width: 40px;
+        background-image: url(/images/arrow-up.png);
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+}
+
+.back-to-top-visible {
+    opacity: 1 !important;
+}
+
 
 /************* cookie plugin **************/
 .cookie-info-show{ width: 100%; background-color:rgba(255, 255, 255, 0.9);position:fixed;bottom:0;z-index:99999;color:#000;padding:10px 5px 40px 5px ;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
