@@ -229,13 +229,20 @@ modstrom.master = modstrom.master || function () {
                 var src = element.split('?')[0];
                 var alt = el.getAttribute('data-imgalt-' + breakpoint);
                 var focalPoint = element.substr(element.indexOf("center"))
+                var forceWidth = el.getAttribute('data-forceWidth');
+
                 var testFocal = focalPoint.indexOf("&")
 
                 if (testFocal != -1) {
                     focalPoint = focalPoint.substr(0, testFocal)
                 }
+                
+	            if (forceWidth > 0) {
+		            w = forceWidth;
+	            }
 
-                var wRnd = Math.round(w / 20) * 20;
+
+	            var wRnd = Math.round(w / 20) * 20;
                 var hRnd = "0";
 
                 if ($(el).attr('data-hrnd-' + breakpoint)) {
@@ -361,6 +368,7 @@ modstrom.master = modstrom.master || function () {
             $('.testimonial', container).click(function() {
                 var current = $(this);
                 var collapsible = $('.collapsible-text', current);
+                current.find('.dotBreak').fadeToggle();
                 $(collapsible).slideToggle();
             });
         }
