@@ -27,18 +27,21 @@
 
 							string articleUrl = "<a href=\"" + comment.Url + "\"><h4>Gå til artiklen</h4></a>";
 
-							int firstDot = pageDescription.IndexOf(".") + 1;
+							int dotBreak = pageDescription.IndexOf("...") + 3;
 
-							if (firstDot > 0)
+							if (dotBreak > 0)
 							{
-								if (desciptionLength > firstDot)
+								if (desciptionLength > dotBreak)
 								{
-									pageDescriptionPart1 = pageDescription.Substring(0, firstDot).Replace(System.Environment.NewLine, "<br />");
+									pageDescriptionPart1 = pageDescription.Substring(0, dotBreak);
+									pageDescriptionPart1 = pageDescriptionPart1.Replace("...", ".<span class=\"dotBreak\">..</span>");
+									pageDescriptionPart1 = umbraco.library.ReplaceLineBreaks(pageDescriptionPart1);
 								}
 
-								if (desciptionLength > firstDot)
+								if (desciptionLength > dotBreak)
 								{
-									pageDescriptionPart2 = pageDescription.Substring(firstDot, desciptionLength - firstDot).Replace(System.Environment.NewLine, "<br />");
+									pageDescriptionPart2 = pageDescription.Substring(dotBreak, desciptionLength - dotBreak);
+									pageDescriptionPart2 = umbraco.library.ReplaceLineBreaks(pageDescriptionPart2);
 								}
 							}
 
@@ -61,7 +64,7 @@
 									<figure class="col-sm-4 image-container">
 										@if (showImage)
 										{
-											<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@pageImageUrl" data-imgalt-desktop="This is the alt text">
+											<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@pageImageUrl" data-forcewidth="600" data-imgalt-desktop="This is the alt text">
 												<noscript>
 													<img src="@pageImageUrl" alt="This is the alt text">
 												</noscript>
