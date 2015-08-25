@@ -308,6 +308,18 @@
     <Reference Include="umbraco.editorControls">
       <HintPath>..\External libs\umbraco.editorControls.dll</HintPath>
     </Reference>
+    <Reference Include="Umbraco.Forms.Core">
+      <HintPath>..\External libs\umbracoForms\Umbraco.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Core.Providers">
+      <HintPath>..\External libs\umbracoForms\Umbraco.Forms.Core.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web">
+      <HintPath>..\External libs\umbracoForms\Umbraco.Forms.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web.XmlSerializers">
+      <HintPath>..\External libs\umbracoForms\Umbraco.Forms.Web.XmlSerializers.dll</HintPath>
+    </Reference>
     <Reference Include="Umbraco.Licensing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External libs\Seo Checker\Umbraco.Licensing.dll</HintPath>
