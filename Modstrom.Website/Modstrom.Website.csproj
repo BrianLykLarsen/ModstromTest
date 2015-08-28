@@ -235,6 +235,7 @@
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External libs\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -3445,6 +3446,9 @@
     <Content Include="Views\Partials\Forms\Fieldtypes\FieldType.Textfield.cshtml" />
     <Content Include="Views\Partials\Forms\Form.cshtml" />
     <Content Include="Views\Partials\Forms\Script.cshtml" />
+    <Content Include="Views\MacroPartials\InsertUmbracoForm.cshtml" />
+    <Content Include="Views\MacroPartials\RenderUmbracoFormScripts.cshtml" />
+    <Content Include="Views\MacroPartials\ezSearch.cshtml" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -3459,7 +3463,6 @@
     <Folder Include="masterpages\" />
     <Folder Include="Models\" />
     <Folder Include="usercontrols\" />
-    <Folder Include="Views\MacroPartials\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
