@@ -23,6 +23,7 @@ $(function () {
     modstrom.master.testimonialOverlay();
     modstrom.master.toggleSearch();
     modstrom.master.scrollTo();
+    modstrom.master.hideUploadButtom();
     modstrom.master.support();
     modstrom.master.showMoreCases();
     modstrom.master.toggleTestimonial();
@@ -32,6 +33,8 @@ $(function () {
     modstrom.master.responsiveImage('mobile');
     modstrom.master.responsiveImage('tablet');
     modstrom.master.responsiveImage('desktop');
+
+    
 
 	/** COOKIES **/
     var cookieInfoOptions = {
@@ -377,19 +380,14 @@ modstrom.master = modstrom.master || function () {
     }
 
     function backToTop() {
-        // browser window scroll (in pixels) after which the "scroll-top-top" link is shown
         var offset = 700,
-            //duration of the top scrolling animation (in ms)
             scroll_top_duration = 700,
-            //grab the "scroll-top-top" link
             $back_to_top = $('.back-to-top');
 
-        //hide or show the "scroll-top-top" link
         $(window).scroll(function () {
             ($(this).scrollTop() > offset) ? $back_to_top.addClass('back-to-top-visible') : $back_to_top.removeClass('back-to-top-visible');
         });
 
-        //smooth scroll to top
         $back_to_top.on('click', function (event) {
             event.preventDefault();
             $('body,html').animate({
@@ -398,30 +396,44 @@ modstrom.master = modstrom.master || function () {
             );
         });
     }
+
+    function hideUploadButtom() {
+        $('input[type="file"]').before('<button class="file-trigger">Choose file</button>');
+        $('input[type="file"]').hide();
+        $('.file-trigger').click(function (e) {
+            e.preventDefault()
+            $(this).siblings('input[type="file"]').click();
+            $(this).siblings('input[type="file"]').on('change',function (e) {
+                var splittedValue = $(this).val().split('\\');
+                $(this).siblings('.file-name').text(splittedValue[splittedValue.length - 1]);
+            });
+        });
+    }
    
 
 
 
     return {
-    	resetUI: resetUI,
-    	mainNavigation: mainNavigation,
-    	flexslider: flexslider,
-    	responsiveImage: responsiveImage,
-    	adjustTrigger: adjustTrigger,
-    	questionTrigger: questionTrigger,
-    	productSlider: productSlider,
-    	commentsSlider: commentsSlider,
-    	formContact: formContact,
-    	testimonialSlider: testimonialSlider,
-    	newsPaging: newsPaging,
-    	testimonialOverlay: testimonialOverlay,
-    	toggleSearch: toggleSearch,
-    	scrollTo: scrollTo,
-    	support: support,
-    	showMoreCases: showMoreCases,
-    	toggleTestimonial: toggleTestimonial,
-    	formFix: formFix,
-        backToTop: backToTop
+        resetUI: resetUI,
+        mainNavigation: mainNavigation,
+        flexslider: flexslider,
+        responsiveImage: responsiveImage,
+        adjustTrigger: adjustTrigger,
+        questionTrigger: questionTrigger,
+        productSlider: productSlider,
+        commentsSlider: commentsSlider,
+        formContact: formContact,
+        testimonialSlider: testimonialSlider,
+        newsPaging: newsPaging,
+        testimonialOverlay: testimonialOverlay,
+        toggleSearch: toggleSearch,
+        scrollTo: scrollTo,
+        support: support,
+        showMoreCases: showMoreCases,
+        toggleTestimonial: toggleTestimonial,
+        formFix: formFix,
+        backToTop: backToTop,
+        hideUploadButtom:hideUploadButtom
     }
 }();
 

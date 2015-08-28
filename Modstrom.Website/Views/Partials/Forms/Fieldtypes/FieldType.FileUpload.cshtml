@@ -2,6 +2,7 @@
 
 <input type="file" name="@Model.Name" id="@Model.Id" multiple
 @if(Model.Mandatory){<text> data-val="true" data-val-required="@Model.RequiredErrorMessage"</text>}/>
+<p class="file-name"></p>
 
 @if (!string.IsNullOrEmpty(Model.Value))
 {
