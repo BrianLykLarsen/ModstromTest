@@ -201,7 +201,8 @@ modstrom.master = modstrom.master || function () {
             itemWidth: 263,
             itemMargin: 30,
             directionNav: false,
-            move: 1
+			touch:true,
+            move: 4
         });
     }
 
