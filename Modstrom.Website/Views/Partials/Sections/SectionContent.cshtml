@@ -7,7 +7,7 @@
 @{
 	string headline = Model.GetValue<string>("headline");
 	string text = Model.GetValue<string>("text");
-	var rightImage = Model.GetValue<IPublishedContent>("rightImage");
+	
 	
 	string buttonText = Model.GetValue<string>("buttonText");
 	var buttonLink = Model.GetValue<MultiUrls>("buttonLink");
@@ -31,12 +31,14 @@
 							<div class="col-sm-10 col-sm-offset-1">
 								<div class="text-area @centerTextClass">
 									<h1>@headline</h1>
-									@if (rightImage == null)
+									@if (Model.GetValue<IPublishedContent>("rightImage") == null)
 									{
 										@Html.Raw(text)
 									}
 									else
 									{
+										var rightImage = Model.GetValue<IPublishedContent>("rightImage");
+			 
 										<div class="row">
 											<div class="col-sm-8">@Html.Raw(text)</div>
 											<div class="col-sm-4">
@@ -88,9 +90,13 @@
 	{
 		string headline = box.GetValue<string>("headline");
 		string text = box.GetValue<string>("text");
-		var imageId = box.GetValue<int>("image");
-		var imageUrl = Umbraco.TypedMedia(imageId).Url;
 
+		string imageUrl = "";
+		if (box.GetValue<IPublishedContent>("boxImage") != null)
+		{
+			imageUrl = box.GetValue<IPublishedContent>("boxImage").Url;
+		}
+		
 		string buttonText = box.GetValue<string>("buttonText");
 		var linkId = box.GetValue<int>("link");
 		var link = Umbraco.Url(linkId);
@@ -99,7 +105,7 @@
 			<h3>@headline</h3>
 			<figure class="img-default responsiveimg-default" data-imgsrc-default="@imageUrl" data-imgalt-default="This is the alt text">
 				<noscript>
-					<img src="@imageUrl" alt="This is the alt text">
+					<img src="@imageUrl?width=50" alt="This is the alt text">
 				</noscript>
 			</figure>
 			<div class="box-text">

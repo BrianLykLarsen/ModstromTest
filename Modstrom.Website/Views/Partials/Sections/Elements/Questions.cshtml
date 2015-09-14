@@ -8,7 +8,7 @@
 	var questionsNode = current.AncestorOrSelf("Site").Children.First(x => x.DocumentTypeAlias == "FaqList");
 	string headline = questionsNode.GetPropertyValue<string>("headline");
 	string amount = Model.GetValue<string>("faqElementsToShow");
-	var faqUrl = Model.GetValue<IPublishedContent>("faqPage");
+	
 	var faqNodeList = questionsNode.Children.Take(0);
 	bool showLink = true;
 	
@@ -38,18 +38,19 @@
 						<div class="trigger"></div>
 					</div>
 					<div class="answer-container text-area">
-                        <div>
+						<div>
 							<h3>Svar:</h3>
-						    @Html.Raw(questionText)
-                        </div>
+							@Html.Raw(questionText)
+						</div>
 					</div>
 				</li>
 			}
 		</ul>
-		
-		@if(showLink)
-		{ 
-			<a class="see-all" href="@faqUrl.Url">Se alle spørgsmål og svar</a>
+
+		@if (showLink && Model.GetValue<IPublishedContent>("faqPage") != null)
+		{
+			var faqUrl = Model.GetValue<IPublishedContent>("faqPage").Url;
+			<a class="see-all" href="@faqUrl">Se alle spørgsmål og svar</a>
 		}
 		
 	</div>
