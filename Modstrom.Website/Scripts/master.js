@@ -48,19 +48,63 @@ $(function () {
 
 $(window).resize(function () {
     modstrom.master.adjustTrigger();
-
     modstrom.master.responsiveImage('default');
-    modstrom.master.responsiveImage('mobile');
-    modstrom.master.responsiveImage('tablet');
-    modstrom.master.responsiveImage('desktop');
-
-    //$('#nav-container').perfectScrollbar('update');
+    setTimeout(function () {
+		modstrom.master.responsiveImage('mobile');
+		modstrom.master.responsiveImage('tablet');
+		modstrom.master.responsiveImage('desktop');
+    },100);
 });
 
 var modstrom = modstrom || {};
 
 modstrom.master = modstrom.master || function () {
     function resetUI() {}
+
+	//Responsive Images
+    function responsiveImage(breakpoint) {
+
+    	if ($('body').hasClass(breakpoint)) {
+    		[].forEach.call(document.querySelectorAll('.responsiveimg-' + breakpoint), function (el) {
+    			var w = el.offsetWidth;
+    			var element = el.getAttribute('data-imgsrc-' + breakpoint);
+    			var src = element.split('?')[0];
+    			var alt = el.getAttribute('data-imgalt-' + breakpoint);
+    			var focalPoint = element.substr(element.indexOf("center"))
+    			var forceWidth = el.getAttribute('data-forceWidth');
+
+    			var testFocal = focalPoint.indexOf("&")
+
+    			if (testFocal != -1) {
+    				focalPoint = focalPoint.substr(0, testFocal)
+    			}
+
+    			if (forceWidth > 0) {
+    				w = forceWidth;
+    			}
+
+    			var wRnd = Math.round(w / 20) * 20;
+    			var hRnd = "0";
+
+    			if ($(el).attr('data-hrnd-' + breakpoint)) {
+    				var proportion = $(el).attr('data-hrnd-' + breakpoint);
+    				hRnd = Math.round(wRnd) * proportion;
+    			}
+
+    			if ($(el).hasClass('responsiveimg-background-' + breakpoint)) {
+    				$(el).attr('style', 'background-image:url(' + src + '?' + focalPoint + '&width=' + wRnd + '&height=' + hRnd + '&mode=crop&quality=70&format=jpg);');
+    			} else {
+    				el.insertAdjacentHTML('afterbegin', '<img src="' + src + '?' + focalPoint + '&width=' + wRnd + '&height=' + hRnd + '&mode=crop&quality=70&format=jpg" width="' + w + '" alt="' + alt + '">');
+    			}
+    			cl(breakpoint);
+    			$(el).removeAttr('data-hrnd-' + breakpoint);
+    			$(el).removeAttr('data-imgsrc-' + breakpoint);
+    			$(el).removeAttr('data-imgalt-' + breakpoint);
+    			$(el).removeClass('responsiveimg-' + breakpoint);
+    			$(el).removeClass('responsiveimg-background-' + breakpoint);
+    		});
+    	}
+    }
 
     function formFix() {
     	var form = $(".contour");
@@ -225,50 +269,7 @@ modstrom.master = modstrom.master || function () {
         });
     }
 
-    //Responsive Images
-    function responsiveImage(breakpoint) {
-        if($('body').hasClass(breakpoint)) {
-            [].forEach.call(document.querySelectorAll('.responsiveimg-' + breakpoint), function (el) { 
-                var w = el.offsetWidth;
-                var element = el.getAttribute('data-imgsrc-' + breakpoint);
-                var src = element.split('?')[0];
-                var alt = el.getAttribute('data-imgalt-' + breakpoint);
-                var focalPoint = element.substr(element.indexOf("center"))
-                var forceWidth = el.getAttribute('data-forceWidth');
-
-                var testFocal = focalPoint.indexOf("&")
-
-                if (testFocal != -1) {
-                    focalPoint = focalPoint.substr(0, testFocal)
-                }
-                
-	            if (forceWidth > 0) {
-		            w = forceWidth;
-	            }
-
-
-	            var wRnd = Math.round(w / 20) * 20;
-                var hRnd = "0";
-
-                if ($(el).attr('data-hrnd-' + breakpoint)) {
-                    var proportion = $(el).attr('data-hrnd-' + breakpoint);
-                    hRnd = Math.round(wRnd) * proportion;
-                }
-
-                if ($(el).hasClass('responsiveimg-background-' + breakpoint)) {
-                    $(el).attr('style', 'background-image:url(' + src + '?' + focalPoint + '&width=' + wRnd + '&height=' + hRnd + '&mode=crop&quality=70&format=jpg);');
-                } else {
-                    el.insertAdjacentHTML('afterbegin', '<img src="' + src + '?' + focalPoint + '&width=' + wRnd + '&height=' + hRnd + '&mode=crop&quality=70&format=jpg" width="' + w + '" alt="' + alt + '">');
-                }
-
-                $(el).removeAttr('data-hrnd-' + breakpoint);
-                $(el).removeAttr('data-imgsrc-' + breakpoint);
-                $(el).removeAttr('data-imgalt-' + breakpoint);
-                $(el).removeClass('responsiveimg-' + breakpoint);
-                $(el).removeClass('responsiveimg-background-' + breakpoint);
-            });
-        }
-    }
+    
 
     // Question list
     function adjustTrigger() {
