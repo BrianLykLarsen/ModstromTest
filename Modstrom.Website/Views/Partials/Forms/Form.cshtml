@@ -23,7 +23,8 @@
 	{
 		if (Model.RenderMode == "full" || Model.RenderMode == "form")
 		{
-			<div id="@formNameId" class="contourMessageOnSubmit">@Html.Raw(Model.MessageOnSubmit)</div>
+			<div id="@formNameId"></div>
+			<div class="contourMessageOnSubmit">@Html.Raw(Model.MessageOnSubmit)</div>
 		}
 	}
 	else
