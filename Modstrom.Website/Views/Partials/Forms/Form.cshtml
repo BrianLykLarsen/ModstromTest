@@ -23,7 +23,7 @@
 	{
 		if (Model.RenderMode == "full" || Model.RenderMode == "form")
 		{
-			<p id="@formNameId" class="contourMessageOnSubmit">@Html.Raw(Model.MessageOnSubmit)</p>
+			<div id="@formNameId" class="contourMessageOnSubmit">@Html.Raw(Model.MessageOnSubmit)</div>
 		}
 	}
 	else
@@ -31,7 +31,7 @@
 		if (Model.RenderMode == "full" || Model.RenderMode == "form")
 		{
 
-			<div id="@formNameId" class="@Model.CssClass">
+			<div id="@formNameId" class="contour @Model.CssClass">
 
 				@using (Html.BeginUmbracoForm<Umbraco.Forms.Web.Controllers.UmbracoFormsController>("HandleForm"))
 				{
@@ -62,7 +62,7 @@
 										{
 											bool hidden = f.HasCondition && f.ConditionActionType == FieldConditionActionType.Show;
 
-											<div class="@f.CssClass input-container" @{ if (hidden) { <text> style="display: none" </text>     } }>
+											<div class="@f.CssClass input-container" @{ if (hidden) { <text> style="display: none" </text>      } }>
 
 
 												@if (!string.IsNullOrEmpty(f.ToolTip))
