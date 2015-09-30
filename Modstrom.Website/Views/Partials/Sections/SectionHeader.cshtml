@@ -2,22 +2,30 @@
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
 	IPublishedContent searchPage = Model.Content.AncestorOrSelf("Site").GetPropertyValue<IPublishedContent>("searchPage");
+
+	string LogoUrl = "/images/logo.png";
 	
+	if (Model.Content.AncestorOrSelf("Site").GetPropertyValue<IPublishedContent>("logo") != null)
+	{
+		IPublishedContent logo = Model.Content.AncestorOrSelf("Site").GetPropertyValue<IPublishedContent>("logo");
+		LogoUrl = logo.Url;
+	}
+
 	<header id="header">
 		<figure id="logo">
 			<a href="/">
-				<img src="/images/logo.png" alt="Modstrøm Logo" title="Modstrøm" />
+				<img src="@LogoUrl" alt="Modstrøm Logo" title="Modstrøm" />
 			</a>
 		</figure>
 		<nav id="nav-container">
 			@Html.Partial("Sections/Elements/NavHeader")
 		</nav>
 		<div id="header-utilities">
-            <span class="nav-trigger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
+			<span class="nav-trigger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</span>
 			<a id="header-basket" href="/"><span>0,00</span><i class="icon icon-cart"></i></a>
 			<a id="header-login" href="/"><i class="icon icon-login"></i></a>
 			<a id="header-search" href="/"><i class="icon icon-search-compressor"></i></a>
