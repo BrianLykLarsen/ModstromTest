@@ -5,7 +5,11 @@
 
 @{
 	var current = (IPublishedContent)ViewData["contentQuestions"];
-	var questionsNode = current.AncestorOrSelf("Site").Children.First(x => x.DocumentTypeAlias == "FaqList");
+	var selectedList = Model.GetValue<int>("faqPage");
+
+	var questionsNode = current.AncestorOrSelf("Site").Children.First(x => x.Id == selectedList);
+
+	
 	string headline = questionsNode.GetPropertyValue<string>("headline");
 	string amount = Model.GetValue<string>("faqElementsToShow");
 	

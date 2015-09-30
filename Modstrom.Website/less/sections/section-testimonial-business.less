@@ -8,7 +8,7 @@
             > div { display: block; overflow: hidden;
                 figure { position: relative; position: absolute; top: 0; height: 100%;
                     div { width: 100%; height: 100%; background-size: cover; background-position: center; }
-                    &:after { display: block; content: ''; position: absolute; width: 50px; height: 100%; background: white; top: 0;.transition(0.25s); }
+                    &:after { display: block; content: ''; position: absolute; width: 100px; height: 100%; background: white; top: 0;.transition(0.25s); }
                 }
                 .testimonial-text { color: @modstrom-dark; padding: 50px 50px; text-align: left;
                     h3 { font-size: 32px; color: @modstrom-teal; padding-bottom: 30px; margin: 0; }
@@ -28,7 +28,7 @@
                 .text-container { float: right; }
                 figure {
                     div { border-radius: 4px 0 0 4px; }
-                    &:after {.transform(skew(-5deg)); right: -15px; }
+                    &:after {.transform(skew(-5deg)); right: -50px; }
                 }
                 .testimonial-text { padding-left: 0; }
             }
@@ -38,7 +38,7 @@
                 .text-container { float: left; }
                 figure {
                     div { border-radius: 0 4px 4px 0; }
-                    &:after {.transform(skew(5deg)); left: -15px; }
+                    &:after {.transform(skew(5deg)); left: -50px; }
                 }
                 .testimonial-text { padding-right: 0; }
                 &:after { color: white; }
