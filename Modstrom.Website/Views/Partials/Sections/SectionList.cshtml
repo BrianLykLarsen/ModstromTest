@@ -1,6 +1,7 @@
 @using Archetype.Models
 @using Archetype.Extensions
 @using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 
 @{
@@ -8,21 +9,27 @@
 	var ImageId1 = Model.GetValue<int>("image1");
 	var ImageUrl1 = Umbraco.TypedMedia(ImageId1).Url;
 	string text1 = Model.GetValue<string>("text1");
+	var link1 = Model.GetValue<MultiUrls>("link1");
 
 	string headline2 = Model.GetValue<string>("headline2");
 	var ImageId2 = Model.GetValue<int>("image2");
 	var ImageUrl2 = Umbraco.TypedMedia(ImageId2).Url;
 	string text2 = Model.GetValue<string>("text2");
+	var link2 = Model.GetValue<MultiUrls>("link2");
 
 	string headline3 = Model.GetValue<string>("headline3");
 	var ImageId3 = Model.GetValue<int>("image3");
 	var ImageUrl3 = Umbraco.TypedMedia(ImageId3).Url;
 	string text3 = Model.GetValue<string>("text3");
+	var link3 = Model.GetValue<MultiUrls>("link3");
 		
 	<section class="section-list">
 		<div class="container">
 			<ul class="row">
 				<li class="image-link col-sm-4">
+					@if(link1 != null){
+						@:<a href="@link1.FirstOrDefault();.Url">
+					}
 					<header>
 						<h3>@headline1</h3>
 						<i></i>
@@ -35,8 +42,15 @@
 					<div class="text">
 						@Html.Raw(text1)
 					</div>
+					@if(link1 != null){
+						@:</a>
+					}
 				</li>
 				<li class="image-link col-sm-4">
+
+					@if(link2 != null){
+						@:<a href="@link2.FirstOrDefault();.Url">
+					}
 					<header>
 						<h3>@headline2</h3>
 						<i></i>
@@ -49,8 +63,15 @@
 					<div class="text">
 						@Html.Raw(text2)
 					</div>
+
+					@if(link2 != null){
+						@:</a>
+					}
 				</li>
 				<li class="image-link col-sm-4">
+					@if(link3 != null){
+						@:<a href="@link3.FirstOrDefault();.Url">
+					}
 					<header>
 						<h3>@headline3</h3>
 						<i></i>
@@ -63,6 +84,9 @@
 					<div class="text">
 						@Html.Raw(text3)
 					</div>
+					@if(link3 != null){
+						@:</a>
+					}
 				</li>
 			</ul>
 		</div>
