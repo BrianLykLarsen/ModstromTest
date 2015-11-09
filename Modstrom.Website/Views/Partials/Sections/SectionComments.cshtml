@@ -12,6 +12,9 @@
 	var noSliderClass = "";
 	bool showSmallSlider = false;
 	bool showBigSlider = false;
+
+	string sectionID = Model.GetValue<string>("sectionID");
+	
 	if (commentCount == 2)
 	{
 		noSliderClass = "no-slider";
@@ -28,7 +31,7 @@
 
 	if (!showBigSlider)
 	{
-		<section class="section-comments @noSliderClass">
+		<section id="@sectionID" class="section-comments @noSliderClass">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
@@ -115,7 +118,7 @@
 	}
 	else
 	{
-		<section class="section-testimonial-customer">
+		<section id="@sectionID" class="section-testimonial-customer">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
@@ -293,9 +296,9 @@
 						<div class="box box-text @elementclass arrow-top">
 							<h3>@customerName</h3>
 							<small>@customerCity</small>
-							
+
 							<div class="short-text">@Html.Raw(text) </div>
-					
+
 							<p class="link">Læs hele anmeldelsen</p>
 							<div class="full-text">
 								@Html.Raw(fullText)

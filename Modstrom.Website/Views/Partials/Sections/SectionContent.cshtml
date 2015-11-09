@@ -7,11 +7,11 @@
 @{
 	string headline = Model.GetValue<string>("headline");
 	string text = Model.GetValue<string>("text");
-	
-	
+
+
 	string buttonText = Model.GetValue<string>("buttonText");
 	var buttonLink = Model.GetValue<MultiUrls>("buttonLink");
-	
+
 	string videoId = Model.GetValue<string>("video");
 	bool centerText = Model.GetValue<bool>("centerText");
 	string centerTextClass = "";
@@ -20,7 +20,9 @@
 		centerTextClass = "center";
 	}
 
-	<section class="section-content">
+	string sectionID = Model.GetValue<string>("sectionID");
+	
+	<section id="@sectionID" class="section-content">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
@@ -38,7 +40,7 @@
 									else
 									{
 										var rightImage = Model.GetValue<IPublishedContent>("rightImage");
-			 
+
 										<div class="row">
 											<div class="col-sm-8">@Html.Raw(text)</div>
 											<div class="col-sm-4">
@@ -50,8 +52,8 @@
 
 												@if (!string.IsNullOrWhiteSpace(buttonText) && buttonLink != null)
 												{
-													
-				
+
+
 													<div class="btn-holder">
 														<a href="@buttonLink.FirstOrDefault().Url" class="btn btn-teal btn-icon btn-icon-bulb">@buttonText</a>
 													</div>

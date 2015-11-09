@@ -8,8 +8,9 @@
 	string text1 = Model.GetValue<string>("text1");
 	string headline2 = Model.GetValue<string>("headline2");
 	string text2 = Model.GetValue<string>("text2");
+	string sectionID = Model.GetValue<string>("sectionID");
 	
-	<section class="section-text-split">
+	<section id="@sectionID" class="section-text-split">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-5 col-sm-offset-1">

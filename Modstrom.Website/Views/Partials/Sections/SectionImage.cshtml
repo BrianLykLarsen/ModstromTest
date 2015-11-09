@@ -4,12 +4,14 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 
 @{
-	
+
 	string backgroundImageDesktop = "";
 	string backgroundImageTablet = "";
 	string backgroundImageMobile = "";
 
-	if(Model.GetValue<IPublishedContent>("imageDesktop") != null)
+	string sectionID = Model.GetValue<string>("sectionID");
+	
+	if (Model.GetValue<IPublishedContent>("imageDesktop") != null)
 	{
 		backgroundImageDesktop = Model.GetValue<IPublishedContent>("imageDesktop").Url;
 	}
@@ -26,7 +28,7 @@
 	{
 		backgroundImageTablet = backgroundImageDesktop;
 	}
-	
+
 	if (Model.GetValue<IPublishedContent>("imageMobile") != null)
 	{
 		backgroundImageMobile = Model.GetValue<IPublishedContent>("imageMobile").Url;
@@ -36,7 +38,7 @@
 		backgroundImageMobile = backgroundImageDesktop;
 	}
 
-	<section class="section-image">
+	<section id="@sectionID" class="section-image">
 		<figure>
 			<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@backgroundImageDesktop">
 				<noscript>

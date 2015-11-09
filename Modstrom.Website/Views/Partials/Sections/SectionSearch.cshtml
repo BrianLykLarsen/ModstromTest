@@ -10,8 +10,9 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 @{
 	string headline = Model.GetValue<string>("headline");
+	string sectionID = Model.GetValue<string>("sectionID");
 }
-<section class="section-search">
+<section id="@sectionID" class="section-search">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
