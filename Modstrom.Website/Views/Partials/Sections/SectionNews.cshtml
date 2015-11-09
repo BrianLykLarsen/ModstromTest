@@ -6,6 +6,7 @@
 @{
 	string headline = Model.GetValue<string>("headline");
 	string text = Model.GetValue<string>("text");
+	string sectionID = Model.GetValue<string>("sectionID");
 	//var current = (IPublishedContent)ViewData["contentArticles"];
 	var articleNode = Model.GetValue<IPublishedContent>("articleNode");
 
@@ -24,7 +25,7 @@
 		{11,"November"},
 		{12,"December"}
 	};
-	<section class="section-news">
+	<section id="@sectionID" class="section-news">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">

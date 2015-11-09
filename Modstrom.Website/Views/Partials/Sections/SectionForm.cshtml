@@ -8,8 +8,9 @@
 	string headline = Model.GetValue<string>("headline");
 	string description = Model.GetValue<string>("description");
 	var image = Model.GetValue<IPublishedContent>("image");
+	string sectionID = Model.GetValue<string>("sectionID");
 
-	<section class="section-contact large-form">
+	<section id="@sectionID" class="section-contact large-form">
 		<div class="container">
 			<div class="row">
 				<h2 class="col-xs-12">@headline</h2>

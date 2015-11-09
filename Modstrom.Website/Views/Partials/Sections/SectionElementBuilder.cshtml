@@ -33,19 +33,21 @@
 	string column1 = Model.GetValue<string>("column1");
 	string column2 = Model.GetValue<string>("column2");
 	string relevantPageHeadline = Model.GetValue<string>("headlineForRelevantPages");
+
+	string sectionID = Model.GetValue<string>("sectionID");
 	
 	if (twoColumns)
 	{
-		<section class="section-split">
+		<section id="@sectionID" class="section-split">
 			<div class="container">
 				<div class="row">
-					
+
 					<div class="@bootstrapClassLeft column-container">
-						@renderContent(column1,twoColumns,relevantPageHeadline)
+						@renderContent(column1, twoColumns, relevantPageHeadline)
 					</div>
 
 					<div class="@bootstrapClassRight column-container">
-						@renderContent(column2,twoColumns,relevantPageHeadline)
+						@renderContent(column2, twoColumns, relevantPageHeadline)
 					</div>
 
 				</div>
@@ -54,11 +56,11 @@
 	}
 	else
 	{
-		<section class="section-relevant-pages">
+		<section id="@sectionID" class="section-relevant-pages">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
-						@renderContent(column1,twoColumns,relevantPageHeadline)
+						@renderContent(column1, twoColumns, relevantPageHeadline)
 					</div>
 				</div>
 			</div>

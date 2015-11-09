@@ -7,7 +7,7 @@
 	string headline = Model.GetValue<string>("headline");
 	string text = Model.GetValue<string>("text");
 	string textColor = Model.GetValue<string>("textColor");
-	
+
 	string buttonText = Model.GetValue<string>("buttonText");
 
 	var buttonLinkId = Model.GetValue<int>("buttonUrl");
@@ -22,7 +22,9 @@
 	var backgroundImageId = Model.GetValue<int>("backgroundImage");
 	var backgroundImageIdUrl = Umbraco.TypedMedia(backgroundImageId).Url;
 
-	<section class="section-hero @textColor">
+	string sectionID = Model.GetValue<string>("sectionID");
+
+	<section id="@sectionID" class="section-hero @textColor">
 		<figure>
 			<div class="bg-container img-default responsiveimg-default responsiveimg-background-default" data-imgsrc-default="@backgroundImageIdUrl" data-imgalt-default="This is the alt text">
 				<noscript>

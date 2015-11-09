@@ -8,7 +8,9 @@
 	string text = Model.GetValue<string>("text");
 	var selectCases = Model.GetValue<int[]>("selectCases").Select(x => Umbraco.TypedContent(x));
 	int counter = 0;
-	<section class="section-testimonial-business">
+	string sectionID = Model.GetValue<string>("sectionID");
+
+	<section id="@sectionID" class="section-testimonial-business">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">

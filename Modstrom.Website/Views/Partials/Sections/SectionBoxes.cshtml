@@ -12,9 +12,12 @@
 	{
 		centerTextClass = "center";
 	}
+	
 	var boxes = Model.GetValue<ArchetypeModel>("box");
-
-	<section class="section-boxes">
+	
+	string sectionID = Model.GetValue<string>("sectionID");
+	
+	<section id="@sectionID" class="section-boxes">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-10 col-sm-offset-1 ">
