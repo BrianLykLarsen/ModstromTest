@@ -1,0 +1,1 @@
+﻿Everytime this package is installed or update, a backup of web.config and web.release.config is created.

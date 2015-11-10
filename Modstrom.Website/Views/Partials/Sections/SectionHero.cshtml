@@ -1,0 +1,64 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string headline = Model.GetValue<string>("headline");
+	string text = Model.GetValue<string>("text");
+	string textColor = Model.GetValue<string>("textColor");
+
+	string buttonText = Model.GetValue<string>("buttonText");
+
+	var buttonLinkId = Model.GetValue<int>("buttonUrl");
+	var buttonLink = Umbraco.Url(buttonLinkId);
+
+	var imageId = Model.GetValue<int>("image");
+	var imageUrl = Umbraco.TypedMedia(imageId).Url;
+
+	var imageLinkId = Model.GetValue<int>("imageLink");
+	var imageLink = Umbraco.Url(imageLinkId);
+
+	var backgroundImageId = Model.GetValue<int>("backgroundImage");
+	var backgroundImageIdUrl = Umbraco.TypedMedia(backgroundImageId).Url;
+
+	string sectionID = Model.GetValue<string>("sectionID");
+
+	<section id="@sectionID" class="section-hero @textColor">
+		<figure>
+			<div class="bg-container img-default responsiveimg-default responsiveimg-background-default" data-imgsrc-default="@backgroundImageIdUrl" data-imgalt-default="This is the alt text">
+				<noscript>
+					<img src="@backgroundImageIdUrl" alt="This is the alt text">
+				</noscript>
+			</div>
+
+		</figure>
+
+		<h2 class="@textColor">@headline</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="text-area @textColor">
+						@Html.Raw(text)
+					</div>
+					@if (!string.IsNullOrWhiteSpace(buttonText) && !string.IsNullOrWhiteSpace(buttonLink))
+					{
+						<div class="btn-holder">
+							<a href="@buttonLink" class="btn btn-orange btn-icon btn-icon-bulb">@buttonText</a>
+						</div>
+					}
+				</div>
+				<div class="col-sm-4">
+					@if (!string.IsNullOrWhiteSpace(imageUrl) && !string.IsNullOrWhiteSpace(imageLink))
+					{
+						<figure class="img-holder">
+							<a href="@imageLink" title="Spørg Kundo">
+								<img src="@imageUrl?width=300&quality=70" alt="This is the alt text">
+							</a>
+						</figure>
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+}

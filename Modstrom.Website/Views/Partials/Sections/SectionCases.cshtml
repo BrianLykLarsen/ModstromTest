@@ -1,0 +1,114 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string headline = Model.GetValue<string>("headline");
+	string text = Model.GetValue<string>("text");
+	var selectCases = Model.GetValue<int[]>("selectCases").Select(x => Umbraco.TypedContent(x));
+	int counter = 0;
+	string sectionID = Model.GetValue<string>("sectionID");
+
+	<section id="@sectionID" class="section-testimonial-business">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>@headline</h2>
+					<div class="text-area">
+						@Html.Raw(text)
+					</div>
+					<ul class="testimonials">
+						@foreach (var comment in selectCases)
+						{
+							string pageHeadline = comment.GetPropertyValue<string>("pageHeadline");
+							string pageDescription = comment.GetPropertyValue<string>("pageDescription");
+							string pageDescriptionPart1 = "";
+							string pageDescriptionPart2 = "";
+							int desciptionLength = pageDescription.Length;
+
+							string articleUrl = "<a href=\"" + comment.Url + "\"><h4>Gå til artiklen</h4></a>";
+
+							int dotBreak = pageDescription.IndexOf("...") + 3;
+
+							if (dotBreak > 0)
+							{
+								if (desciptionLength > dotBreak)
+								{
+									pageDescriptionPart1 = pageDescription.Substring(0, dotBreak);
+									pageDescriptionPart1 = pageDescriptionPart1.Replace("...", ".<span class=\"dotBreak\">..</span>");
+									pageDescriptionPart1 = umbraco.library.ReplaceLineBreaks(pageDescriptionPart1);
+								}
+
+								if (desciptionLength > dotBreak)
+								{
+									pageDescriptionPart2 = pageDescription.Substring(dotBreak, desciptionLength - dotBreak);
+									pageDescriptionPart2 = umbraco.library.ReplaceLineBreaks(pageDescriptionPart2);
+								}
+							}
+
+							var pageImage = comment.GetPropertyValue<IPublishedContent>("pageImage");
+							string pageImageUrl = "";
+							bool showImage = false;
+							if (pageImage != null)
+							{
+								pageImageUrl = pageImage.Url;
+								showImage = true;
+							}
+
+							string hiddenClass = "";
+							if (counter > 1)
+							{
+								hiddenClass = "hidden-element";
+							}
+							<li class="testimonial @hiddenClass">
+								<div class="row">
+									<figure class="col-sm-4 image-container">
+										@if (showImage)
+										{
+											<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@pageImageUrl" data-forcewidth="600" data-imgalt-desktop="This is the alt text">
+												<noscript>
+													<img src="@pageImageUrl" alt="This is the alt text">
+												</noscript>
+											</div>
+											<div class="bg-container img-tablet responsiveimg-tablet responsiveimg-background-tablet" data-imgsrc-mobile="@pageImageUrl" data-imgalt-mobile="This is the tablet alt text">
+												<noscript>
+													<img src="@pageImageUrl" alt="This is the tablet alt text">
+												</noscript>
+											</div>
+											<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@pageImageUrl" data-imgalt-mobile="This is the mobile alt text">
+												<noscript>
+													<img src="@pageImageUrl" alt="This is the mobile alt text">
+												</noscript>
+											</div>
+										}
+									</figure>
+									<div class="col-sm-8 text-container">
+										<div class="testimonial-text">
+											<h3>@pageHeadline</h3>
+											<p>
+												@Html.Raw(pageDescriptionPart1)
+											</p>
+											<div class="collapsible-text">
+												<p>
+													@Html.Raw(pageDescriptionPart2)
+													@Html.Raw(articleUrl)
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+										counter++;
+						}
+					</ul>
+					@if (counter > 1)
+					{
+						<button id="caseButton" class="btn btn-dark">Se flere cases</button>
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+}

@@ -1,0 +1,54 @@
+﻿@using Modstrom.Library.Helpers
+@using SquishIt.Framework
+@using SquishIt.Mvc
+@using Umbraco.Web
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+    var siteNode = Model.Content.GetSiteNode();
+    
+}<!doctype html>
+ <html lang="@Html.Partial("SEO/ncSiteLanguage")"> 
+    <head>
+        <meta charset="utf-8">
+        @Html.Partial("SEO/ncSiteSeo")
+        
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="msapplication-tap-highlight" content="no" />
+
+        @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteHeader"))
+        @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageHeader"))
+		<link href="/images/favicon.png" rel="shortcut icon" />
+
+        <link type="text/plain" rel="author" href="/humans.txt" />
+        <link rel="stylesheet" href="/dist/css/master.min.css">
+        <!--[if lt IE 9]>
+            <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+     <body>
+         @Html.Partial("SEO/ncSiteGoogleAnalytics")
+         @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteBodyTop"))
+         @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyTop"))
+		 @Html.Partial("CookiePopup")
+         <div id="site">
+		 	@Html.Partial("SupportSplash")
+            @Html.Partial("Sections/SectionHeader")
+            @RenderSection("mainContent") 
+            @Html.Partial("Sections/SectionFooter")
+            <a href="#0" id="back-to-top" class="back-to-top"></a>
+         </div>
+        
+        <script src="/dist/scripts/vendor.min.js"></script>
+        <script src="/dist/scripts/master.min.js"></script>
+	
+	 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+	 	<script src="http://ajax.aspnetcdn.com/ajax/mvc/5.1/jquery.validate.unobtrusive.min.js"></script>
+
+        @Html.Raw(siteNode.GetPropertyValue<string>("scriptSiteBodyBottom"))
+        @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageBodyBottom"))
+       
+     </body>
+</html>
