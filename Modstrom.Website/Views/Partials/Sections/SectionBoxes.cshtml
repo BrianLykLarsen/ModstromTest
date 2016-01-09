@@ -3,7 +3,6 @@
 @using Archetype.PropertyConverters
 @using RJP.MultiUrlPicker.Models
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
-
 @{
 	string headline = Model.GetValue<string>("headline");
 	string mainText = Model.GetValue<string>("text");
@@ -13,9 +12,7 @@
 	{
 		centerTextClass = "center";
 	}
-	
 	var boxes = Model.GetValue<ArchetypeModel>("box");
-	
 	string sectionID = Model.GetValue<string>("sectionID");
 	
 	<section id="@sectionID" class="section-boxes">
