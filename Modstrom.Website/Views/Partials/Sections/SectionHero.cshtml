@@ -1,6 +1,7 @@
 @using Archetype.Models
 @using Archetype.Extensions
 @using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 
 @{
@@ -10,15 +11,13 @@
 
 	string buttonText = Model.GetValue<string>("buttonText");
 
-	var buttonLinkId = Model.GetValue<int>("buttonUrl");
-	var buttonLink = Umbraco.Url(buttonLinkId);
-
+	var buttonLink = Model.GetValue<MultiUrls>("buttonUrl").FirstOrDefault();
+	
 	var imageId = Model.GetValue<int>("image");
 	var imageUrl = Umbraco.TypedMedia(imageId).Url;
 
-	var imageLinkId = Model.GetValue<int>("imageLink");
-	var imageLink = Umbraco.Url(imageLinkId);
-
+	var imageLink = Model.GetValue<MultiUrls>("imageLink").FirstOrDefault();
+	
 	var backgroundImageId = Model.GetValue<int>("backgroundImage");
 	var backgroundImageIdUrl = Umbraco.TypedMedia(backgroundImageId).Url;
 
@@ -41,18 +40,18 @@
 					<div class="text-area @textColor">
 						@Html.Raw(text)
 					</div>
-					@if (!string.IsNullOrWhiteSpace(buttonText) && !string.IsNullOrWhiteSpace(buttonLink))
+					@if (!string.IsNullOrWhiteSpace(buttonText) && !string.IsNullOrWhiteSpace(buttonLink.Url))
 					{
 						<div class="btn-holder">
-							<a href="@buttonLink" class="btn btn-orange btn-icon btn-icon-bulb">@buttonText</a>
+							<a href="@buttonLink.Url" target="@buttonLink.Target" title="@buttonLink.Name" class="btn btn-orange btn-icon btn-icon-bulb">@buttonText</a>
 						</div>
 					}
 				</div>
 				<div class="col-sm-4">
-					@if (!string.IsNullOrWhiteSpace(imageUrl) && !string.IsNullOrWhiteSpace(imageLink))
+					@if (!string.IsNullOrWhiteSpace(imageUrl) && !string.IsNullOrWhiteSpace(imageLink.Url))
 					{
 						<figure class="img-holder">
-							<a href="@imageLink" title="Spørg Kundo">
+							<a href="@imageLink.Url" target="@imageLink.Target" title="@imageLink.Name">
 								<img src="@imageUrl?width=300&quality=70" alt="This is the alt text">
 							</a>
 						</figure>

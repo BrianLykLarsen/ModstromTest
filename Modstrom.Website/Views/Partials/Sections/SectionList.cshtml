@@ -23,15 +23,13 @@
 	string text3 = Model.GetValue<string>("text3");
 	var link3 = Model.GetValue<MultiUrls>("link3");
 
-	string sectionID = Model.GetValue<string>("sectionID");
-
-	<section id="@sectionID" class="section-list">
+	<section class="section-list">
 		<div class="container">
 			<ul class="row">
 				<li class="image-link col-sm-4">
 					@if (link1 != null)
 					{
-						@:<a href="@link1.FirstOrDefault();.Url">
+						@:<a href="@link1.FirstOrDefault().Url">
 					}
 					<header>
 						<h3>@headline1</h3>
@@ -47,15 +45,14 @@
 					</div>
 					@if (link1 != null)
 					{
-						@:
-					</a>
+						@:</a>
 					}
 				</li>
 				<li class="image-link col-sm-4">
 
 					@if (link2 != null)
 					{
-						@:<a href="@link2.FirstOrDefault();.Url">
+						@:<a href="@link2.FirstOrDefault().Url">
 					}
 					<header>
 						<h3>@headline2</h3>
@@ -72,14 +69,13 @@
 
 					@if (link2 != null)
 					{
-						@:
-					</a>
+						@:</a>
 					}
 				</li>
 				<li class="image-link col-sm-4">
 					@if (link3 != null)
 					{
-						@:<a href="@link3.FirstOrDefault();.Url">
+						@:<a href="@link3.FirstOrDefault().Url">
 					}
 					<header>
 						<h3>@headline3</h3>
@@ -95,8 +91,7 @@
 					</div>
 					@if (link3 != null)
 					{
-						@:
-					</a>
+						@:</a>
 					}
 				</li>
 			</ul>

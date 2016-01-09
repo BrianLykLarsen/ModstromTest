@@ -1,6 +1,7 @@
 @using Archetype.Models
 @using Archetype.Extensions
 @using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 
 @{
@@ -43,13 +44,12 @@
 							string backgroundColor = box.GetValue<string>("backgroundColor");
 							string textPosition = box.GetValue<string>("textPosition");
 							string textAlign = box.GetValue<string>("textAlign");
-							var linkId = box.GetValue<int>("link");
-							var link = Umbraco.Url(linkId);
-
+							var link = box.GetValue<MultiUrls>("link").FirstOrDefault();
+							
 							<li class="col-sm-3">
 								@if (backgroundImageId == 0)
 								{
-									<a href="@link" class="box box-text @backgroundColor @textPosition @textAlign">
+									<a href="@link.Url" target="@link.Target" title="@link.Name" class="box box-text @backgroundColor @textPosition @textAlign">
 										<p>@text</p>
 									</a>
 								}
@@ -79,102 +79,7 @@
 
 						}
 					}
-					@*TODO: CLEAN UP DELETE THIS
-						<li class="col-sm-3">
-							<a href="/" class="box box-text box-teal box-bottom box-left">
-								<p>Helt almindelige mennesker med begge ben på jorden</p>
-							</a>
-						</li>
-						<li class="col-sm-3">
-							<a href="/" class="box box-image">
-								<figure>
-									<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/box-placeholder-desktop-01.jpg" data-imgalt-desktop="This is the alt text">
-										<noscript>
-											<img src="/images/box-placeholder-desktop-01.jpg" alt="This is the alt text">
-										</noscript>
-									</div>
-									<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/box-placeholder-mobile-01.jpg" data-imgalt-mobile="This is the mobile alt text">
-										<noscript>
-											<img src="/images/box-placeholder-mobile-01.jpg" alt="This is the mobile alt text">
-										</noscript>
-									</div>
-								</figure>
-							</a>
-						</li>
-						<li class="col-sm-3">
-							<a href="/" class="box box-image">
-								<figure>
-									<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/box-placeholder-desktop-02.jpg" data-imgalt-desktop="This is the alt text">
-										<noscript>
-											<img src="/images/box-placeholder-desktop-02.jpg" alt="This is the alt text">
-										</noscript>
-									</div>
-									<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/box-placeholder-mobile-02.jpg" data-imgalt-mobile="This is the mobile alt text">
-										<noscript>
-											<img src="/images/box-placeholder-mobile-02.jpg" alt="This is the mobile alt text">
-										</noscript>
-									</div>
-								</figure>
-							</a>
-						</li>
-						<li class="col-sm-3">
-							<a href="/" class="box box-text box-dark box-top box-right">
-								<p>Den rigtige klimavenlige kilowatt-time er den, der aldrig bliver brugt.</p>
-							</a>
-						</li>
-						<li class="col-sm-3">
-							<a href="/" class="box box-image">
-								<figure>
-									<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/box-placeholder-desktop-03.jpg" data-imgalt-desktop="This is the alt text">
-										<noscript>
-											<img src="/images/box-placeholder-desktop-03.jpg" alt="This is the alt text">
-										</noscript>
-									</div>
-									<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/box-placeholder-mobile-03.jpg" data-imgalt-mobile="This is the mobile alt text">
-										<noscript>
-											<img src="/images/box-placeholder-mobile-03.jpg" alt="This is the mobile alt text">
-										</noscript>
-									</div>
-								</figure>
-							</a>
-						</li>
-						<li class="col-sm-3">
-							<a href="/" class="box box-text box-orange box-bottom box-right">
-								<p>Modstrøm Danmark A/S er et 100% uafhængigt energiselskab.</p>
-							</a>
-						</li>
-						<li class="col-sm-3">
-							<a href="/" class="box box-image">
-								<figure>
-									<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/box-placeholder-desktop-04.jpg" data-imgalt-desktop="This is the alt text">
-										<noscript>
-											<img src="/images/box-placeholder-desktop-04.jpg" alt="This is the alt text">
-										</noscript>
-									</div>
-									<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/box-placeholder-mobile-04.jpg" data-imgalt-mobile="This is the mobile alt text">
-										<noscript>
-											<img src="/images/box-placeholder-mobile-04.jpg" alt="This is the mobile alt text">
-										</noscript>
-									</div>
-								</figure>
-							</a>
-						</li>
-						<li class="col-sm-3">
-							<a href="/" class="box box-image">
-								<figure>
-									<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="/images/box-placeholder-desktop-05.jpg" data-imgalt-desktop="This is the alt text">
-										<noscript>
-											<img src="/images/box-placeholder-desktop-05.jpg" alt="This is the alt text">
-										</noscript>
-									</div>
-									<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="/images/box-placeholder-mobile-05.jpg" data-imgalt-mobile="This is the mobile alt text">
-										<noscript>
-											<img src="/images/box-placeholder-mobile-05.jpg" alt="This is the mobile alt text">
-										</noscript>
-									</div>
-								</figure>
-							</a>
-						</li>*@
+					
 				</ul>
 			</div>
 		</div>
