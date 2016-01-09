@@ -1,7 +1,5 @@
 @using Modstrom.Library.Helpers
-
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
-
 @{
     var siteNode = Model.Content.GetSiteNode();
     var level2Node = Model.Content.AncestorOrSelf(2);
