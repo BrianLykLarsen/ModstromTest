@@ -1,0 +1,135 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string elementLayout = Model.GetValue<string>("layout");
+
+	string bootstrapClassLeft = "";
+	string bootstrapClassRight = "";
+	bool twoColumns = true;
+
+	if (elementLayout == "1 Column full")
+	{
+		twoColumns = false;
+	}
+	else if (elementLayout == "2 Column wide left")
+	{
+		bootstrapClassLeft = "col-sm-7";
+		bootstrapClassRight = "col-sm-5";
+	}
+	else if (elementLayout == "2 Colmn half")
+	{
+		bootstrapClassLeft = "col-sm-6";
+		bootstrapClassRight = "col-sm-6";
+	}
+	else if (elementLayout == "2 Column wide right")
+	{
+		bootstrapClassLeft = "col-sm-5";
+		bootstrapClassRight = "col-sm-7";
+	}
+
+	string column1 = Model.GetValue<string>("column1");
+	string column2 = Model.GetValue<string>("column2");
+	string relevantPageHeadline = Model.GetValue<string>("headlineForRelevantPages");
+
+	string sectionID = Model.GetValue<string>("sectionID");
+	
+	if (twoColumns)
+	{
+		<section id="@sectionID" class="section-split">
+			<div class="container">
+				<div class="row">
+
+					<div class="@bootstrapClassLeft column-container">
+						@renderContent(column1, twoColumns, relevantPageHeadline)
+					</div>
+
+					<div class="@bootstrapClassRight column-container">
+						@renderContent(column2, twoColumns, relevantPageHeadline)
+					</div>
+
+				</div>
+			</div>
+		</section>
+	}
+	else
+	{
+		<section id="@sectionID" class="section-relevant-pages">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						@renderContent(column1, twoColumns, relevantPageHeadline)
+					</div>
+				</div>
+			</div>
+		</section>
+	}
+}
+
+@helper renderContent(string type, bool twoColumns, string relevantPageHeadline)
+{ 
+	var current = (IPublishedContent)ViewData["contentElements"];
+	
+	if (type == "Article")
+	{
+		@Html.Partial("Sections/Elements/Articles", new ViewDataDictionary(ViewData) { { "contentArticle", current } })
+	}
+	if (type == "FAQ")
+	{
+		@Html.Partial("Sections/Elements/Questions", new ViewDataDictionary(ViewData) { { "contentQuestions", current } })
+	}
+	if (type == "Relevant Pages")
+	{		
+		if (twoColumns)
+		{
+			@renderBox(relevantPageHeadline, "relevant-pages-2x2");
+		}
+		else 
+		{
+			@renderBox(relevantPageHeadline, "relevant-pages-full");
+		}
+	}
+}
+
+@helper renderBox(string relevantPageHeadline, string className)
+{
+	string bootsrapClass = "col-sm-6";
+	
+	var relavantPages = Model.GetValue<ArchetypeModel>("selectRelavantPages");
+	if (className == "relevant-pages-full")
+	{
+		bootsrapClass = "col-sm-6 col-md-3";
+	}
+	
+	<h2>@relevantPageHeadline</h2>
+	<ul class="row relevant-pages @className">
+		@foreach (var box in relavantPages)
+		{
+			string boxHeadline = box.GetValue<string>("headline");
+			string boxColor = box.GetValue<string>("color");
+			var backgroundImageId = box.GetValue<int>("image");
+			var backgroundImage = "";
+			
+			if (backgroundImageId != 0)
+			{
+				backgroundImage = Umbraco.TypedMedia(backgroundImageId).Url;
+			}
+	  
+			var linkId = box.GetValue<int>("link");
+			var link = Umbraco.Url(linkId);
+
+			<li class="@bootsrapClass">
+				<a href="@link">
+					<figure class="img-default responsiveimg-default" data-hrnd-default="0.66" data-imgsrc-default="@backgroundImage" data-imgalt-default="This is the alt text">
+						<noscript>
+							<img src="@backgroundImage" alt="This is the alt text">
+						</noscript>
+					</figure>
+					<figcaption class="@boxColor">@boxHeadline</figcaption>
+				</a>
+			</li>
+		}
+	</ul>
+}

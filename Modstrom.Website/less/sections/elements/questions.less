@@ -1,0 +1,62 @@
+.column-questions {
+    .questions {
+        li {margin-top:20px;
+            .question-container {position:relative;
+                .question {min-height:55px;width:100%;padding:15px 90px 15px 15px;font-size:18px;background:@modstrom-gray-light;}
+                .trigger {background:@modstrom-blue;color:white;width:75px;position:absolute;border-left:solid 20px white;min-height:55px;top:0;right:0;
+                    &:before {content:'';display:block;width: 0; height: 0; border-top: 10px solid transparent;border-bottom: 10px solid transparent;border-left: 10px solid @modstrom-gray-light;position:absolute;left:-20px;top:50%;margin-top:-10px;}
+                    &:after {content:'+';.font-sini;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;display:block;height:30px;width:30px;font-size:50px;line-height:25px;.transition(0.25s);cursor:pointer;}
+                }
+            }
+
+            .answer-container {display:none;overflow:hidden;padding:0 75px 0 0;
+                div {padding:15px;background:#6e818c;
+                    p{margin:0;color:white;}
+					h3{color:white;}
+                }
+            }
+
+            &.active {
+                .question-container {
+                    .trigger:after {.transform(rotate(45deg));}
+                }
+            }
+            &:first-child {margin-top:0;}
+        }
+    }
+}  
+
+@media (max-width: @screen-md-max) {}
+
+@media (max-width: @screen-sm-max) {
+    .column-questions {
+        .questions {
+            li {margin-top:15px;
+                .question-container {
+                    .question {min-height:45px;padding:12px 72px 11px 12px;font-size:16px;}
+                    .trigger {width:60px;border-left:solid 15px white;min-height:45px;
+                        &:before {left:-18px;}
+                        &:after {height:24px;width:25px;font-size:42px;line-height:20px;}
+                    }
+                }
+            }
+        }
+    }  
+}
+
+@media (max-width: @screen-xs-max) {
+    .column-questions {
+        .questions {
+            li {margin-top:15px;
+                .question-container {
+                    .question {min-height:40px;padding:9px 66px 8px 10px;font-size:16px;}
+                    .trigger {width:55px;border-left:solid 15px white;min-height:40px;
+                        &:before {left:-18px;}
+                        &:after {height:24px;width:25px;font-size:42px;line-height:20px;}
+                    }
+                }
+                .answer-container {margin-top:15px;padding:0;}
+            }
+        }
+    }     
+}

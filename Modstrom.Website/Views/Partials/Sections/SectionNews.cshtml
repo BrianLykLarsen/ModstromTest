@@ -1,0 +1,111 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string headline = Model.GetValue<string>("headline");
+	string text = Model.GetValue<string>("text");
+	string sectionID = Model.GetValue<string>("sectionID");
+	//var current = (IPublishedContent)ViewData["contentArticles"];
+	var articleNode = Model.GetValue<IPublishedContent>("articleNode");
+
+	Dictionary<int, string> months = new Dictionary<int, string>()
+	{
+		{1,"Januar"},
+		{2,"Februar"},
+		{3,"Marts"},
+		{4,"April"},
+		{5,"Maj"},
+		{6,"Juni"},
+		{7,"Juli"},
+		{8,"August"},
+		{9,"September"},
+		{10,"Oktober"},
+		{11,"November"},
+		{12,"December"}
+	};
+	<section id="@sectionID" class="section-news">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>@headline</h2>
+					<div class="text-area">
+						@Html.Raw(text)
+					</div>
+					<form class="news-filter row">
+						<div class="col-sm-offset-3 col-sm-3">
+							<div class="input-container">
+								<select id="news-filter-year" class="">
+									<option value="all-years" selected="selected">Alle år</option>
+									@foreach (var year in articleNode.Descendants("SectionPage").GroupBy(x => x.UpdateDate.Year).Select(x => x.First().UpdateDate.Year))
+									{
+										<option value="@year">@year</option>
+									}
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="input-container">
+								<select id="news-filter-month" class="">
+									<option value="all-months" selected="selected">Alle måneder</option>
+									@foreach (var month in articleNode.Descendants("SectionPage").GroupBy(x => x.UpdateDate.Month).Select(x => x.First().UpdateDate.Month))
+									{
+										<option value="@month">@months[month]</option>
+									}
+								</select>
+							</div>
+						</div>
+					</form>
+					<div class="news-list-container row">
+						<div class="col-sm-offset-1 col-sm-10">
+							<ul class="news-list row">
+								@foreach (var article in articleNode.Descendants("SectionPage").OrderBy("CreateDate desc"))
+								{
+									string articleHeadline = article.GetPropertyValue<string>("pageHeadline");
+									string articleTeaser = article.GetPropertyValue<string>("pageDescription");
+									var articleImage = article.GetPropertyValue<IPublishedContent>("pageImage");
+									string articleImageUrl = "";
+									bool showImage = false;
+									if (articleImage != null)
+									{
+										articleImageUrl = articleImage.Url;
+										showImage = true;
+									}
+
+									if (articleTeaser.Length > 180)
+									{
+										articleTeaser = articleTeaser.Substring(0, 180) + "...";
+									}
+
+									<li class="active col-sm-6" data-year="@article.UpdateDate.Year" data-month="@article.UpdateDate.Month">
+
+										<figure>
+											@if (showImage)
+											{
+												<div class="bg-container img-default responsiveimg-default" data-imgsrc-default="@articleImageUrl" data-hrnd-default="0.66" data-imgalt-default="This is the alt text">
+													<noscript>
+														<img src="@articleImageUrl" alt="This is the alt text">
+													</noscript>
+												</div>
+											}
+										</figure>
+										<h3>@articleHeadline</h3>
+										<small>Opdateret den <time>@article.UpdateDate.Day <span style="text-transform:lowercase;">@months[@article.UpdateDate.Month]</span>, @article.UpdateDate.Year</time></small>
+										<div class="news-text">
+											<p>
+												@Html.Raw(articleTeaser)
+											</p>
+										</div>
+										<a href="@article.Url" class="see-all">Læs hele artiklen</a>
+									</li>
+								}
+							</ul>
+							<ul class="news-list-paging"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}

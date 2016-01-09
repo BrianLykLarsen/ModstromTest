@@ -1,0 +1,322 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string headline = Model.GetValue<string>("headline");
+	string teaserText = Model.GetValue<string>("text");
+
+	var selectComments = Model.GetValue<int[]>("selectComments").Select(x => Umbraco.TypedContent(x));
+	int commentCount = selectComments.Count();
+	var noSliderClass = "";
+	bool showSmallSlider = false;
+	bool showBigSlider = false;
+
+	string sectionID = Model.GetValue<string>("sectionID");
+	
+	if (commentCount == 2)
+	{
+		noSliderClass = "no-slider";
+		showSmallSlider = true;
+	}
+	else if (commentCount % 4 == 0)
+	{
+		showBigSlider = true;
+	}
+	@*
+		OBS: The logic included in this page it only to illustrate variations in design.
+		The desired logic is simply that the class "no-slider" should be added if there is only one <li>  (two comments)
+	*@
+
+	if (!showBigSlider)
+	{
+		<section id="@sectionID" class="section-comments @noSliderClass">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						@if (showSmallSlider)
+						{
+							<h1>@headline</h1>
+						}
+						<div class="comments-container">
+							<ul class="comments slides">
+								@if (showSmallSlider)
+								{
+									<li>
+										@foreach (var comment in selectComments)
+										{
+											string text = comment.GetPropertyValue<string>("text");
+											string customerName = comment.GetPropertyValue<string>("customerName");
+											string customerCity = comment.GetPropertyValue<string>("customerCity");
+											string signature = "- " + customerName + ", " + customerCity;
+											var image = comment.GetPropertyValue<IPublishedContent>("image").Url;
+
+											<div class="comment">
+												<figure class="img-default responsiveimg-default" data-imgsrc-default="@image?width=280&height=280" data-imgalt-default="This is the alt text">
+													<noscript>
+														<img src="@image?width=280&height=280" alt="This is the alt text">
+													</noscript>
+												</figure>
+												<div class="comment-text">
+													<span class="short-text">
+														@Html.Raw(text)
+													</span>
+													<p class="comment-author">@signature</p>
+												</div>
+											</div>
+										}
+									</li>
+								}
+								else
+								{
+									int counter = 0;
+									foreach (var comment in selectComments)
+									{
+										string htmlListStart = "<li>";
+										string htmlListEnd = "</li>";
+										string text = comment.GetPropertyValue<string>("text");
+										string customerName = comment.GetPropertyValue<string>("customerName");
+										string customerCity = comment.GetPropertyValue<string>("customerCity");
+										string signature = "- " + customerName + ", " + customerCity;
+										var image = comment.GetPropertyValue<IPublishedContent>("image").Url;
+
+										if (counter % 2 == 0)
+										{
+											@Html.Raw(htmlListStart)
+										}
+
+										<div class="comment">
+											<figure class="img-default responsiveimg-default" data-imgsrc-default="@image?width=280&height=280" data-imgalt-default="This is the alt text">
+												<noscript>
+													<img src="@image?width=280&height=280" alt="This is the alt text">
+												</noscript>
+											</figure>
+											<div class="comment-text">
+												<span class="short-text">
+													@Html.Raw(text)
+												</span>
+												<p class="comment-author">@signature</p>
+											</div>
+										</div>
+
+										if (counter != 1 && counter % 2 == 1)
+										{
+											@Html.Raw(htmlListEnd)
+										}
+
+										counter++;
+									}
+								}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	}
+	else
+	{
+		<section id="@sectionID" class="section-testimonial-customer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>@headline</h2>
+						<div class="text-area">
+							@teaserText
+						</div>
+					</div>
+					<div class="testimonials-slider">
+						<ul class="testimonials slides">
+							@{	//Desktopcode
+		int counter = 0;
+		foreach (var comment in selectComments)
+		{
+			string htmlListStart = "<li>";
+			string htmlListEnd = "</li>";
+			string text = comment.GetPropertyValue<string>("text");
+			string fulltext = text;
+			string commentId = "testimonial-" + comment.Id;
+
+			if (text.Length > 180)
+			{
+				text = text.Substring(0, 180) + "...";
+			}
+
+
+			string customerName = comment.GetPropertyValue<string>("customerName");
+			string customerCity = comment.GetPropertyValue<string>("customerCity");
+			string signature = "- " + customerName + ", " + customerCity;
+			var image = comment.GetPropertyValue<IPublishedContent>("image").Url;
+			string elementclass = "";
+			if (counter == 0)
+			{
+				elementclass = "box-teal arrow-right";
+				@Html.Raw(htmlListStart)
+			}
+			if (counter == 1)
+			{
+				elementclass = "box-dark arrow-right";
+			}
+			if (counter == 2)
+			{
+				elementclass = "box-orange arrow-left";
+			}
+			if (counter == 3)
+			{
+				elementclass = "box-gray arrow-left";
+			}
+			<a class="testimonial fancybox col-sm-6" href="#@commentId" rel="testimonial-gallery">
+				<div class="row">
+					@if (counter == 0 || counter == 1)
+					{
+						//First Row
+						<div class="col-sm-6">
+							<div class="box box-text @elementclass">
+								<h3>@customerName</h3>
+								<small>@customerCity</small>
+								<span class="short-text">
+									@Html.Raw(text)
+								</span>
+								<p class="link">Læs hele anmeldelsen</p>
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="box box-image">
+								<figure>
+									<div class="bg-container img-default responsiveimg-default responsiveimg-background-default" data-imgsrc-default="@image" data-imgalt-default="This is the alt text">
+										<noscript>
+											<img src="@image" alt="This is the alt text">
+										</noscript>
+									</div>
+
+								</figure>
+							</div>
+						</div>
+					}
+					else
+					{
+						//Second Row
+						<div class="col-sm-6">
+							<div class="box box-image">
+								<figure>
+									<div class="bg-container img-default responsiveimg-default responsiveimg-background-default" data-imgsrc-default="@image" data-imgalt-default="This is the alt text">
+										<noscript>
+											<img src="@image" alt="This is the alt text">
+										</noscript>
+									</div>
+								</figure>
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="box box-text @elementclass">
+								<h3>@customerName</h3>
+								<small>@customerCity</small>
+								<span class="short-text">
+									@Html.Raw(text)
+								</span>
+								<p class="link">Læs hele anmeldelsen</p>
+							</div>
+						</div>
+					}
+				</div>
+			</a>
+					counter++;
+					if (counter == 4)
+					{
+						@Html.Raw(htmlListEnd)
+						counter = 0;
+					}
+		}
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			@*MOBILE CONTENT ONLY*@
+			<div class="testimonials-slider-mobile">
+				<ul class="testimonials slides">
+					@{
+		//MOBILECODE
+		counter = 0;
+		foreach (var comment in selectComments)
+		{
+			string commentId = "testimonial-" + comment.Id;
+			string text = comment.GetPropertyValue<string>("text");
+			string fullText = text;
+			if (text.Length > 200)
+			{
+				text = text.Substring(0, 200) + "...";
+			}
+
+			string customerName = comment.GetPropertyValue<string>("customerName");
+			string customerCity = comment.GetPropertyValue<string>("customerCity");
+			string signature = "- " + customerName + ", " + customerCity;
+			var image = comment.GetPropertyValue<IPublishedContent>("image").Url;
+			string elementclass = "";
+			string overlayClass = "";
+
+			if (counter == 0)
+			{
+				elementclass = "box-teal";
+				overlayClass = "overlay-teal";
+			}
+			if (counter == 1)
+			{
+				elementclass = "box-dark";
+				overlayClass = "overlay-dark";
+			}
+			if (counter == 2)
+			{
+				elementclass = "box-orange";
+				overlayClass = "overlay-orange";
+			}
+			if (counter == 3)
+			{
+				elementclass = "box-gray";
+				overlayClass = "overlay-gray";
+			}
+			<li>
+				<a class="testimonial fancybox col-xs-12" href="#@commentId" rel="testimonial-gallery">
+					<div id="@commentId" class="testimonial-overlay @overlayClass">
+						<div class="box box-image">
+							<figure>
+								<div class="bg-container img-default responsiveimg-default responsiveimg-background-default" data-imgsrc-default="@image" data-imgalt-default="This is the alt text">
+									<noscript>
+										<img src="@image" alt="This is the alt text">
+									</noscript>
+								</div>
+							</figure>
+						</div>
+
+						<div class="box box-text @elementclass arrow-top">
+							<h3>@customerName</h3>
+							<small>@customerCity</small>
+
+							<div class="short-text">@Html.Raw(text) </div>
+
+							<p class="link">Læs hele anmeldelsen</p>
+							<div class="full-text">
+								@Html.Raw(fullText)
+							</div>
+						</div>
+					</div>
+				</a>
+			</li>
+			counter++;
+			if (counter == 4)
+			{
+				counter = 0;
+			}
+		}
+					}
+				</ul>
+			</div>
+
+		</section>
+	}
+}

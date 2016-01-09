@@ -1,0 +1,94 @@
+.section-boxes {padding:40px 0 60px 0;border-bottom:solid 1px #dfdfdf;
+    h2 {margin:0 0 40px 0;
+		&.center{text-align:center;}
+    }
+    .text-area {font-size:18px;margin-bottom:60px;
+		&.center{text-align:center;}
+    }
+
+    .box-list {
+        li {
+            &:nth-child(n+5) {margin-top:30px;}
+        }
+
+        .box {display:block;position:relative;height:320px;color:white;font-size:20px;font-weight:bold;opacity:1;.transition(0.25s);
+            &.box-teal {background-color:@modstrom-teal;}
+            &.box-dark {background-color:@modstrom-dark;}
+            &.box-orange {background-color:@modstrom-orange;}
+
+            &.box-top p {top:0;}
+            &.box-bottom p {bottom:0;}
+            &.box-left p {text-align:left;}
+            &.box-right p {text-align:right;}
+
+            &.box-text {overflow:hidden;
+                p {position:absolute;width:100%;padding:15px;margin:0;}
+            }
+
+            &.box-image {overflow:hidden;
+                div {position:absolute;height:100%;width:100%;background-size:cover;.transition(0.25s)}
+            }
+            &:hover {opacity:0.8;
+                div {.transform(scale(1.05));}
+            }
+        }
+    }
+}
+    
+@media (max-width: @screen-md-max) {
+    .section-boxes {padding:40px 0 50px 0;
+        h2 {margin:0 0 35px 0;}
+        .text-area {font-size:18px;margin-bottom:50px;}
+
+        .box-list {
+            li {
+                &:nth-child(n+5) {margin-top:30px;}
+            }
+
+            .box {height:260px;font-size:18px;
+                &.box-text {overflow:hidden;
+                    p {padding:15px;margin:0;}
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    .section-boxes {padding:40px 0 40px 0;
+        h2 {margin:0 0 30px 0;}
+        .text-area {font-size:16px;margin-bottom:40px;}
+
+        .box-list {
+            li {
+                &:nth-child(n+5) {margin-top:30px;}
+            }
+
+            .box {height:195px;font-size:16px;
+                &.box-text {overflow:hidden;
+                    p {padding:15px;margin:0;}
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .section-boxes {padding:30px 0 30px 0;
+        h2 {margin:0 0 25px 0;text-align:left;}
+        .text-area {font-size:16px;margin-bottom:30px;text-align:left;}
+
+        .box-list {
+            li {
+                &:nth-child(n+5) {margin-top:0;}
+            }
+
+            .box {height:auto;font-size:20px;
+                &.box-text {overflow:hidden;
+                    p {position:static;}
+                }
+                &.box-image {height:205px;}
+            }
+        }
+    }
+}
