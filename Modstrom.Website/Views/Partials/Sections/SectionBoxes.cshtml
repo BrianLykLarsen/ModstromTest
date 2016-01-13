@@ -3,7 +3,6 @@
 @using Archetype.PropertyConverters
 @using RJP.MultiUrlPicker.Models
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
-
 @{
 	string headline = Model.GetValue<string>("headline");
 	string mainText = Model.GetValue<string>("text");
@@ -13,12 +12,11 @@
 	{
 		centerTextClass = "center";
 	}
-	
 	var boxes = Model.GetValue<ArchetypeModel>("box");
-	
 	string sectionID = Model.GetValue<string>("sectionID");
+	<span id="@sectionID"></span>
 	
-	<section id="@sectionID" class="section-boxes">
+	<section class="section-boxes">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-10 col-sm-offset-1 ">
@@ -44,18 +42,28 @@
 							string backgroundColor = box.GetValue<string>("backgroundColor");
 							string textPosition = box.GetValue<string>("textPosition");
 							string textAlign = box.GetValue<string>("textAlign");
-							var link = box.GetValue<MultiUrls>("link").FirstOrDefault();
-							
+
+							string linkUrl = "#";
+							string target = "";
+							string title = "";
+							if (box.GetValue<MultiUrls>("link") != null)
+							{
+								var link = box.GetValue<MultiUrls>("link").FirstOrDefault();
+								linkUrl = link.Url;
+								target = link.Target;
+								title = link.Name;
+							}
+
 							<li class="col-sm-3">
 								@if (backgroundImageId == 0)
 								{
-									<a href="@link.Url" target="@link.Target" title="@link.Name" class="box box-text @backgroundColor @textPosition @textAlign">
+									<a href="@linkUrl" target="@target" title="title" class="box box-text @backgroundColor @textPosition @textAlign">
 										<p>@text</p>
 									</a>
 								}
 								else
 								{
-									<a href="@link" class="box box-image">
+									<a href="@linkUrl" target="@target" title="title" class="box box-image">
 										<figure>
 											<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@backgroundImage" data-imgalt-desktop="This is the alt text">
 												<noscript>
@@ -79,7 +87,7 @@
 
 						}
 					}
-					
+
 				</ul>
 			</div>
 		</div>
