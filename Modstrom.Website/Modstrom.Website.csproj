@@ -579,6 +579,10 @@
     <Content Include="dist\css\fonts\flexslider-icon.eot" />
     <Content Include="dist\css\fonts\flexslider-icon.ttf" />
     <Content Include="dist\css\fonts\flexslider-icon.woff" />
+    <Content Include="App_Plugins\UmbracoForms\Data\forms\73bcc120-70a1-4f4d-ab39-08535b234fc6.json" />
+    <Content Include="App_Plugins\UmbracoForms\Data\forms\91391181-7597-457e-9053-7a569b2080ea.json" />
+    <Content Include="App_Plugins\UmbracoForms\Data\forms\924ce038-bce3-45fa-89e0-53c9126275e9.json" />
+    <Content Include="App_Plugins\UmbracoForms\Data\forms\aafdbb2a-84a2-4589-bb01-8939407be0b6.json" />
     <None Include="fonts\Modstrom-icons\modstrom-icons.less" />
     <Content Include="fonts\Modstrom-icons\modstrom.svg" />
     <Content Include="fonts\Sini\2DD7EE_0_0.svg" />

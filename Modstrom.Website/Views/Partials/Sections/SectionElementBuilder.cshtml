@@ -81,7 +81,7 @@
 		@Html.Partial("Sections/Elements/Questions", new ViewDataDictionary(ViewData) { { "contentQuestions", current } })
 	}
 	if (type == "Relevant Pages")
-	{		
+	{		                                     
 		if (twoColumns)
 		{
 			@renderBox(relevantPageHeadline, "relevant-pages-2x2");
@@ -111,8 +111,8 @@
 			string boxColor = box.GetValue<string>("color");
 			var backgroundImageId = box.GetValue<int>("image");
 			var backgroundImage = "";
-			
-			if (backgroundImageId != 0)
+
+			if (backgroundImageId != 0 && backgroundImageId!=null)
 			{
 				backgroundImage = Umbraco.TypedMedia(backgroundImageId).Url;
 			}
