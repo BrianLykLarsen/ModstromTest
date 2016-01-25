@@ -1,0 +1,50 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@using Umbraco.Forms.Web.Controllers
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+@{
+	string formPicker = Model.GetValue<string>("form");
+	string headline = Model.GetValue<string>("headline");
+	string description = Model.GetValue<string>("description");
+	var image = Model.GetValue<IPublishedContent>("image");
+	string sectionID = Model.GetValue<string>("sectionID");
+
+	<section id="@sectionID" class="section-contact large-form">
+		<div class="container">
+			<div class="row">
+				<h2 class="col-xs-12">@headline</h2>
+				@if (image != null)
+				{
+					<div class="form-description">
+						<div class="col-sm-5 col-sm-offset-2">
+							@Html.Raw(description)
+						</div>
+						<div class="col-sm-3">
+							<figure>
+								<div class="img-default responsiveimg-default" data-imgsrc-default="@image.Url" data-hrnd-default="1" data-imgalt-default="This is the alt text">
+									<noscript>
+										<img src="@image.Url" alt="This is the alt text">
+									</noscript>
+								</div>
+							</figure>
+						</div>
+					</div>
+				}
+				else
+				{
+					<div class="col-sm-12 text-area">
+						@Html.Raw(description)
+					</div>
+				}
+			</div>
+			<div class="row">
+				@if (!string.IsNullOrWhiteSpace(formPicker))
+				{
+					var formGuid = new Guid(formPicker);
+					@Umbraco.RenderMacro("FormsRenderForm", new { FormGuid = formPicker, mode = "form" });
+				}
+			</div>
+		</div>
+	</section>
+}
