@@ -1,0 +1,31 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	string headline1 = Model.GetValue<string>("headline1");
+	string text1 = Model.GetValue<string>("text1");
+	string headline2 = Model.GetValue<string>("headline2");
+	string text2 = Model.GetValue<string>("text2");
+	string sectionID = Model.GetValue<string>("sectionID");
+	
+	<section id="@sectionID" class="section-text-split">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-5 col-sm-offset-1">
+					<div class="text-area">
+						<h2>@headline1</h2>
+						@Html.Raw(text1)
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<div class="text-area">
+						<h2>@headline2</h2>
+						@Html.Raw(text2)
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}

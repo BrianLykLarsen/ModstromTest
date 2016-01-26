@@ -1,0 +1,27 @@
+﻿@using Modstrom.Library.Helpers
+@using RJP.MultiUrlPicker.Models
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+
+	var siteNode = Model.Content.GetSiteNode();
+	bool enbleSupportSplash = siteNode.GetPropertyValue<bool>("enableSupportSplash");
+	string supportHeadline = siteNode.GetPropertyValue<string>("supportHeadline");
+	var supportLink1 = siteNode.GetPropertyValue<MultiUrls>("supportLink1");
+	var supportLink2 = siteNode.GetPropertyValue<MultiUrls>("supportLink2");
+	if (enbleSupportSplash)
+	{
+		<div class="hidden-xs show-support" id="support">
+			<div class="support-revealer">
+			</div>
+			<div class="support-body" style="display: none;">
+				<div class="support-body-inner">
+					<h5>@supportHeadline</h5>
+					<p>
+						<a href="@supportLink1.FirstOrDefault().Url">@supportLink1.FirstOrDefault().Name</a> -
+						<a href="@supportLink2.FirstOrDefault().Url">@supportLink2.FirstOrDefault().Name</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	}
+}

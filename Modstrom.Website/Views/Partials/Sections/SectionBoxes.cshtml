@@ -1,0 +1,95 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+@{
+	string headline = Model.GetValue<string>("headline");
+	string mainText = Model.GetValue<string>("text");
+	bool centerText = Model.GetValue<bool>("centerText");
+	string centerTextClass = "";
+	if (centerText)
+	{
+		centerTextClass = "center";
+	}
+	var boxes = Model.GetValue<ArchetypeModel>("box");
+	string sectionID = Model.GetValue<string>("sectionID");
+	<span id="@sectionID"></span>
+	
+	<section class="section-boxes">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1 ">
+					<h2 class="@centerTextClass">@headline</h2>
+					<div class="text-area @centerTextClass">
+						@Html.Raw(mainText)
+					</div>
+				</div>
+				<ul class="box-list">
+					@if (boxes.Any())
+					{
+						foreach (var box in boxes)
+						{
+							string text = box.GetValue<string>("text");
+							var backgroundImageId = box.GetValue<int>("backgroundImage");
+
+							var backgroundImage = "";
+							if (backgroundImageId != null && backgroundImageId != 0)
+							{
+								backgroundImage = Umbraco.TypedMedia(backgroundImageId).Url;
+							}
+
+							string backgroundColor = box.GetValue<string>("backgroundColor");
+							string textPosition = box.GetValue<string>("textPosition");
+							string textAlign = box.GetValue<string>("textAlign");
+
+							string linkUrl = "#";
+							string target = "";
+							string title = "";
+							if (box.GetValue<MultiUrls>("link") != null)
+							{
+								var link = box.GetValue<MultiUrls>("link").FirstOrDefault();
+								linkUrl = link.Url;
+								target = link.Target;
+								title = link.Name;
+							}
+
+							<li class="col-sm-3">
+								@if (backgroundImageId == 0)
+								{
+									<a href="@linkUrl" target="@target" title="title" class="box box-text @backgroundColor @textPosition @textAlign">
+										<p>@text</p>
+									</a>
+								}
+								else
+								{
+									<a href="@linkUrl" target="@target" title="title" class="box box-image">
+										<figure>
+											<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@backgroundImage" data-imgalt-desktop="This is the alt text">
+												<noscript>
+													<img src="@backgroundImage" alt="This is the alt text">
+												</noscript>
+											</div>
+											<div class="bg-container img-tablet responsiveimg-tablet responsiveimg-background-tablet" data-imgsrc-tablet="@backgroundImage?width=300" data-imgalt-tablet="This is the mobile alt text">
+												<noscript>
+													<img src="@backgroundImage?width=600" alt="This is the mobile alt text">
+												</noscript>
+											</div>
+											<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@backgroundImage?width=300" data-imgalt-mobile="This is the mobile alt text">
+												<noscript>
+													<img src="@backgroundImage?width=300" alt="This is the mobile alt text">
+												</noscript>
+											</div>
+										</figure>
+									</a>
+								}
+							</li>
+
+						}
+					}
+
+				</ul>
+			</div>
+		</div>
+	</section>
+}
