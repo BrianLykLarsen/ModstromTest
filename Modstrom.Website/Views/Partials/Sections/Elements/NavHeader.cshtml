@@ -8,7 +8,6 @@
 
 <ul id="nav-header">
     	@{
-
 			// Get umbraco pages where 'show in top navigation' is true
 			foreach (var page in siteNode.Children.Where(n => n.IsVisible()))
 			{
@@ -25,7 +24,7 @@
 
                         @{
                             var listMyParents = Model.Content.AncestorsOrSelf(3); //we take all parents starting at level 3
-                            if (page.Children.Where(n => n.IsVisible()).Count() > 0 && page.DocumentTypeAlias != "Articles") 
+                            if (page.Children.Any(n => n.IsVisible()) && page.DocumentTypeAlias != "Articles") 
                             {
                                 <ul class="nav-sub-mobile">
                                     @foreach (var node in level2Node.Children.Where(n => n.IsVisible()))
