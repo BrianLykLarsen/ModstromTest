@@ -77,11 +77,11 @@
 								<div class="slide-content col-sm-8 col-xs-10 @textColor">
 									<h2>@headline</h2>
 									<div class="slide-utilities">
-										@if (!String.IsNullOrWhiteSpace(button1Text) && buttonLink1 != null)
+										@if (!string.IsNullOrWhiteSpace(button1Text) && buttonLink1 != null)
 										{
 											<a href="@buttonLink1.FirstOrDefault().Url" target="@buttonLink1.FirstOrDefault().Target" class="btn btn-dark btn-icon btn-icon-play">@button1Text</a>
 										}
-										@if (!String.IsNullOrWhiteSpace(button2Text) && buttonLink2 != null)
+										@if (!string.IsNullOrWhiteSpace(button2Text) && buttonLink2 != null)
 										{
 											<a href="@buttonLink2.FirstOrDefault().Url" target="@buttonLink2.FirstOrDefault().Target" class="btn btn-teal btn-icon btn-icon-login">@button2Text</a>
 										}
