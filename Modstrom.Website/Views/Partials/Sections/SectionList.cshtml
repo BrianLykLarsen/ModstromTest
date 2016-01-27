@@ -21,10 +21,11 @@
 	var ImageUrl3 = Umbraco.TypedMedia(ImageId3).Url;
 	string text3 = Model.GetValue<string>("text3");
 	var link3 = Model.GetValue<MultiUrls>("link3");
-	
+
 	string sectionID = Model.GetValue<string>("sectionID");
-	
-	<section id="@sectionID"  class="section-list">
+
+	<section class="section-list">
+		<div id="@sectionID" style="position: absolute; top: -80px;"></div>
 		<div class="container">
 			<ul class="row">
 				<li class="image-link col-sm-4">
