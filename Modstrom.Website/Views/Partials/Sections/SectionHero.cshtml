@@ -1,0 +1,82 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+@{
+	string headline = Model.GetValue<string>("headline");
+	string text = Model.GetValue<string>("text");
+	string textColor = Model.GetValue<string>("textColor");
+
+	string buttonText = Model.GetValue<string>("buttonText");
+
+	string buttonLinklinkUrl = "#";
+	string buttonLinktarget = "";
+	string buttonLinktitle = "";
+	if (Model.GetValue<MultiUrls>("buttonUrl") != null)
+	{
+		var buttonLink = Model.GetValue<MultiUrls>("buttonUrl").FirstOrDefault();
+		buttonLinklinkUrl = buttonLink.Url;
+		buttonLinktarget = buttonLink.Target;
+		buttonLinktitle = buttonLink.Name;
+	}
+	
+	var imageId = Model.GetValue<int>("image");
+	var imageUrl = Umbraco.TypedMedia(imageId).Url;
+
+
+	string imageLinklinkUrl = "#";
+	string imageLinktarget = "";
+	string imageLinktitle = "";
+	if (Model.GetValue<MultiUrls>("link") != null)
+	{
+		var imageLink = Model.GetValue<MultiUrls>("link").FirstOrDefault();
+		imageLinklinkUrl = imageLink.Url;
+		imageLinktarget = imageLink.Target;
+		imageLinktitle = imageLink.Name;
+	}
+	var backgroundImageId = Model.GetValue<int>("backgroundImage");
+	var backgroundImageIdUrl = Umbraco.TypedMedia(backgroundImageId).Url;
+
+	string sectionID = Model.GetValue<string>("sectionID");
+
+	<span id="@sectionID"></span>
+
+	<section class="section-hero @textColor">
+		<figure>
+			<div class="bg-container img-default responsiveimg-default responsiveimg-background-default" data-imgsrc-default="@backgroundImageIdUrl" data-imgalt-default="This is the alt text">
+				<noscript>
+					<img src="@backgroundImageIdUrl" alt="This is the alt text">
+				</noscript>
+			</div>
+
+		</figure>
+
+		<h2 class="@textColor">@headline</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="text-area @textColor">
+						@Html.Raw(text)
+					</div>
+					@if (!string.IsNullOrWhiteSpace(buttonText) && !string.IsNullOrWhiteSpace(buttonLinklinkUrl))
+					{
+						<div class="btn-holder">
+							<a href="@buttonLinklinkUrl" target="@buttonLinktarget" title="@buttonLinktitle" class="btn btn-orange btn-icon btn-icon-bulb">@buttonText</a>
+						</div>
+					}
+				</div>
+				<div class="col-sm-4">
+					@if (!string.IsNullOrWhiteSpace(imageUrl) && !string.IsNullOrWhiteSpace(imageLinklinkUrl))
+					{
+						<figure class="img-holder">
+							<a href="@imageLinklinkUrl" target="@imageLinktarget" title="@imageLinktitle">
+								<img src="@imageUrl?width=300&quality=70" alt="This is the alt text">
+							</a>
+						</figure>
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+}
