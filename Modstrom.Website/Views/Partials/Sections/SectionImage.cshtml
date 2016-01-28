@@ -1,0 +1,61 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+
+	string backgroundImageDesktop = "";
+	string backgroundImageTablet = "";
+	string backgroundImageMobile = "";
+
+	string sectionID = Model.GetValue<string>("sectionID");
+	
+	if (Model.GetValue<IPublishedContent>("imageDesktop") != null)
+	{
+		backgroundImageDesktop = Model.GetValue<IPublishedContent>("imageDesktop").Url;
+	}
+	else
+	{
+		backgroundImageDesktop = "/images/default.jpg";
+	}
+
+	if (Model.GetValue<IPublishedContent>("imageTablet") != null)
+	{
+		backgroundImageTablet = Model.GetValue<IPublishedContent>("imageTablet").Url;
+	}
+	else
+	{
+		backgroundImageTablet = backgroundImageDesktop;
+	}
+
+	if (Model.GetValue<IPublishedContent>("imageMobile") != null)
+	{
+		backgroundImageMobile = Model.GetValue<IPublishedContent>("imageMobile").Url;
+	}
+	else
+	{
+		backgroundImageMobile = backgroundImageDesktop;
+	}
+
+	<section id="@sectionID" class="section-image">
+		<figure>
+			<div class="bg-container img-desktop responsiveimg-desktop responsiveimg-background-desktop" data-imgsrc-desktop="@backgroundImageDesktop">
+				<noscript>
+					<img src="@backgroundImageDesktop?width=50" alt="This is the alt text">
+				</noscript>
+			</div>
+			<div class="bg-container img-tablet responsiveimg-tablet responsiveimg-background-tablet" data-imgsrc-tablet="@backgroundImageTablet">
+				<noscript>
+					<img src="@backgroundImageTablet?width=50" alt="This is the alt text">
+				</noscript>
+			</div>
+			<div class="bg-container img-mobile responsiveimg-mobile responsiveimg-background-mobile" data-imgsrc-mobile="@backgroundImageMobile">
+				<noscript>
+					<img src="@backgroundImageMobile?width=50" alt="This is the alt text">
+				</noscript>
+			</div>
+
+		</figure>
+	</section>
+}

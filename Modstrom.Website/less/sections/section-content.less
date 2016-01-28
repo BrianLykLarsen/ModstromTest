@@ -1,0 +1,87 @@
+.section-content {background:#f9f8f4;padding:0 0 60px 0;
+    .content-container {position:relative;
+        background: rgb(255,255,255);
+        background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(249,248,244,1) 75%, rgba(249,248,244,1) 75%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(75%,rgba(249,248,244,1)), color-stop(75%,rgba(249,248,244,1)));
+        background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(249,248,244,1) 75%,rgba(249,248,244,1) 75%);
+        background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(249,248,244,1) 75%,rgba(249,248,244,1) 75%);
+        background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(249,248,244,1) 75%,rgba(249,248,244,1) 75%);
+        background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(249,248,244,1) 75%,rgba(249,248,244,1) 75%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9f8f4',GradientType=0 );
+
+        .top-element {content: ''; position: absolute; left: 0; top: -30px; width: 100%; height: 50px; background: white; border-radius: 8px 8px 0 0;.transform(skewY(1deg));background:white;z-index:999;}
+        &:before {content:"";display:block;height:41px;width:3px;background:url(/images/shadow-left.png);position:absolute;top:0;left:-3px;}
+        &:after {content:"";display:block;height:41px;width:3px;background:url(/images/shadow-right.png);position:absolute;top:0;right:-3px;}
+        
+        .text-area {position:relative;z-index:1000;
+			&.center{text-align:center;}
+        }
+		.btn-holder{padding-top:30px;position:relative;width:100%;padding-right:5px;
+			.btn{width:100%;text-decoration:none;display:block;}
+		}
+        .content-boxes {overflow:hidden;padding-top:15px;
+            .box {width:50%;float:left;
+                figure {
+                    img {width:100%;}
+                }
+                .box-text {background:#f3f3f3;padding:40px 25px 30px 25px;border-radius:0 0 8px 8px;position:relative;line-height:1.6em;
+                    p {margin-top:0;position:relative;}
+                    i {position: absolute; top: -30px;left:50%;margin-left:-63px; width: 126px; height: 60px; border-radius: 4px 4px 0 0;.transform(skewY(-5deg));background-color:#f3f3f3;
+                       &:after {content:'';display:block;background-position:center;background-repeat:no-repeat;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;.transform(skewY(5deg));}
+                    }
+                    .btn {display:inline-block;margin-top:20px;}
+                }
+
+                &.ide-el {padding:0 15px 0 0;
+                    .box-text i:after {background-image:url(/images/content-box-logo-ideel.jpg);height:45px;width:75px;}
+                }
+                &.enk-el {padding:0 0 0 15px;
+                    .box-text i:after {background-image:url(/images/content-box-logo-enkel.jpg);height:44px;width:81px;}
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-md-max) {
+    .section-content {padding:0 0 50px 0;
+        .content-container {   
+            .content-boxes {padding-top:10px;
+                .box {
+                    .box-text {padding:30px 20px 20px 20px;   
+                        .btn {margin-top:10px;}
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    .section-content {padding:0 0 40px 0;
+        .content-container {      
+            .content-boxes {
+                .box {
+                    .box-text {padding:25px 20px 20px 20px;}
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .section-content {padding:0 0 30px 0;
+        .content-container {padding: 0 15px 0 15px;   
+            .top-element {top: -20px;}    
+            .content-boxes {
+                .box {width:100%;
+                    .box-text {padding:25px 15px 15px 15px;line-height:1.4em;
+                        .btn {display:block;text-align:center;}
+                    }
+                    &.ide-el {padding:0;}
+                    &.enk-el {padding:0;margin-top:25px;}
+                }
+            }
+        }
+    }
+}
