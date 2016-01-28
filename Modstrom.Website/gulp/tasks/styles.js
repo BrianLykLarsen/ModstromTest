@@ -18,9 +18,11 @@ gulp.task('styles', function () {
             .pipe(plugins.less())
             .pipe(plugins.concat(b.name + ".min.css"))
             .pipe(plugins.if(!config.debug && useAutoprefixer, plugins.autoprefixer(config.stylesVendorPrefixes)))
+            .pipe(plugins.minifyCss({keepBreaks:false}))
             .pipe(plugins.if(!config.debug && useSourcemaps, plugins.sourcemaps.write()))
             .pipe(gulp.dest(config.stylesDist));
     });
 
     return mergeStream(streams);
 });
+
