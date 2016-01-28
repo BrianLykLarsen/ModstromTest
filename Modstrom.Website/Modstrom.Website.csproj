@@ -548,6 +548,22 @@
     <Content Include="images\support.png" />
     <Content Include="less\libs\keepme.txt" />
     <Content Include="less\master.less.squishit.debug.css" />
+    <Content Include="Scripts\compiled\keepme.txt" />
+    <None Include="Scripts\jquery-1.11.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.11.0.js" />
+    <Content Include="Scripts\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\libs\bootstrap\affix.js" />
+    <Content Include="Scripts\libs\bootstrap\alert.js" />
+    <Content Include="Scripts\libs\bootstrap\button.js" />
+    <Content Include="Scripts\libs\bootstrap\carousel.js" />
+    <Content Include="Scripts\libs\bootstrap\collapse.js" />
+    <Content Include="Scripts\libs\bootstrap\dropdown.js" />
+    <Content Include="Scripts\libs\bootstrap\modal.js" />
+    <Content Include="Scripts\libs\bootstrap\popover.js" />
+    <Content Include="Scripts\libs\bootstrap\scrollspy.js" />
+    <Content Include="Scripts\libs\bootstrap\tab.js" />
+    <Content Include="Scripts\libs\bootstrap\tooltip.js" />
+    <Content Include="Scripts\libs\bootstrap\transition.js" />
     <Content Include="Scripts\libs\fancybox\blank.gif" />
     <Content Include="Scripts\libs\fancybox\fancybox-close.png" />
     <Content Include="Scripts\libs\fancybox\fancybox-next.png" />
@@ -565,6 +581,21 @@
     <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.ttf" />
     <Content Include="Scripts\libs\flexslider\fonts\flexslider-icon.woff" />
     <Content Include="Scripts\libs\flexslider\jquery.flexslider.js" />
+    <Content Include="Scripts\libs\jquery.cookie.js" />
+    <Content Include="Scripts\libs\modernizr.custom.js" />
+    <Content Include="Scripts\libs\novicell.cookieinfo.js" />
+    <Content Include="Scripts\libs\novicell.examples.js" />
+    <Content Include="Scripts\libs\novicell.imageadjust.js" />
+    <Content Include="Scripts\libs\novicell.js" />
+    <Content Include="Scripts\libs\novicell.lazyload.js" />
+    <Content Include="Scripts\libs\novicell.overlay.js" />
+    <Content Include="Scripts\libs\novicell.responsive.js" />
+    <Content Include="Scripts\libs\parsley\jquery.parsley.js" />
+    <Content Include="Scripts\libs\perfect-scrollbar\jquery.perfect-scrollbar.js" />
+    <Content Include="Scripts\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Scripts\libs\simple-pagination\jquery.simple-pagination.js" />
+    <Content Include="Scripts\libs\simple-pagination\simple-pagination.css" />
+    <Content Include="Scripts\master.js" />
     <Content Include="xslt\seochecker-notification.xslt" />
     <Content Include="xslt\seochecker-scheduledtask.xslt" />
     <Content Include="bin\umbracoForms.lic" />
@@ -3440,6 +3471,8 @@
     <Content Include="Views\MacroPartials\InsertUmbracoForm.cshtml" />
     <Content Include="Views\MacroPartials\RenderUmbracoFormScripts.cshtml" />
     <Content Include="Views\MacroPartials\ezSearch.cshtml" />
+    <Content Include="Scripts\jquery-1.11.0.min.map" />
+    <Content Include="Scripts\master.js.orig" />
     <None Include="Web.Staging.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
