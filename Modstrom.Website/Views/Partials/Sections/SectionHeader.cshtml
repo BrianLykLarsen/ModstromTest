@@ -14,15 +14,19 @@
 
 	var loginPage = Model.Content.AncestorOrSelf("Site").GetPropertyValue<MultiUrls>("loginPage");
 	var webshop = Model.Content.AncestorOrSelf("Site").GetPropertyValue<MultiUrls>("webshop");
+
 	<header id="header">
+		
 		<figure id="logo">
 			<a href="/">
-				<img src="@LogoUrl" alt="Modstrøm Logo" title="Modstrøm" />
+				<img src="@LogoUrl" alt="Modstrøm Logo" title="Modstrøm"/>
 			</a>
 		</figure>
+
 		<nav id="nav-container">
 			@Html.Partial("Sections/Elements/NavHeader")
 		</nav>
+
 		<div id="header-utilities">
 			<span class="nav-trigger">
 				<span></span>
@@ -34,17 +38,19 @@
 				<a id="header-basket" href="@webshop.FirstOrDefault().Url" target="@webshop.FirstOrDefault().Target"><span>0,00</span><i class="icon icon-cart"></i></a>
 			}
 			@if (loginPage.FirstOrDefault() != null)
-   {
+			{
 				<a id="header-login" href="@loginPage.FirstOrDefault().Url" target="@loginPage.FirstOrDefault().Target"><i class=" icon icon-login"></i></a>
 			}
 			<a id="header-search" href="/"><i class="icon icon-search-compressor"></i></a>
 			<form id="header-search-form" action="@searchPage.Url" method="post" data-parsley-validate>
 				<div class="input-container">
-					<input type="text" name="searchParameter" placeholder="Søg..." data-parsley-required />
+					<input type="text" name="searchParameter" placeholder="Søg..." data-parsley-required/>
 				</div>
-				<input type="submit" class="btn btn-orange" value="Søg" />
+				<input type="submit" class="btn btn-orange" value="Søg"/>
 			</form>
 		</div>
+
 		@Html.Partial("Sections/Elements/NavSub")
+
 	</header>
 }

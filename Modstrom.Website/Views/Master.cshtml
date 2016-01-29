@@ -22,11 +22,12 @@
         @Html.Raw(Model.Content.GetPropertyValue<string>("scriptPageHeader"))
 		<link href="/images/favicon.png" rel="shortcut icon" />
 
-        <link type="text/plain" rel="author" href="/humans.txt" />
+	    <link type="text/plain" rel="author" href="/humans.txt"/>
         <link rel="stylesheet" href="/dist/css/master.min.css">
         <!--[if lt IE 9]>
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+		<script src="/dist/scripts/vendor.min.js"></script>
     </head>
      <body>
          @Html.Partial("SEO/ncSiteGoogleAnalytics")
@@ -41,7 +42,7 @@
             <a href="#0" id="back-to-top" class="back-to-top"></a>
          </div>
         
-        <script src="/dist/scripts/vendor.min.js"></script>
+        
         <script src="/dist/scripts/master.min.js"></script>
 	
 	 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>

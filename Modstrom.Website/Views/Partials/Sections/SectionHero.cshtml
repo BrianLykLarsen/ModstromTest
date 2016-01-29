@@ -20,13 +20,10 @@
 		buttonLinktarget = buttonLink.Target;
 		buttonLinktitle = buttonLink.Name;
 	}
-
+	
+	IPublishedContent backgroundImage = Model.GetValue<IPublishedContent>("backgroundImage");
 	IPublishedContent image = Model.GetValue<IPublishedContent>("image");
 		
-	//var imageId = Model.GetValue<int>("image");
-	//var imageUrl = Umbraco.TypedMedia(imageId).Url;
-
-
 	string imageLinklinkUrl = "#";
 	string imageLinktarget = "";
 	string imageLinktitle = "";
@@ -38,14 +35,8 @@
 		imageLinktitle = imageLink.Name;
 	}
 	
-	//var backgroundImageId = Model.GetValue<int>("backgroundImage");
-	//var backgroundImageIdUrl = Umbraco.TypedMedia(backgroundImageId).Url;
-
-	IPublishedContent backgroundImage = Model.GetValue<IPublishedContent>("backgroundImage");
-	
 	string sectionID = Model.GetValue<string>("sectionID");
 
-	
 	<span id="@sectionID"></span>
 
 	<section class="section-hero @textColor">

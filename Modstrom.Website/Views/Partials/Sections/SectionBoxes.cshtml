@@ -14,6 +14,7 @@
 	}
 	var boxes = Model.GetValue<ArchetypeModel>("box");
 	string sectionID = Model.GetValue<string>("sectionID");
+	
 	<span id="@sectionID"></span>
 	
 	<section class="section-boxes">
@@ -46,6 +47,7 @@
 							string linkUrl = "#";
 							string target = "";
 							string title = "";
+							
 							if (box.GetValue<MultiUrls>("link") != null)
 							{
 								var link = box.GetValue<MultiUrls>("link").FirstOrDefault();
