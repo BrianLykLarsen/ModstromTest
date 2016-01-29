@@ -3,7 +3,7 @@
     .text-area { text-align: center; font-size: 18px; margin-bottom: 60px; }
 
     .testimonials-slider-mobile {display:none;
-        .testimonial-overlay {display:block !important;
+        .testimonial-overlay {display:block !important;min-height:400px !important;
             .full-text {display:none;}
         }
     }
@@ -62,13 +62,13 @@
 }
 
 .fancybox-inner {
-    .testimonial-overlay {color:white;padding:50px;position:relative;
+    .testimonial-overlay {color:white;padding:50px;position:relative;overflow:hidden;
         &.overlay-teal { background-color: @modstrom-teal;}
         &.overlay-dark { background-color: @modstrom-dark;}
         &.overlay-orange { background-color: @modstrom-orange;}
         &.overlay-gray { background-color: @modstrom-gray;}
 
-        .box-image{width:175px;position:absolute;top:50px;left:50px;
+        .box-image{width:175px;/*position:absolute;top:50px;left:50px;*/ float:left;
             figure {width:100%;height:175px;
                 div {height:175px;width:175px;border-radius:50%;background-size:cover;}
             }

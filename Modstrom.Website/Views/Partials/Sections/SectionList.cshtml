@@ -5,20 +5,17 @@
 @inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
 @{
 	string headline1 = Model.GetValue<string>("headline1");
-	var ImageId1 = Model.GetValue<int>("image1");
-	var ImageUrl1 = Umbraco.TypedMedia(ImageId1).Url;
+	IPublishedContent ImageUrl1 = Model.GetValue<IPublishedContent>("image1");
 	string text1 = Model.GetValue<string>("text1");
 	var link1 = Model.GetValue<MultiUrls>("link1");
 
 	string headline2 = Model.GetValue<string>("headline2");
-	var ImageId2 = Model.GetValue<int>("image2");
-	var ImageUrl2 = Umbraco.TypedMedia(ImageId2).Url;
+	IPublishedContent ImageUrl2 = Model.GetValue<IPublishedContent>("image2");
 	string text2 = Model.GetValue<string>("text2");
 	var link2 = Model.GetValue<MultiUrls>("link2");
 
 	string headline3 = Model.GetValue<string>("headline3");
-	var ImageId3 = Model.GetValue<int>("image3");
-	var ImageUrl3 = Umbraco.TypedMedia(ImageId3).Url;
+	IPublishedContent ImageUrl3 = Model.GetValue<IPublishedContent>("image3");
 	string text3 = Model.GetValue<string>("text3");
 	var link3 = Model.GetValue<MultiUrls>("link3");
 
@@ -37,11 +34,14 @@
 						<h3>@headline1</h3>
 						<i></i>
 					</header>
-					<figure class="responsiveimg-default" data-imgsrc-default="@ImageUrl1" data-imgalt-default="This is the alt-text">
-						<noscript>
-							<img src="@ImageUrl1" alt="This is the alt text">
-						</noscript>
-					</figure>
+					@if (ImageUrl1!=null)
+					{ 
+						<figure class="responsiveimg-default" data-imgsrc-default="@ImageUrl1.Url" data-imgalt-default="This is the alt-text">
+							<noscript>
+								<img src="@ImageUrl1.Url" alt="This is the alt text">
+							</noscript>
+						</figure>
+					}
 					<div class="text">
 						@Html.Raw(text1)
 					</div>
@@ -60,11 +60,14 @@
 						<h3>@headline2</h3>
 						<i></i>
 					</header>
-					<figure class="responsiveimg-default" data-imgsrc-default="@ImageUrl2" data-imgalt-default="This is the alt-text">
-						<noscript>
-							<img src="@ImageUrl2" alt="This is the alt text">
-						</noscript>
-					</figure>
+					@if (ImageUrl2 != null)
+					{
+						<figure class="responsiveimg-default" data-imgsrc-default="@ImageUrl2.Url" data-imgalt-default="This is the alt-text">
+							<noscript>
+								<img src="@ImageUrl2.Url" alt="This is the alt text">
+							</noscript>
+						</figure>
+					}
 					<div class="text">
 						@Html.Raw(text2)
 					</div>
@@ -83,11 +86,14 @@
 						<h3>@headline3</h3>
 						<i></i>
 					</header>
-					<figure class="responsiveimg-default" data-imgsrc-default="@ImageUrl3" data-imgalt-default="This is the alt-text">
-						<noscript>
-							<img src="@ImageUrl3" alt="This is the alt text">
-						</noscript>
-					</figure>
+					@if (ImageUrl3 != null)
+					{
+						<figure class="responsiveimg-default" data-imgsrc-default="@ImageUrl3.Url" data-imgalt-default="This is the alt-text">
+							<noscript>
+								<img src="@ImageUrl3.Url" alt="This is the alt text">
+							</noscript>
+						</figure>
+					}
 					<div class="text">
 						@Html.Raw(text3)
 					</div>
