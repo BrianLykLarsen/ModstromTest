@@ -1,4 +1,5 @@
 ﻿@using Modstrom.Library.Helpers
+@using RJP.MultiUrlPicker.Models
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
 	IPublishedContent searchPage = Model.Content.AncestorOrSelf("Site").GetPropertyValue<IPublishedContent>("searchPage");
@@ -11,6 +12,8 @@
 		LogoUrl = logo.Url;
 	}
 
+	var loginPage = Model.Content.AncestorOrSelf("Site").GetPropertyValue<MultiUrls>("loginPage");
+	var webshop = Model.Content.AncestorOrSelf("Site").GetPropertyValue<MultiUrls>("webshop");
 	<header id="header">
 		<figure id="logo">
 			<a href="/">
@@ -26,8 +29,14 @@
 				<span></span>
 				<span></span>
 			</span>
-			<a id="header-basket" href="/"><span>0,00</span><i class="icon icon-cart"></i></a>
-			<a id="header-login" href="/"><i class="icon icon-login"></i></a>
+			@if (webshop.FirstOrDefault() != null)
+			{
+				<a id="header-basket" href="@webshop.FirstOrDefault().Url" target="@webshop.FirstOrDefault().Target"><span>0,00</span><i class="icon icon-cart"></i></a>
+			}
+			@if (loginPage.FirstOrDefault() != null)
+   {
+				<a id="header-login" href="@loginPage.FirstOrDefault().Url" target="@loginPage.FirstOrDefault().Target"><i class=" icon icon-login"></i></a>
+			}
 			<a id="header-search" href="/"><i class="icon icon-search-compressor"></i></a>
 			<form id="header-search-form" action="@searchPage.Url" method="post" data-parsley-validate>
 				<div class="input-container">
