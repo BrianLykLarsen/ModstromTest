@@ -1,0 +1,61 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+
+@{
+	var current = (IPublishedContent)ViewData["contentQuestions"];
+	var selectedList = Model.GetValue<int>("faqPage");
+
+	var questionsNode = current.AncestorOrSelf("Site").Children.First(x => x.Id == selectedList);
+
+	
+	string headline = questionsNode.GetPropertyValue<string>("headline");
+	string amount = Model.GetValue<string>("faqElementsToShow");
+	
+	var faqNodeList = questionsNode.Children.Take(0);
+	bool showLink = true;
+	
+	if (amount == "All" || amount == "" || amount == null)
+	{
+		faqNodeList = questionsNode.Children;
+		showLink = false;
+	}
+	else
+	{
+		int amountNum = Convert.ToInt32(amount);
+		faqNodeList = questionsNode.Children.Take(amountNum);
+	}
+
+	<div class="column-questions">
+		<h2>@headline</h2>
+		<ul class="questions">
+			@foreach (var question in faqNodeList)
+			{
+				string questionHeadline = question.GetPropertyValue<string>("headline");
+				string questionText = question.GetPropertyValue<string>("text");
+				<li>
+					<div class="question-container">
+						<div class="question">
+							@questionHeadline
+						</div>
+						<div class="trigger"></div>
+					</div>
+					<div class="answer-container text-area">
+						<div>
+							<h3>Svar:</h3>
+							@Html.Raw(questionText)
+						</div>
+					</div>
+				</li>
+			}
+		</ul>
+
+		@if (showLink && Model.GetValue<IPublishedContent>("faqPage") != null)
+		{
+			var faqUrl = Model.GetValue<IPublishedContent>("faqPage").Url;
+			<a class="see-all" href="@faqUrl">Se alle spørgsmål og svar</a>
+		}
+		
+	</div>
+}

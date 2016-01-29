@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = null;
+	var header = Model.Content.GetPropertyValue<string>("cookieHeadline");
+	var content = Model.Content.GetPropertyValue<string>("cookieText");
+
+	<div>
+		<div class="col-xs-10">
+			<h3>@header</h3>
+			@Html.Raw(content)
+		</div>
+		<div class="col-xs-2">
+			<a class="cookie-info-toggle" href="#cookieInfoshow"><span class="icon-cross">X</span></a>
+		</div>
+	</div>
+}

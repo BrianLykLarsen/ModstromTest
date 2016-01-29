@@ -1,0 +1,111 @@
+@using Archetype.Models
+@using Archetype.Extensions
+@using Archetype.PropertyConverters
+@using RJP.MultiUrlPicker.Models
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<ArchetypeFieldsetModel>
+@{
+	string headline1 = Model.GetValue<string>("headline1");
+	IPublishedContent ImageUrl1 = Model.GetValue<IPublishedContent>("image1");
+	string text1 = Model.GetValue<string>("text1");
+	var link1 = Model.GetValue<MultiUrls>("link1");
+
+	string headline2 = Model.GetValue<string>("headline2");
+	IPublishedContent ImageUrl2 = Model.GetValue<IPublishedContent>("image2");
+	string text2 = Model.GetValue<string>("text2");
+	var link2 = Model.GetValue<MultiUrls>("link2");
+
+	string headline3 = Model.GetValue<string>("headline3");
+	IPublishedContent ImageUrl3 = Model.GetValue<IPublishedContent>("image3");
+	string text3 = Model.GetValue<string>("text3");
+	var link3 = Model.GetValue<MultiUrls>("link3");
+
+	string sectionID = Model.GetValue<string>("sectionID");
+
+	<section class="section-list">
+	
+		<div id="@sectionID" style="position: absolute; top: -80px;"></div>
+			
+		<div class="container">
+			<ul class="row">
+				<li class="image-link col-sm-4">
+					@if (link1 != null)
+					{
+						@:<a href="@link1.FirstOrDefault().Url">
+					}
+					<header>
+						<h3>@headline1</h3>
+						<i></i>
+					</header>
+					@if (ImageUrl1!=null)
+					{ 
+						<figure class="responsiveimg-default" data-imgsrc-default="@ImageUrl1.Url" data-imgalt-default="This is the alt-text">
+							<noscript>
+								<img src="@ImageUrl1.Url" alt="This is the alt text">
+							</noscript>
+						</figure>
+					}
+					<div class="text">
+						@Html.Raw(text1)
+					</div>
+					@if (link1 != null)
+					{
+						@:</a>
+					}
+				</li>
+				<li class="image-link col-sm-4">
+
+					@if (link2 != null)
+					{
+						@:<a href="@link2.FirstOrDefault().Url">
+					}
+					<header>
+						<h3>@headline2</h3>
+						<i></i>
+					</header>
+					@if (ImageUrl2 != null)
+					{
+						<figure class="responsiveimg-default" data-imgsrc-default="@ImageUrl2.Url" data-imgalt-default="This is the alt-text">
+							<noscript>
+								<img src="@ImageUrl2.Url" alt="This is the alt text">
+							</noscript>
+						</figure>
+					}
+					<div class="text">
+						@Html.Raw(text2)
+					</div>
+
+					@if (link2 != null)
+					{
+						@:</a>
+					}
+				</li>
+				<li class="image-link col-sm-4">
+					@if (link3 != null)
+					{
+						@:<a href="@link3.FirstOrDefault().Url">
+					}
+					<header>
+						<h3>@headline3</h3>
+						<i></i>
+					</header>
+					@if (ImageUrl3 != null)
+					{
+						<figure class="responsiveimg-default" data-imgsrc-default="@ImageUrl3.Url" data-imgalt-default="This is the alt-text">
+							<noscript>
+								<img src="@ImageUrl3.Url" alt="This is the alt text">
+							</noscript>
+						</figure>
+					}
+					<div class="text">
+						@Html.Raw(text3)
+					</div>
+					@if (link3 != null)
+					{
+						@:</a>
+					}
+				</li>
+			</ul>
+		</div>
+	</section>
+
+}
