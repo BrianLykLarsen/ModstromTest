@@ -14,12 +14,7 @@
 				// If looped item is equal to current node, set class to active
 				string childClass = page.Id == level2Node.Id && Model.Content.Level == 2 ? " class=\"active\"" : string.Empty;
 
-				if (page.GetPropertyValue<bool>("isFrontpage") == true)
-				{
-					<li @(Html.Raw(childClass))><a href="/">@page.Name</a></li>
-				}
-				else
-                {
+
 				    <li @(Html.Raw(childClass))><a href="@page.Url">@page.Name</a>
 
                         @{
@@ -27,18 +22,27 @@
                             if (page.Children.Any(n => n.IsVisible()) && page.DocumentTypeAlias != "Articles") 
                             {
                                 <ul class="nav-sub-mobile">
-                                    @foreach (var node in level2Node.Children.Where(n => n.IsVisible()))
+                                    @foreach (var node in page.Children.Where(n => n.IsVisible()))
                                     {
                                         string subChildClass = node.Id == level3Node.Id ? " class=\"active\"" : string.Empty;
 	                                    string url = node.Url;
 
-	                                    <li @Html.Raw(subChildClass)><a href="@url">@node.Name @node.DocumentTypeAlias</a></li>
+                                        if (node.DocumentTypeAlias == "Scrolltolink" && page.Id == Model.Content.Id)
+                                        {
+                                            var scrollToLink = node.GetPropertyValue<string>("scrollToId");
+                                            
+                                            <li @Html.Raw(subChildClass)><a href="#@scrollToLink">@node.Name</a></li>
+                                        }
+                                        else if (node.DocumentTypeAlias != "Scrolltolink")
+                                        {
+                                            <li @Html.Raw(subChildClass)><a href="@url">@node.Name</a></li>
+                                        }
                                     }
                                 </ul>
                             }
                         }
 				    </li>
-				}
+
 			}
 		}
 </ul>
