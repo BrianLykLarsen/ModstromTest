@@ -21,10 +21,9 @@
 		buttonLinktitle = buttonLink.Name;
 	}
 	
-	var imageId = Model.GetValue<int>("image");
-	var imageUrl = Umbraco.TypedMedia(imageId).Url;
-
-
+	IPublishedContent backgroundImage = Model.GetValue<IPublishedContent>("backgroundImage");
+	IPublishedContent image = Model.GetValue<IPublishedContent>("image");
+		
 	string imageLinklinkUrl = "#";
 	string imageLinktarget = "";
 	string imageLinktitle = "";
@@ -35,23 +34,22 @@
 		imageLinktarget = imageLink.Target;
 		imageLinktitle = imageLink.Name;
 	}
-	var backgroundImageId = Model.GetValue<int>("backgroundImage");
-	var backgroundImageIdUrl = Umbraco.TypedMedia(backgroundImageId).Url;
-
+	
 	string sectionID = Model.GetValue<string>("sectionID");
 
 	<span id="@sectionID"></span>
 
 	<section class="section-hero @textColor">
-		<figure>
-			<div class="bg-container img-default responsiveimg-default responsiveimg-background-default" data-imgsrc-default="@backgroundImageIdUrl" data-imgalt-default="This is the alt text">
-				<noscript>
-					<img src="@backgroundImageIdUrl" alt="This is the alt text">
-				</noscript>
-			</div>
-
-		</figure>
-
+		@if (backgroundImage != null)
+		{
+			<figure>
+				<div class="bg-container img-default responsiveimg-default responsiveimg-background-default" data-imgsrc-default="@backgroundImage.Url" data-imgalt-default="This is the alt text">
+					<noscript>
+						<img src="@backgroundImage.Url" alt="This is the alt text">
+					</noscript>
+				</div>
+			</figure>
+		}
 		<h2 class="@textColor">@headline</h2>
 		<div class="container">
 			<div class="row">
@@ -67,11 +65,11 @@
 					}
 				</div>
 				<div class="col-sm-4">
-					@if (!string.IsNullOrWhiteSpace(imageUrl) && !string.IsNullOrWhiteSpace(imageLinklinkUrl))
+					@if (image != null && !string.IsNullOrWhiteSpace(imageLinklinkUrl))
 					{
 						<figure class="img-holder">
 							<a href="@imageLinklinkUrl" target="@imageLinktarget" title="@imageLinktitle">
-								<img src="@imageUrl?width=300&quality=70" alt="This is the alt text">
+								<img src="@image.Url?width=300&quality=70" alt="This is the alt text">
 							</a>
 						</figure>
 					}
@@ -79,4 +77,5 @@
 			</div>
 		</div>
 	</section>
+	
 }

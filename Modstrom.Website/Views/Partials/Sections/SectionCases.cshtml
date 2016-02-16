@@ -9,6 +9,12 @@
 	var selectCases = Model.GetValue<int[]>("selectCases").Select(x => Umbraco.TypedContent(x));
 	int counter = 0;
 	string sectionID = Model.GetValue<string>("sectionID");
+	string numberofelements = Model.GetValue<string>("numberOfElementsToShow");
+	int elements = 1;
+	if (!string.IsNullOrWhiteSpace(numberofelements))
+	{
+		elements = int.Parse(numberofelements)-1;
+	}
 
 	<section id="@sectionID" class="section-testimonial-business">
 		<div class="container">
@@ -57,7 +63,7 @@
 							}
 
 							string hiddenClass = "";
-							if (counter > 1)
+							if (counter > elements)
 							{
 								hiddenClass = "hidden-element";
 							}
@@ -103,7 +109,7 @@
 										counter++;
 						}
 					</ul>
-					@if (counter > 1)
+					@if (counter > elements+1)
 					{
 						<button id="caseButton" class="btn btn-dark">Se flere cases</button>
 					}

@@ -109,24 +109,22 @@
 		{
 			string boxHeadline = box.GetValue<string>("headline");
 			string boxColor = box.GetValue<string>("color");
-			var backgroundImageId = box.GetValue<int>("image");
-			var backgroundImage = "";
 
-			if (backgroundImageId != 0 && backgroundImageId!=null)
-			{
-				backgroundImage = Umbraco.TypedMedia(backgroundImageId).Url;
-			}
+			IPublishedContent backgroundImage = Model.GetValue<IPublishedContent>("image");
 	  
 			var linkId = box.GetValue<int>("link");
 			var link = Umbraco.Url(linkId);
 
 			<li class="@bootsrapClass">
 				<a href="@link">
-					<figure class="img-default responsiveimg-default" data-hrnd-default="0.66" data-imgsrc-default="@backgroundImage" data-imgalt-default="This is the alt text">
-						<noscript>
-							<img src="@backgroundImage" alt="This is the alt text">
-						</noscript>
-					</figure>
+					@if (backgroundImage != null)
+					{
+						<figure class="img-default responsiveimg-default" data-hrnd-default="0.66" data-imgsrc-default="@backgroundImage.Url" data-imgalt-default="This is the alt text">
+							<noscript>
+								<img src="@backgroundImage.Url" alt="This is the alt text">
+							</noscript>
+						</figure>
+					}
 					<figcaption class="@boxColor">@boxHeadline</figcaption>
 				</a>
 			</li>
