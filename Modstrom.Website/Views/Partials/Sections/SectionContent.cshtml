@@ -44,12 +44,13 @@
 										<div class="row">
 											<div class="col-sm-8">@Html.Raw(text)</div>
 											<div class="col-sm-4">
-												<figure class="responsiveimg-default" data-imgsrc-default="@rightImage.Url" data-imgalt-default="This is the alt-text">
-													<noscript>
-														<img src="@rightImage.Url" alt="This is the alt text">
-													</noscript>
-												</figure>
-
+												@if (rightImage != null) { 
+													<figure class="responsiveimg-default" data-imgsrc-default="@rightImage.Url" data-imgalt-default="This is the alt-text">
+														<noscript>
+															<img src="@rightImage.Url" alt="This is the alt text">
+														</noscript>
+													</figure>
+												}
 												@if (!string.IsNullOrWhiteSpace(buttonText) && buttonLink != null)
 												{
 
@@ -93,23 +94,22 @@
 		string headline = box.GetValue<string>("headline");
 		string text = box.GetValue<string>("text");
 
-		string imageUrl = "";
-		if (box.GetValue<IPublishedContent>("boxImage") != null)
-		{
-			imageUrl = box.GetValue<IPublishedContent>("boxImage").Url;
-		}
-		
+		IPublishedContent imageUrl = box.GetValue<IPublishedContent>("boxImage");
+
 		string buttonText = box.GetValue<string>("buttonText");
 		var linkId = box.GetValue<int>("link");
 		var link = Umbraco.Url(linkId);
 
 		<div class="box ide-el">
 			<h3>@headline</h3>
-			<figure class="img-default responsiveimg-default" data-imgsrc-default="@imageUrl" data-imgalt-default="This is the alt text">
-				<noscript>
-					<img src="@imageUrl?width=50" alt="This is the alt text">
-				</noscript>
-			</figure>
+			@if (imageUrl != null)
+			{
+				<figure class="img-default responsiveimg-default" data-imgsrc-default="@imageUrl.Url" data-imgalt-default="This is the alt text">
+					<noscript>
+						<img src="@imageUrl.Url?width=50" alt="This is the alt text">
+					</noscript>
+				</figure>
+			}
 			<div class="box-text">
 				<i></i>
 				@Html.Raw(text)

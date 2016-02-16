@@ -549,6 +549,9 @@
     <Content Include="less\libs\keepme.txt" />
     <Content Include="less\master.less.squishit.debug.css" />
     <Content Include="Scripts\compiled\keepme.txt" />
+    <Content Include="dist\css\fonts\flexslider-icon.eot" />
+    <Content Include="dist\css\fonts\flexslider-icon.ttf" />
+    <Content Include="dist\css\fonts\flexslider-icon.woff" />
     <None Include="Scripts\jquery-1.11.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.11.0.js" />
     <Content Include="Scripts\jquery-1.11.0.min.js" />
@@ -607,9 +610,6 @@
     <Content Include="App_Data\TEMP\PluginCache\umbraco-plugins.NC-OBO-WS.hash" />
     <Content Include="App_Data\TEMP\PluginCache\umbraco-plugins.NC-OBO-WS.list" />
     <Content Include="App_Data\TEMP\SEOChecker\SEOChecker.config" />
-    <Content Include="dist\css\fonts\flexslider-icon.eot" />
-    <Content Include="dist\css\fonts\flexslider-icon.ttf" />
-    <Content Include="dist\css\fonts\flexslider-icon.woff" />
     <Content Include="App_Plugins\UmbracoForms\Data\forms\73bcc120-70a1-4f4d-ab39-08535b234fc6.json" />
     <Content Include="App_Plugins\UmbracoForms\Data\forms\91391181-7597-457e-9053-7a569b2080ea.json" />
     <Content Include="App_Plugins\UmbracoForms\Data\forms\924ce038-bce3-45fa-89e0-53c9126275e9.json" />
