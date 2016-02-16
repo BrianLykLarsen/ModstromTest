@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+
+	IPublishedContent cookieInfoPath = Model.Content.GetPropertyValue<IPublishedContent>("cookiePopupContent", true);
+
+	if (cookieInfoPath != null)
+	{
+		<div id="cookieInfo" data-cookie-info-path="@cookieInfoPath.Url" data-btn-text-show="Acceptér cookies" data-btn-text-hide="Cookies?"></div>
+	}
+
+}

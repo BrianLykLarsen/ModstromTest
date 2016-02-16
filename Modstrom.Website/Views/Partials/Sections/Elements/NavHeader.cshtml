@@ -1,0 +1,48 @@
+@using Modstrom.Library.Helpers
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var siteNode = Model.Content.GetSiteNode();
+    var level2Node = Model.Content.AncestorOrSelf(2);
+    var level3Node = Model.Content.AncestorOrSelf(3);
+}
+
+<ul id="nav-header">
+    	@{
+			// Get umbraco pages where 'show in top navigation' is true
+			foreach (var page in siteNode.Children.Where(n => n.IsVisible()))
+			{
+				// If looped item is equal to current node, set class to active
+				string childClass = page.Id == level2Node.Id && Model.Content.Level == 2 ? " class=\"active\"" : string.Empty;
+
+
+				    <li @(Html.Raw(childClass))><a href="@page.Url">@page.Name</a>
+
+                        @{
+                            var listMyParents = Model.Content.AncestorsOrSelf(3); //we take all parents starting at level 3
+                            if (page.Children.Any(n => n.IsVisible()) && page.DocumentTypeAlias != "Articles") 
+                            {
+                                <ul class="nav-sub-mobile">
+                                    @foreach (var node in page.Children.Where(n => n.IsVisible()))
+                                    {
+                                        string subChildClass = node.Id == level3Node.Id ? " class=\"active\"" : string.Empty;
+	                                    string url = node.Url;
+
+                                        if (node.DocumentTypeAlias == "Scrolltolink" && page.Id == Model.Content.Id)
+                                        {
+                                            var scrollToLink = node.GetPropertyValue<string>("scrollToId");
+                                            
+                                            <li @Html.Raw(subChildClass)><a href="#@scrollToLink">@node.Name</a></li>
+                                        }
+                                        else if (node.DocumentTypeAlias != "Scrolltolink")
+                                        {
+                                            <li @Html.Raw(subChildClass)><a href="@url">@node.Name</a></li>
+                                        }
+                                    }
+                                </ul>
+                            }
+                        }
+				    </li>
+
+			}
+		}
+</ul>
