@@ -331,11 +331,17 @@ modstrom.master = modstrom.master || function () {
     		if(!$(this).hasClass("testimonial")){
     			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
     				var target = $(this.hash);
-    				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-    				if (target.length) {
-    					$('html,body').animate({
-    						scrollTop: target.offset().top-120
-    					}, 1000);
+    				target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+
+				    var offsetTop = 120;
+				    if ($(window).width() < 991) {
+				    	offsetTop = 43;
+				    }
+
+				    if (target.length) {
+					    $('html,body').animate({
+						    scrollTop: target.offset().top - offsetTop
+				    }, 1000);
     					return false;
     				}
     			}
