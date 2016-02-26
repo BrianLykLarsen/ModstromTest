@@ -17,12 +17,12 @@
 				if (!string.IsNullOrWhiteSpace(node.GetPropertyValue<string>("scrolltoid")))
 				{
 					url = "#" + node.GetPropertyValue<string>("scrolltoid").ToLower();
-					<li@(Html.Raw(childClass))><a href="@url">@node.Name</a></li>
+					<li @(Html.Raw(childClass))><a href="@url">@node.Name</a></li>
 				}
 			}
 			else
 			{
-				<li@(Html.Raw(childClass))><a href="@url">@node.Name</a></li>
+				<li @(Html.Raw(childClass))><a href="@url">@node.Name</a></li>
 			}
             
         }
